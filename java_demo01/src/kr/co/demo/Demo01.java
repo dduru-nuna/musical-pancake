@@ -14,8 +14,13 @@ public class Demo01 {
 		System.out.println("Hello World!!");
 		System.out.println("JAVA");
 		//실행코드 마지막에는 반드시 세미콜론 ; 
-	}
+	
 
+	short s1 = 65;
+	char c1 = 65;
 	
+		System.out.println(s1);
+		System.out.println(c1);
 	
+	}
 }
