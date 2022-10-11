@@ -18,6 +18,16 @@ public class Exam02 {
 		} else {
 			System.out.print("5의 배수 값만 입력하세요");
 		}
+		
+		/*
+		 * int x;
+		 * System.out.print("정수값 입력 : ");
+		 * x = sc.nextInt();
+		 * 
+		 * if(x % 5 == 0) {
+		 *   System.out.printf("사용자가 입력한 값 %d 는 5의 배수가 맞습니다.",x);
+		 * }
+		 */
 	}
 
 }

@@ -22,6 +22,22 @@ public class Exam03 {
 		} else {
 			System.out.println(x / y);
 		}
+		
+		/*
+		 * int x, y;
+		 * 
+		 * System.out.print("첫번째 정수값 입력 : ");
+		 * x = sc.nextInt();
+		 * 
+		 * System.out.print("두번째 정수값 입력 : ");
+		 * y = sc.nextInt();
+		 * 
+		 * if(y != 0) {
+		 *     System.out.printf("나누기 계산 결과 -> %d 입니다.", x/y);
+		 * } else {
+		 *     System.out.println("0으로 나누기 계산을 할 수 없습니다.");
+		 * }
+		 */
 				
 	}
 

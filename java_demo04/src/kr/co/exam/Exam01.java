@@ -20,6 +20,22 @@ public class Exam01 {
 			System.out.print("1 ~ 45 사이의 값만 입력하세요");
 		}
 		
+		/*
+		 * int x;
+		 * System.out.print("정수값 입력 : ");
+		 * x = sc.nextInt();
+		 * 
+		 * if(x>=1) {
+		 *    if(x/,=45) {
+		 *       System.out.prinf("사용자가 입력한 값 -> %d", x);
+		 *    }
+		 * }
+		 * 
+		 * 또는
+		 * if(x>=1 && x<=45) {
+		 *       System.out.prinf("사용자가 입력한 값 -> %d", x);
+		 * }
+		 */
 				
 	}
 
