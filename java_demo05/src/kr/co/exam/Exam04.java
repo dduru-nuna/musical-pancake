@@ -25,18 +25,18 @@ public class Exam04 {
 			int num = sc.nextInt();
 			
 			if(num >= 1 && num <= 10) {
-				boolean isDuplicate = false;
-				for(int j = 0; j <= i; j++) {
-					if(arr1[i] == num) {
-						isDuplicate = true;
+				boolean isDuplicate = false;    //중복 존재 여부를 기록하기 위해 불린 설정
+				for(int j = 0; j <= i; j++) {   // 인덱스 0부터 내가 넣으려는 위치 전까지 중복체크
+					if(arr1[j] == num) {        
+						isDuplicate = true;     //중복 발생하면 중복 있다고 기록
 						break;
 					}
 				}
-				if(!isDuplicate) {
+				if(!isDuplicate) {  //중복이 되지 않았으면
 					System.out.printf("%d 위치에 %d 값으로 초기화 하였습니다.\n",i,num);
 					arr1[i] = num;
 					i++;
-				} else {
+				} else {            //중복 됐으면
 					System.out.println("이미 초기화된 값입니다.");
 				}
 			} else {
