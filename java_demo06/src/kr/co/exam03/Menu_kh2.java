@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class Menu_kh2 {
 	// 객체 배열
-	private Food food[] = {
-			new Food("김밥", 2500), new Food("라면", 3000)
-	};
+	private Food food[] ;
 	
-//	public Menu_kh2() {
-//		this.food = new Food[0];
-//	}
+	public Menu_kh2() {
+		this.food = new Food[0];
+	}
+	
+	
 	public String getAll() {
 		String str = "";
 		for(int i = 0; i < this.food.length; i++) {
