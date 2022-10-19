@@ -29,6 +29,21 @@ public class Menu_kh2 {
 		}	
 	}
 	
+	// 동일한 이름의 메서드 (기존에 만든 메서드의 매개변수와 타입이 달라야한다)
+	// ex.println을 보면 char타입,int타입 등등 여러개의 메서드가 오버로딩 되어있다.
+	/*
+	  public void add(Food food) {
+	 
+		boolean isExists = this.findIndex(food.name) != -1 ? true : false;
+		
+		if(!isExists) {
+			this.food = Arrays.copyOf(this.food, this.food.length + 1);
+			this.food[this.food.length - 1] = food;
+		}	
+	}*/
+	
+	
+	
 	public boolean update(String menuName, int price) {
 		int idx = this.findIndex(menuName);
 		if(idx != -1) {
