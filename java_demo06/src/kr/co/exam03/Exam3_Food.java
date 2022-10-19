@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Exam3_Food {
 
 	public static void main(String[] args) {
-
+		
+		
 		Menu_kh2 menu = new Menu_kh2();
 		menu.add("라면", 3500);
 		menu.add("치즈라면", 4000);
