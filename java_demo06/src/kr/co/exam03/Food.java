@@ -1,7 +1,5 @@
 package kr.co.exam03;
 
-import java.util.Arrays;
-
 public class Food {
 	public String name;
 	public int price;
