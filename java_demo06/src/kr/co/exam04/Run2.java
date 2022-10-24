@@ -34,25 +34,26 @@ public class Run2 {
 				break;
 			case 3:
 				// 과목 성적 추가 기능을 수행하는 메서드 호출
-				
+				this.add();
 				break;
 			case 4:
 				// 과목 성적 수정 기능을 수행하는 메서드 호출
-				
+				this.update();
 				break;
 			case 5:
 				// 과목 성적 삭제 기능을 수행하는 메서드 호출
-				
+				this.remove();
 				break;
 			case 6:	
 				System.out.println("프로그램이 종료 됩니다.");
 				System.exit(0);  // 프로그램 종료
 			default:
 				// 메뉴 번호를 잘못 입력했을 경우
+				System.out.println("메뉴 번호를 잘못 입력하였습니다.");
 			}
 	}
 	
-	public void printAll() {
+	private void printAll() {
 		String result = this.student.getGradeTable();
 		System.out.println(result);
 	}
@@ -77,16 +78,111 @@ public class Run2 {
 		}
 	}
 	
+	private void add() {
+		while(true) {
+			System.out.print("추가 할 과목 입력 : ");
+			String name = sc.nextLine();
+			System.out.println();
+
+			if(name.equals("exit")) {
+				break;
+			}
+
+			double score = -1;
+			while(!(score >= 0 && score <= 100)) {
+				System.out.print("성적 입력(0 ~ 100) : ");
+				if(sc.hasNextDouble()) {
+					score = sc.nextDouble();
+				}
+				sc.nextLine();
+				System.out.println();
+			}
+
+			boolean result = this.student.addSubject(name, score);
+			if(result) {
+				System.out.println("과목 추가 완료되었습니다.");
+			} else {
+				System.out.println("이미 존재하는 과목 정보 입니다.");
+			}
+			System.out.println();
+		}
+	}
+	
+	private void update() {
+		while(true) {
+			System.out.print("수정 할 과목 입력 : ");
+			String name = sc.nextLine();
+			System.out.println();
+
+			if(name.equals("exit")) {
+				break;
+			}
+
+			double score = -1;
+			while(!(score >= 0 && score <= 100)) {
+				System.out.print("성적 입력(0 ~ 100) : ");
+				if(sc.hasNextDouble()) {    //실수 맞는지 확인하고 맞으면 값 저장 (실수 외의 값이 입력되면 에러가 뜨는게 아니라 저장되지 않고 넘어감)
+					score = sc.nextDouble();
+				}
+				sc.nextLine();
+				System.out.println();
+			}
+
+			boolean result = this.student.updateSubject(name, score);
+			if(result) {
+				System.out.println("과목 수정 완료되었습니다.");
+			} else {
+				System.out.println("수정 할 과목이 존재하지 않습니다.");
+			}
+			System.out.println();
+		}
+	}
+	
+	private void remove() {
+		while(true) {
+			System.out.print("삭제 할 과목 입력 : ");
+			String name = sc.nextLine();
+			System.out.println();
+
+			if(name.equals("exit")) {
+				break;
+			}
+
+			boolean result = this.student.removeSubject(name);
+			if(result) {
+				System.out.println("과목 삭제 완료되었습니다.");
+			} else {
+				System.out.println("삭제 할 과목이 존재하지 않습니다.");
+			}
+			System.out.println();
+		}
+	}
+	
+	private void clear() {
+		String cls = "";
+		for(int i = 0; i < 25; i++) {
+			cls += "\n";
+		}
+		System.out.println(cls);
+	}
 	
 	public void start() {
 		while(true) {
 			this.printMenu();
 			System.out.print("메뉴 번호 입력 : ");
-			int number = sc.nextInt(); sc.nextLine();
-			this.select(number);
+			
+			int number = -1;
+			if(sc.hasNextInt()) {
+				number = sc.nextInt(); sc.nextLine();
+				this.select(number);
+			} else {
+				sc.nextLine();
+				continue;
+			}
 				
 			System.out.println("초기 메뉴로 돌아가려면 Enter 입력");
 			sc.nextLine();
+			this.clear();
 		}
 	}
 }

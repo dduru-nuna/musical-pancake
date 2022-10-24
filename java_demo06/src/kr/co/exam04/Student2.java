@@ -3,9 +3,9 @@ package kr.co.exam04;
 import java.util.Arrays;
 
 public class Student2 {
-	public Subject subjects[];
-	public String name;
-	public int year;
+	private Subject subjects[];
+	private String name;
+	private int year;
 
 	public Student2(String name) {  //이름을 입력받아 Student2 초기화 (Run2에 "홍길동" 입력받음)
 		this.subjects = new Subject[0];
@@ -43,14 +43,12 @@ public class Student2 {
 	}
 
 	public Subject getSubject(String subjectName) {
-		Subject result = null;
 		int idx = this.findIndex(subjectName);
 
 		if(idx >= 0) {
-			result = this.subjects[idx];
+			return this.subjects[idx];
 		}
-
-		return result;
+		return null;
 	}
 
 	public double getScore(String subjectName) {
@@ -58,29 +56,38 @@ public class Student2 {
 		return result != null ? result.getScore() : -1;
 	}
 
-	public void addSubject(String subjectName, double score) {
-		if(!this.isDuplicate(subjectName)) {
-			int len = this.subjects.length;
-			this.subjects = Arrays.copyOf(this.subjects, len + 1);
-			this.subjects[len] = new Subject(subjectName, score);
-		}
+	public boolean addSubject(String subjectName, double score) {
+			boolean result = false;
+			if(!this.isDuplicate(subjectName)) {
+				int len = this.subjects.length;
+				this.subjects = Arrays.copyOf(this.subjects, len + 1);
+				this.subjects[len] = new Subject(subjectName, score);
+				result = true;
+		    }
+			return result;
 	}
 
-	public void updateSubject(String subjectName, double score) {
+	public boolean updateSubject(String subjectName, double score) {
+		boolean result = false;
 		int idx = this.findIndex(subjectName);
 		if(idx >= 0) {
 			Subject s = this.subjects[idx];
 			s.setScore(score);
+			result = true;
 		}
+		return result;
 	}
 
-	public void removeSubject(String subjectName) {
+	public boolean removeSubject(String subjectName) {
+		boolean result = false;
 		int idx = this.findIndex(subjectName);
 		if(idx >= 0) {
 			for(int i = idx; i < this.subjects.length - 1; i++) {
 				this.subjects[i] = this.subjects[i + 1];
 			}
 			this.subjects = Arrays.copyOf(this.subjects, this.subjects.length - 1);
+			return true;
 		}
+		return result;
 	}
 }
