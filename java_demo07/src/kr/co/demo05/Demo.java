@@ -18,15 +18,24 @@ public class Demo {
 		 *     - 1개 이상의 인터페이스를 implements 할 수 있다.  
 		 */
 		
-		Member m = new Person();
-		Staff s = new Person();
-		Admin a = new Person();
 		
-		m.update();
-		m.view();
-		m.write();
+		Staff s = new StaffPerson();
+		Admin a = new AdminPerson();
 		
-		((Staff)m).remove();
+	
+		//인터페이스 내에서도 계층형으로 사용할 수 있게끔 만들어줬기 때문에 가능
+		s.update();
+		s.remove();
+		s.view();
+		s.write();
+		((Admin)s).addRole();
+		
+		a.remove();
+		a.update();
+		a.view();
+		a.write();
+		
+		
 		
 		/*
 		 * 추상클래스와 인터페이스

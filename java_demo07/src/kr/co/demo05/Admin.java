@@ -1,6 +1,6 @@
 package kr.co.demo05;
 
-public interface Admin {
+public interface Admin extends Staff {
 
 	String ROLE = "Admin";
 	
