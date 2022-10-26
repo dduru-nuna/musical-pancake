@@ -48,20 +48,21 @@ public class Exam {
 			}
 			if(input.split("-").length != 3) {
 				System.out.println("올바른 전화번호 형식이 아닙니다.");
+				continue;
 			}
 			
 			boolean isNumber = true;
 			String phoneArr[] = input.split("-");
 			
-			
-			for(int i = 0; i < phoneArr.length; i++) {
+			for(int i = 1; i < phoneArr.length; i++) { // 010은 이미 체크했으니 인덱스 1부터 확인
 				for(int j = 0; j < phoneArr[i].length(); j++) {
-					if(phoneArr[i].charAt(j) >= '0' && phoneArr[i].charAt(j) <= '9') {
+					if(!(phoneArr[i].charAt(j) >= '0' && phoneArr[i].charAt(j) <= '9')) {
+						System.out.println("0 ~ 9에 해당하는 숫자가 아닙니다.");
 						isNumber = false;
 						break;
 					}
 				}
-				if(!isNumber) {
+				if(!isNumber) { //중첩 반복문이라 한번 더 break
 					break;
 				}
 			}
@@ -70,8 +71,21 @@ public class Exam {
 				continue;
 			}
 			
+			boolean cntError = false;
+			for(int i = 1; i < phoneArr.length; i++) {
+				if(phoneArr[i].length() != 4) {
+					cntError = true;
+					break;
+				}
+			}
+			if(cntError) {
+				System.out.println("전화번호는 010-4자리-4자리 여야 합니다.");
+				continue;
+			}
+			
 			phoneArr[2] = "****";
 			System.out.println("전화번호 출력 : "+  String.join("-", phoneArr));
+			break;
 		}
 	}
 
