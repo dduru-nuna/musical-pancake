@@ -36,7 +36,7 @@ public class Exam {
 			if(input.contains("exit")) {
 				break;
 			}
-			
+			/*
 			if(!input.startsWith("010")) {
 				System.out.println("010으로 시작하는 번호를 입력하세요.");
 				continue;
@@ -82,10 +82,17 @@ public class Exam {
 				System.out.println("전화번호는 010-4자리-4자리 여야 합니다.");
 				continue;
 			}
+			*/
+			Phone phone = Phone.valuOf(input);
 			
-			phoneArr[2] = "****";
-			System.out.println("전화번호 출력 : "+  String.join("-", phoneArr));
+			if(phone.isInvalid()) {
+				System.out.println("전화번호 형식이 잘못 되었습니다.");
+				continue;
+			} else {
+				System.out.println("전화번호 출력 : " + phone.getNumber(true));
+			}
 			break;
+			
 		}
 	}
 
