@@ -86,7 +86,23 @@ public class Exam {
 			Phone phone = Phone.valuOf(input);
 			
 			if(phone.isInvalid()) {
-				System.out.println("전화번호 형식이 잘못 되었습니다.");
+				switch(phone.reason()) {
+				case Phone.PREFIX_ERROR:
+					System.out.println("전화번호는 010으로 시작해야 합니다.");
+					break;
+				case Phone.DELIMITER_ERROR:
+					System.out.println("전화번호는 - 구분자만 사용해야 합니다.");
+					break;
+				case Phone.FORMATTING_ERROR:
+					System.out.println("전화번호 형식이 잘못되었습니다.");
+					break;
+				case Phone.LENGTH_ERROR:
+					System.out.println("전화번호의 길이를 다시 확인하세요.");
+					break;
+				case Phone.NUMBER_ERROR:
+					System.out.println("전화번호에 숫자가 아닌 문자가 있습니다.");
+					break;
+				}
 				continue;
 			} else {
 				System.out.println("전화번호 출력 : " + phone.getNumber(true));
