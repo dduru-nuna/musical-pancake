@@ -5,9 +5,9 @@ import kr.co.exam01.NumberRangeOverException;
 
 public class Subject {
 
-	private String name;
-	private char grade;
-	private double score;
+	protected String name;
+	protected char grade;
+	protected double score;
 	
 	public void setName(String name) {
 		this.name = name;
