@@ -1,6 +1,10 @@
 package kr.co.demo02;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Demo {
 
@@ -67,6 +71,16 @@ public class Demo {
 		for(Integer n: aSet) {
 			System.out.print(n + "\t");
 		}
+		System.out.println();
+		
+		// Set 컬렉션을 List 컬렉션으로 변경
+		List<Integer> aList = new ArrayList<Integer>(aSet);
+		Collections.sort(aList); // List 기능 사용 가능
+		System.out.println(aList);
+		
+		// List 컬렉션을 Set 컬렉션으로 변경
+		Set<Integer> cSet = new HashSet<Integer>(aList);
+		System.out.println(cSet);  // List에서는 중복 가능했어서 Set으로 바꾸면 중복 사라짐
 	}
 
 }
