@@ -2,6 +2,9 @@ package kr.co.demo01;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
 public class Demo {
 
@@ -161,6 +164,12 @@ public class Demo {
 		// 컬렉션 sort 기능 이용하려면 Comparable 인터페이스 상속 필요
 		Collections.sort(sList);
 		System.out.println(sList);
+		
+		// 리스트 계열의 컬렉션들이기 때문에 동일한 기능 지원
+		// 내부 동작은 다르다
+		List<Integer> cList = new ArrayList<Integer>();
+		cList = new Vector<Integer>();
+		cList = new LinkedList<Integer>();
 	}
 
 }
