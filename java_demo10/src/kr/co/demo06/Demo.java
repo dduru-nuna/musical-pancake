@@ -2,6 +2,8 @@ package kr.co.demo06;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +12,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 
 public class Demo {
@@ -44,6 +48,93 @@ public class Demo {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void bufferSubStream() {
+		File f = new File("D:\\입출력테스트.txt");
+		
+		StringBuilder sb = new StringBuilder();
+		try(BufferedReader br = new BufferedReader(new FileReader(f))) {
+			// ready() 읽을 상태이면 읽기. 이전처럼 -1 따질 필요 없음
+			while(br.ready()) {
+				sb.append(br.readLine() + "\r\n");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.print(sb.toString());
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(f,true))) {
+			bw.write("버퍼 보조 스트림을 적용하여 입출력");
+			bw.newLine(); // 자동으로 개행 적용
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void dataSubStream() {
+		File f = new File("D:\\입출력테스트.txt");
+		
+		try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(f))) {
+			dos.writeInt(100);
+			dos.writeDouble(123.5);
+			dos.writeBoolean(false);
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try(DataInputStream dis = new DataInputStream(new FileInputStream(f))) {
+			// 읽을 때도 쓸때 순서대로 읽어야한다. int -> double -> boolean 순
+			int i = dis.readInt();
+			double d = dis.readDouble();
+			boolean b = dis.readBoolean();
+			
+			System.out.println(i + "|" + d + "|" + b);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void objectSubStream() {
+		File f = new File("D:\\입출력테스트.txt");
+		
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f))) {
+			// 객체 Subject 만들고 입력
+			Subject s1 = new Subject("국어", 67.8);
+			Subject s2 = new Subject("영어", 78.5);
+			Subject s3 = new Subject("수학", 97.2);
+			// 직렬화 기능 serialize 필요 : 객체에서 implements 해주기
+			oos.writeObject(s1);
+			oos.writeObject(s2);
+			oos.writeObject(s3);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f))) {
+			Subject s1 = (Subject)ois.readObject();
+			Subject s2 = (Subject)ois.readObject();
+			Subject s3 = (Subject)ois.readObject();
+			
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println(s3);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 		/*
@@ -74,27 +165,7 @@ public class Demo {
 		 *     - 프로그램에서 사용하는 객체 타입을 그대로 입출력에 사용할 수 있도록 하는 기능 제공
 		 */
 	
-		File f = new File("D:\\입출력테스트.txt");
 		
-		StringBuilder sb = new StringBuilder();
-		try(BufferedReader br = new BufferedReader(new FileReader(f))) {
-			// ready() 읽을 상태이면 읽기. 이전처럼 -1 따질 필요 없음
-			while(br.ready()) {
-				sb.append(br.readLine() + "\r\n");
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.print(sb.toString());
-		
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(f,true))) {
-			bw.write("버퍼 보조 스트림을 적용하여 입출력");
-			bw.newLine(); // 자동으로 개행 적용
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
