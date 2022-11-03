@@ -22,39 +22,10 @@ public class Client {
 		 *    6. 서버가 보낸 메시지 확인
 		 *    7. 3번 ~ 6번 까지의 과정 반복   
 		 */
-		Scanner sc = new Scanner(System.in);
-		int serverPort = 51000;
-		InetAddress serverIp;
+		
 		
 	//	String serverIp = "127.0.0.1"; // local host : 자기자신 가리키는 ip
 		
-		try {
-			serverIp = InetAddress.getByName("127.0.0.1");
-			DatagramSocket dSocket = new DatagramSocket();
-			
-			while(true) {
-				System.out.print("입력 : ");
-				String msg = sc.nextLine();
-				byte byteData[] = msg.getBytes();
-				DatagramPacket sendPacket = new DatagramPacket(byteData, byteData.length, serverIp, serverPort);
-				dSocket.send(sendPacket);
-				
-				byte recv[] = new byte[4096];
-				DatagramPacket recvPacket = new DatagramPacket(recv, recv.length);
-				dSocket.receive(recvPacket);
-				
-				String recvData = new String(recvPacket.getData(), 0, recvPacket.getLength());
-				System.out.println("서버가 보낸 메시지 : " + recvData);
-			}	
-				
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (SocketException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+	}	
 
 }
