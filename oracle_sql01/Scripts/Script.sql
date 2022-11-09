@@ -1,1 +1,0 @@
-SELECT 'Hello' FROM DUAL;
