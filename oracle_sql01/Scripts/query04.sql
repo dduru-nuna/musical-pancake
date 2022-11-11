@@ -218,3 +218,19 @@ SELECT EMPLOYEE_ID
         END AS 급여구분    
   FROM EMPLOYEES;
 --IF문과 비슷한 문법
+ 
+ /*
+  * 그룹함수
+  *   COUNT(컬럼명 또는 *) : 조회된 Record Set 의 Record 수를 반환. NULL은 갯수에서 제외
+  *   MAX(컬럼명) : 조회된 Record Set 에서 지정한 컬럼명의 값들 중 가장 큰값을 반환
+  *   MIN(컬럼명) : 조회된 Record Set 에서 지정한 컬럼명의 값들 중 가장 작은값을 반환
+  *   AVG(컬럼명) : 조회된 Record Set 에서 지정한 컬럼명의 값들의 평균을 반환
+  *   SUM(컬럼명) : 조회된 Record Set 에서 지정한 컬럼명의 값들의 총합을 반환
+  */
+SELECT COUNT(*) FROM EMPLOYEES;
+
+SELECT MAX(EMPLOYEE_ID), MIN(EMPLOYEE_ID) FROM EMPLOYEES;
+SELECT MAX(FIRST_NAME), MIN(FIRST_NAME) FROM EMPLOYEES;
+SELECT MAX(HIRE_DATE), MIN(HIRE_DATE) FROM EMPLOYEES;
+
+SELECT SUM(SALARY), AVG(SALARY) FROM EMPLOYEES;
