@@ -82,3 +82,17 @@ SELECT JOB_ID
  GROUP BY JOB_ID
 HAVING AVG(SALARY) >= 10000
  ORDER BY 직무별평균급여액 DESC;
+
+/*
+ * 문제
+ */
+SELECT DEPARTMENT_ID 부서ID
+     , SUBSTR(PHONE_NUMBER,1,3) 전화번호앞3자리
+     , COUNT(*) 갯수
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IS NOT NULL
+ GROUP BY DEPARTMENT_ID, SUBSTR(PHONE_NUMBER,1,3)
+HAVING COUNT(*) > 1
+ ORDER BY 2,3,1;
+--컬럼명이나 별칭 말고 컬럼위치만 써도 정렬가능. 위는 두번째컬럼(부서id)->세번째컬럼->첫번째컬럼 기준으로 정렬
+ 
