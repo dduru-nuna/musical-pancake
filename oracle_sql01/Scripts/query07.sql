@@ -25,6 +25,14 @@ SELECT *
   FROM EMPLOYEES
  WHERE MANAGER_ID = 101;
 
+
+
+
+/*
+ * GROUPING SETS
+ *    - GROUP BY 로 집계한 여러 Record Set 결과를 하나의 Record Set 결과로 합칠 때 사용
+ */
+-- 1과 2번 문은 같음
 --1
 SELECT DEPARTMENT_ID
      , NULL AS JOB_ID
@@ -46,8 +54,6 @@ SELECT DEPARTMENT_ID
   FROM EMPLOYEES
  WHERE DEPARTMENT_ID IS NOT NULL
  GROUP BY DEPARTMENT_ID, JOB_ID;
- 
--- 1과 2번 문은 같음
 
 --2
 SELECT DEPARTMENT_ID
