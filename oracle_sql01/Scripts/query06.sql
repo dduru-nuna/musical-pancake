@@ -96,3 +96,51 @@ HAVING COUNT(*) > 1
  ORDER BY 2,3,1;
 --컬럼명이나 별칭 말고 컬럼위치만 써도 정렬가능. 위는 두번째컬럼(부서id)->세번째컬럼->첫번째컬럼 기준으로 정렬
  
+
+/*
+ * ROLLUP 함수
+ *    - GROUP BY 절에 사용하는 함수
+ *    - 그룹으로 묶기 위한 조건이 1개 이상인 경우에 사용하며 그룹에 대한 소계,총계를 추가로 생성한다.
+ *    - 함수에 작성한 컬럼 순서대로 1개 컬럼에 대한 집계, 2개 컬럼에 대한 집계를 생성한다.
+ */
+SELECT DEPARTMENT_ID AS 부서ID
+     , JOB_ID AS 직무ID
+     , COUNT(*)
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IS NOT NULL
+ GROUP BY ROLLUP(DEPARTMENT_ID, JOB_ID);
+--직무ID가 NULL인 것은 부서ID로만 그룹을 묶었을 때의 집계 생성. NULL, NULL 줄은 총계
+
+/*
+ * CUBE 함수
+ *    - GROUP BY 절에 사용하는 함수
+ *    - 그룹으로 묶기 위한 조건이 1개 이상인 경우에 사용하며 그룹에 대한 소계,총계를 추가로 생성한다.
+ *    - 함수에 작성한 컬럼의 조합 가능한 모든 집계를 생성한다.
+ */
+SELECT DEPARTMENT_ID AS 부서ID
+     , JOB_ID AS 직무ID
+     , COUNT(*)
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IS NOT NULL
+ GROUP BY CUBE(DEPARTMENT_ID, JOB_ID)
+ ORDER BY 2 NULLS FIRST, 1 NULLS FIRST;
+--총계, 부서ID, 직무ID, 직무&부서ID 각 집계 생성
+
+/*
+ * GROUPING 함수
+ *    - ROLLUP, CUBE 함수를 사용하여 나타낸 집계에 대해 어떤 컬럼을 기준으로
+ *      그룹화를 했는지 구분할 수 있도록 해주는 함수
+ *    - 함수 실행 결과 0 이 나오면 해당 컬럼이 그룹화에 사용 되었음을 나타낸다.
+ */
+SELECT DEPARTMENT_ID AS 부서ID
+     , JOB_ID AS 직무ID
+     , COUNT(*)
+     , CASE WHEN GROUPING(DEPARTMENT_ID) = 0 AND GROUPING(JOB_ID) = 0 THEN '부서/직무그룹'
+            WHEN GROUPING(DEPARTMENT_ID) = 0 AND GROUPING(JOB_ID) = 1 THEN '부서그룹'
+            WHEN GROUPING(DEPARTMENT_ID) = 1 AND GROUPING(JOB_ID) = 0 THEN '직무그룹'
+            WHEN GROUPING(DEPARTMENT_ID) = 1 AND GROUPING(JOB_ID) = 1 THEN '총계'
+        END AS 그룹구분
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IS NOT NULL
+ GROUP BY CUBE(DEPARTMENT_ID, JOB_ID)
+ ORDER BY 1 NULLS FIRST;
