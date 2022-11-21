@@ -1,0 +1,16 @@
+package kr.co.view;
+
+import java.util.ArrayList;
+
+import kr.co.vo.EmployeeVO;
+import kr.co.vo.JobVO;
+
+public class JobView {
+
+	public void print(ArrayList<JobVO> datas) {
+		for(JobVO job: datas) {
+			System.out.println(job);
+		}
+	}
+
+}
