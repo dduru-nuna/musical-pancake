@@ -1,4 +1,4 @@
-package ko.co.manager;
+package kr.co.manager;
 
 import java.util.Scanner;
 

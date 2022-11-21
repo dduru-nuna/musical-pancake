@@ -1,6 +1,6 @@
-package ko.co.run;
+package kr.co.run;
 
-import ko.co.manager.EmployeeManager;
+import kr.co.manager.EmployeeManager;
 
 public class Run {
 
