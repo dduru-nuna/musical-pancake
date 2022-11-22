@@ -185,6 +185,9 @@ SELECT SALARY FROM EMPLOYEES;
 
 UPDATE EMPLOYEES
    SET SALARY = CASE WHEN SALALY < 4000 THEN SALARY * 0.1
+                     WHEN
+                     WHEN
+                     ELSE
+                END     
    	               
-   END
    
