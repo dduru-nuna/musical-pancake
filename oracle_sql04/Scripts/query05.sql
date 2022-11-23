@@ -127,6 +127,7 @@ UPDATE DEPARTMENTS SET DEPARTMENT_NAME_KR = '회계팀' WHERE DEPARTMENT_ID = 11
  * 모두 들어가게 한다.) 모든 작업을 완료 후 KJOBS 테이블은 제거 한다.
  */
 ALTER TABLE JOBS ADD JOB_TITLE_KR VARCHAR2(20);
+ALTER TABLE JOBS MODIFY JOB_TITLE_KR VARCHAR2(35);
 UPDATE JOBS 
    SET JOB_TITLE_KR = (SELECT JOB_TITLE FROM KJOBS WHERE JOB_ID = JOBS.JOB_ID);
 SELECT * FROM JOBS;
@@ -140,16 +141,11 @@ DROP TABLE KJOBS;
  *     NT_MGR    Network Manager     5000          11000
  *     NT_ENG    Network Engineer    7000          13000
  */
-INSERT INTO JOBS(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
-          VALUES(IT_ITRN, Intern Programmer, 3200, 3800);
-INSERT INTO JOBS(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
-          VALUES(SV_MGR, Server Manager, 4000, 10000);
-INSERT INTO JOBS(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
-          VALUES(SV_ENG, Server Engineer, 6000, 12000);
-INSERT INTO JOBS(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
-          VALUES(NT_MGR, Network Manager, 5000, 11000);
-INSERT INTO JOBS(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
-          VALUES(NT_ENG, Network Engineer, 7000, 13000);
+INSERT INTO JOBS VALUES('IT_ITRN', 'Intern Programmer', 3200, 3800, '인턴 프로그래머');
+INSERT INTO JOBS VALUES('SV_MGR', 'Server Manager', 4000, 10000, '서버 담당자');
+INSERT INTO JOBS VALUES('SV_ENG', 'Server Engineer', 6000, 12000, '서버 엔지니어');
+INSERT INTO JOBS VALUES('NT_MGR', 'Network Manager', 5000, 11000, '네트워크 담당자');
+INSERT INTO JOBS VALUES('NT_ENG', 'Network Engineer', 7000, 13000, '네트워크 엔지니어');
 SELECT * FROM JOBS;
 /*
  * DEPARTMENTS 테이블에 다음의 데이터를 추가 한다.(DEPARTMENT_NAME_KR 도 추가되어 있어야 함)
@@ -157,11 +153,10 @@ SELECT * FROM JOBS;
  *     280              Server             NULL          (학원주소에 해당하는 ID)
  *     290              Network            NULL          (학원주소에 해당하는 ID)
  */
-INSERT INTO DEPARTMENTS(DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
-              VALUES(280, 'Server', NULL, (SELECT LOCATION_ID FROM LOCATIONS WHERE STREET_ADDRESS = '테헤란로14길 6'));
-INSERT INTO DEPARTMENTS(DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
-              VALUES(290, 'Network', NULL, (SELECT LOCATION_ID FROM LOCATIONS WHERE STREET_ADDRESS = '테헤란로14길 6'));
-SELECT * FROM DEPARTMENTS;             
+INSERT INTO DEPARTMENTS VALUES(280, 'Server', NULL, (SELECT LOCATION_ID FROM LOCATIONS WHERE STREET_ADDRESS = '테헤란로14길 6'), '서버팀');
+INSERT INTO DEPARTMENTS VALUES(290, 'Network', NULL, (SELECT LOCATION_ID FROM LOCATIONS WHERE STREET_ADDRESS = '테헤란로14길 6'), '네트워크팀');
+SELECT * FROM DEPARTMENTS;   
+
 /*
  * 새로 신설된 Server, Network 부서를 위한 인력을 충원하고 있는 것으로 가정하여 각 부서마다
  * 3명의 인원을 EMPLOYEES 에 추가한다.(Manager 직무 1명, Engineer 직무 2명)
@@ -171,7 +166,65 @@ SELECT * FROM DEPARTMENTS;
  *     - 부서장으로 선택된 인원은 JOBS 테이블의 MIN_SALARY 급여에서 +2000 상승된 급여로 받을 수 있게
  *       데이터를 수정한다.
  */
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '철수', '김', 'KCHUL', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_MGR')
+                    , 'SV_MGR', 280);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '영수', '박', 'PYOUNG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_ENG')
+                    , 'SV_ENG', 280);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '강석', '이', 'LKANG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'SV_ENG')
+                    , 'SV_ENG', 280);
 
+
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '주식', '강', 'KJU', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_MGR')
+                    , 'NT_MGR', 290);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '장원', '서', 'SJANG', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_ENG')
+                    , 'NT_ENG', 290);
+INSERT INTO EMPLOYEES(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, SALARY, JOB_ID, DEPARTMENT_ID)
+               VALUES((SELECT MAX(EMPLOYEE_ID) + 1 FROM EMPLOYEES)
+                    , '지원', '임', 'IJI', SYSDATE
+                    , (SELECT MIN_SALARY FROM JOBS WHERE JOB_ID = 'NT_ENG')
+                    , 'NT_ENG', 290);
+
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE DEPARTMENT_ID = 120
+                        AND FIRST_NAME = '철수'
+                        AND LAST_NAME = '김')
+ WHERE DEPARTMENT_ID = 120;
+
+UPDATE DEPARTMENTS
+   SET MANAGER_ID = (SELECT EMPLOYEE_ID
+                       FROM EMPLOYEES
+                      WHERE DEPARTMENT_ID = 130
+                        AND FIRST_NAME = '주식'
+                        AND LAST_NAME = '강')
+ WHERE DEPARTMENT_ID = 130;
+
+
+UPDATE EMPLOYEES
+   SET SALARY = SALARY + 2000
+ WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID
+                         FROM DEPARTMENTS
+                        WHERE DEPARTMENT_ID IN (120, 130));
+
+SELECT * FROM EMPLOYEES;
+SELECT * FROM DEPARTMENTS;
 /*
  * 모든 급여 정보를 수정하려고 한다.
  * JOBS 테이블과 EMPLOYEES 테이블의 모든 급여 정보를 기존보다 5% ~ 10% 상승 시키도록 한다.
@@ -183,11 +236,98 @@ SELECT * FROM DEPARTMENTS;
  */
 SELECT SALARY FROM EMPLOYEES;
 
+UPDATE JOBS
+   SET (MIN_SALARY, MAX_SALARY) = (SELECT CASE WHEN MIN_SALARY < 4000 THEN TRUNC(MIN_SALARY * 1.1, -1)
+                    			   			   WHEN MIN_SALARY < 8000 THEN TRUNC(MIN_SALARY * 1.08, -1) 
+                  			      		       WHEN MIN_SALARY < 12000 THEN TRUNC(MIN_SALARY * 1.06, -1)
+                 			     		       ELSE TRUNC(MIN_SALARY * 1.05, -1)
+                 		    		      END AS MIN_SALARY
+                				       , CASE WHEN MAX_SALARY < 4000 THEN TRUNC(MAX_SALARY * 1.1, -1)
+                    			  			  WHEN MAX_SALARY < 8000 THEN TRUNC(MAX_SALARY * 1.08, -1) 
+                  			     		      WHEN MAX_SALARY < 12000 THEN TRUNC(MAX_SALARY * 1.06, -1)
+                 			     			  ELSE TRUNC(MAX_SALARY * 1.05, -1)
+                					      END AS MAX_SALARY
+                				    FROM JOBS J
+                				   WHERE J.JOB_ID = JOBS.JOB_ID);
+
 UPDATE EMPLOYEES
-   SET SALARY = CASE WHEN SALALY < 4000 THEN SALARY * 0.1
-                     WHEN
-                     WHEN
-                     ELSE
-                END     
-   	               
+   SET SALARY = (SELECT CASE WHEN SALARY < 4000 THEN TRUNC(SALARY * 1.1, -1)
+                             WHEN SALARY < 8000 THEN TRUNC(SALARY * 1.08, -1) 
+                  			 WHEN SALARY < 12000 THEN TRUNC(SALARY * 1.06, -1)
+                 		     ELSE TRUNC(SALARY * 1.05, -1)
+                 		 END AS SALARY
+                   FROM EMPLOYEES E
+                  WHERE E.EMPLOYEE_ID = EMPLOYEES.EMPLOYEE_ID);
+
+SELECT * FROM EMPLOYEES;
+SELECT * FROM JOBS;
+
+/*
+ * 사내 공지를 위한 게시판 기능을 추가하려 한다. 다음의 요구사항에 맞추어 테이블을 생성하고
+ * 첫번째 공지를 작성하도록 한다.(첫번째 공지는 모든 부서가 열람할 수 있게 한다.)
+ *     - 공지 게시판은 부서별 공지와 전체 공지로 나누어져 운영돼야 한다.
+ *     - 전체 공지는 모든 부서가 확인할 수 있는 공지이며 부서별 공지는 지정한 부서에 소속된
+ *       사원만 볼수 있는 공지이다.
+ *     - 공지를 작성할 때 다음의 정보가 저장되어야 한다.
+ *         번호, 제목, 내용, 작성일자, 부서ID
+ */
+CREATE TABLE NOTICE(
+       ID NUMBER PRIMARY KEY
+      ,TITLE VARCHAR2(150) NOT NULL
+      ,CONTENT VARCHAR2(2000)
+      ,WRITE_DATE DATE
+      ,DEPT_ID NUMBER NOT NULL
+);
+INSERT INTO NOTICE VALUES(1, '전체 공지', '전체 부서를 위한 공지사항 입니다.', SYSDATE, 0);
+
+/*
+ * 사내 공지 게시판 테이블을 생성 후에 다음의 공지를 추가로 작성한다.
+ *     - 모든 부서마다 'xxx 부서만 확인할 수 있는 공지 입니다.' 라는 메시지를 추가한다.
+ */
+INSERT INTO NOTICE(
+    SELECT (SELECT MAX(ID) FROM NOTICE) + ROWNUM
+         , DEPARTMENT_NAME_KR || '용 공지사항 2'
+         , DEPARTMENT_NAME_KR || '용 공지사항 입니다. ' || DEPARTMENT_NAME_KR || '만 확인할 수 있습니다.'
+         , SYSDATE
+         , DEPARTMENT_ID
+      FROM DEPARTMENTS
+);
+SELECT * FROM NOTICE;
+/*
+ * 100 번 사원이 공지를 열람한다는 가정하에 100 번 사원이 소속된 부서의 공지와 전체 공지가
+ * 보일수 있는 SELECT 쿼리문을 작성하세요.
+ */
+INSERT INTO NOTICE VALUES((SELECT MAX(ID) + 1 FROM NOTICE), '전체 공지 2', '전체 부서를 위한 공지사항 입니다.', SYSDATE, 0);
+SELECT N.ID
+     , N.TITLE
+     , N.CONTENT
+     , N.WRITE_DATE
+     , N.DEPT_ID
+     , NVL((SELECT DEPARTMENT_NAME_KR FROM DEPARTMENTS D WHERE D.DEPARTMENT_ID = N.DEPT_ID), '전체') AS DEPT_NAME
+   FROM NOTICE N
+  LEFT OUTER JOIN EMPLOYEES E   --그냥 JOIN 하면 NOTICE 의 0번 (전체공지)는 빠지기 때문에 LEFT OUTER JOIN 으로 써준다
+    ON N.DEPT_ID = E.DEPARTMENT_ID
+ WHERE E.EMPLOYEE_ID = 100
+    OR N.DEPT_ID = 0;
+/*
+ * 공지 게시판에 중요도 기능을 추가하여 가장 중요한 공지가 가장 먼저 조회될 수 있도록 테이블을
+ * 수정하도록 한다.
+ *     - 중요도는 1 ~ 5 까지 사용할 수 있게 한다.
+ *     - 중요도를 설정하지 않으면 기본 3으로 저장되게 한다.
+ *     - 전체 공지용으로 중요도 1 ~ 5 까지 총 5개의 공지 데이터를 추가한다.
+ *     - 추가한 공지 데이터를 조회할 때 중요도 순으로 조회가 될 수 있도록
+ *       SELECT 구문을 작성한다.
+ */
+ALTER TABLE NOTICE ADD IMPORTANCE NUMBER DEFAULT(3);
+ALTER TABLE NOTICE ADD CONSTRAINTS NOTICE_IMPORTANCE_CK CHECK(IMPORTANCE BETWEEN 1 AND 5);
+
+INSERT INTO NOTICE VALUES((SELECT MAX(ID) + 1 FROM NOTICE), '전체 공지 3', '전체 부서를 위한 공지사항 입니다.', SYSDATE, 0, 1);
+INSERT INTO NOTICE VALUES((SELECT MAX(ID) + 1 FROM NOTICE), '전체 공지 4', '전체 부서를 위한 공지사항 입니다.', SYSDATE, 0, 2);
+INSERT INTO NOTICE VALUES((SELECT MAX(ID) + 1 FROM NOTICE), '전체 공지 5', '전체 부서를 위한 공지사항 입니다.', SYSDATE, 0, 3);
+
+UPDATE NOTICE
+   SET IMPORTANCE = 1
+ WHERE DEPT_ID = 0;
+
+SELECT * FROM NOTICE;
    
