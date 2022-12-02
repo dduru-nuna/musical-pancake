@@ -11,6 +11,16 @@
   	  FROM REQ_ACCOUNTS
   	 WHERE ISALLOW = 'N'
   </select>
+  <insert id="insertReqAccount" parameterType="kr.co.vo.AccountVO">
+  INSERT INTO REQ_ACCOUNTS(ID, NICKNAME, EMAIL) 
+       VALUES(SEQ_REQ_ACCOUNTS.NEXTVAL, #{nickname}, #{email})
+  </insert>
+  <select id="dupReqAccountNickname" parameterType="kr.co.vo.AccountVO" resultType="_int">
+   SELECT COUNT(*) FROM REQ_ACCOUNTS WHERE NICKNAME = #{nickname}
+  </select>
+  <select id="dupReqAccountEmail" parameterType="kr.co.vo.AccountVO" resultType="_int">
+   SELECT COUNT(*) FROM REQ_ACCOUNTS WHERE EMAIL = #{email}
+  </select>
   <!-- 주석
   <insert></insert> 태그에 맞는 SQL 구문을 작성해 주어야 한다.
   <update></update>

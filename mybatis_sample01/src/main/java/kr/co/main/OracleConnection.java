@@ -20,7 +20,7 @@ public class OracleConnection {
 		
 		try(InputStream is = Resources.getResourceAsStream("mybatis/mybatis-config.xml")){
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
-			sess = factory.openSession(false);
+			sess = factory.openSession(false);  //수동커밋 설정
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
