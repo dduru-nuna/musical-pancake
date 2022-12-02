@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+  <select id="hello" resultType="string">
+    SELECT 'Hello Mybatis' FROM DUAL
+  </select>
+  <select id="reqAccount" resultType="kr.co.vo.AccountVO">
+  	SELECT ID, NICKNAME, EMAIL, ISALLOW, REQDATE
+  	  FROM REQ_ACCOUNTS
+  	 WHERE ISALLOW = 'N'
+  </select>
+  <!-- 주석
+  <insert></insert> 태그에 맞는 SQL 구문을 작성해 주어야 한다.
+  <update></update>
+  <delete></delete>
+   -->
+</mapper>
