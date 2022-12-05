@@ -10,6 +10,9 @@ public class AccountVO {
 	private String email; // EMAIL VARCHAR2(100) UNIQUE
 	private char isAllow; // ISALLOW CHAR(1) DEFAULT('N') CHECK (ISALLOW IN ('N', 'Y'))
 	private Date reqDate; // REQDATE DATE DEFAULT(SYSDATE)
+	private String password;
+	private Date loginDate;
+	
 	
 	public int getId() {
 		return id;
@@ -42,6 +45,18 @@ public class AccountVO {
 		this.reqDate = reqDate;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Date getloginDate() {
+		return loginDate;
+	}
+	public void setloginDate(Date loginDate) {
+		this.loginDate = loginDate;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -61,7 +76,7 @@ public class AccountVO {
 	@Override
 	public String toString() {
 		return "AccountVO [id=" + id + ", nickname=" + nickname + ", email=" + email + ", isAllow=" + isAllow
-				+ ", reqDate=" + reqDate + "]";
+				+ ", reqDate=" + reqDate + ", password=" + password + ", loginDate=" + loginDate + "]";
 	}
 	
 	

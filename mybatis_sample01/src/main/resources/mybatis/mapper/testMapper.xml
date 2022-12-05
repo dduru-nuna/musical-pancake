@@ -21,6 +21,39 @@
   <select id="dupReqAccountEmail" parameterType="kr.co.vo.AccountVO" resultType="_int">
    SELECT COUNT(*) FROM REQ_ACCOUNTS WHERE EMAIL = #{email}
   </select>
+  <select id="selectAccountList" resultType="kr.co.vo.AccountVO">
+   SELECT ID, NICKNAME, EMAIL, PASSWORD, LOGINDATE FROM ACCOUNTS
+  </select>
+  <update id="updateAccountRequest" parameterType="_int">
+   UPDATE REQ_ACCOUNTS
+      SET ISALLOW = 'Y'
+    WHERE ID = #{id}
+      AND ISALLOW != 'Y'
+  </update>
+  <select id="selectAccountRequestId" parameterType="_int" resultType="kr.co.vo.AccountVO">
+   SELECT ID, NICKNAME, EMAIL
+     FROM REQ_ACCOUNTS
+    WHERE ID = #{id}
+  </select>
+  <insert id="insertAccount" parameterType="kr.co.vo.AccountVO">
+  	INSERT INTO ACCOUNTS VALUES(SEQ_ACCOUNTS.NEXTVAL, #{nickname}, #{email}, 'temppassword', SYSDATE)
+  </insert>
+  <select id="selectAccount" parameterType="kr.co.vo.AccountVO" resultType="kr.co.vo.AccountVO">
+   SELECT ID, NICKNAME, EMAIL, PASSWORD, LOGINDATE
+     FROM ACCOUNTS
+    WHERE NICKNAME = #{nickname} AND PASSWORD = #{password}
+  </select>
+  <update id="updateAccountLoginDate" parameterType="kr.co.vo.AccountVO">
+   UPDATE ACCOUNTS
+      SET LOGINDATE = SYSDATE
+    WHERE ID = #{id}
+  </update>
+  <insert id="insertAccountLogLoginDate" parameterType="kr.co.vo.AccountVO">
+   INSERT INTO ACCOUNTS_ACCESS_LOG VALUES(SEQ_ACCOUNTS_ACCESS_LOG.NEXTVAL, #{id}, 'LOGIN', SYSDATE)
+  </insert>
+  <insert id="insertAccountLogoutLog" parameterType="kr.co.vo.AccountVO">
+   INSERT INTO ACCOUNTS_ACCESS_LOG VALUES(SEQ_ACCOUNTS_ACCESS_LOG.NEXTVAL, #{id}, 'LOGOUT', SYSDATE)
+  </insert>
   <!-- 주석
   <insert></insert> 태그에 맞는 SQL 구문을 작성해 주어야 한다.
   <update></update>

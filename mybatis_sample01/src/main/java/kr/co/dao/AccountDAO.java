@@ -39,4 +39,51 @@ public class AccountDAO {
 		return false;
 	}
 
+	public List<AccountVO> selectAccountList() {
+		List<AccountVO> result = sess.selectList("test.selectAccountList");
+		return result;
+	}
+
+	public void updateAccountRequest(int id) {
+		int result = sess.update("test.updateAccountRequest", id);
+		if(result == 1) {
+			AccountVO account = sess.selectOne("test.selectAccountRequestId", id);
+			sess.insert("test.insertAccount", account);
+			if(result == 1) {
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		}
+		sess.rollback();
+;	}
+
+	public AccountVO selectAccount(AccountVO data) {
+		AccountVO result = sess.selectOne("test.selectAccount", data);
+		
+		if(result != null) {
+			int cnt = sess.update("test.updateAccountLoginDate", result);
+			if(cnt == 1) {
+				cnt = sess.insert("test.insertAccountLogLoginDate", result);
+				if(cnt == 1) {
+					sess.commit();
+				} else {
+					sess.rollback();
+				}
+			} else {
+				sess.rollback();
+			}
+		}
+		return result;
+	}
+
+	public void insertAccountLogoutLog(AccountVO user) {
+		int result = sess.insert("test.insertAccountLogoutLog", user);
+		if(result == 1) {
+			sess.commit();
+		} else {
+			sess.rollback();
+		}
+	}
+
 }
