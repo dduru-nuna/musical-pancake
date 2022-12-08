@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 및 미디어 관련 태그</title>
+</head>
+<body>
+    <!--
+        이미지를 삽입하기 위해 사용하는 태그
+    -->
+    <img src="이미지 경로" alt="이미지에 문제가 있는 경우 대체할 메시지">
+    <br>
+    <img src="/static/img/tree.jpg" alt="크리스마스 트리" width="200px">
+    <br>
+    <img src="https://www.naver.com/favicon.ico?1" alt="네이버 아이콘" width="80px">
+    <br>
+    <img src="https://www.naver.com/favicon.ico?1" alt="네이버 아이콘" height="80px">
+    <br>
+    <!--
+        영상, 음향을 재생하기 위해 사용하는 태그
+    -->
+    <audio controls loop muted preload="metadata"
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+    <!--controls 로 재생버튼 보이게. autoplay 자동재생 loop 반복재생 muted 음소거-->
+    <!--preload="none" 다운로드 받지 않은 상태로, "metadata" 다운로드는 받지 않은 상태지만 재생시간 같은 정보는 받아오는 상태-->
+    <!--poster 로 썸네일 설정 가능-->
+    <br>
+    <video controls preload="none" poster="/static/img/tree.jpg"
+        width="280px"
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm
+    "></video>
+    <br>
+
+    <!--브라우저 마다 지원되는 파일이 다르기 때문에 여러 소스를 만들어준다.-->
+    <audio controls> 
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.flac">
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3">
+    </audio>
+</body>
+</html>
