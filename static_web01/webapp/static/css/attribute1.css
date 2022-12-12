@@ -34,3 +34,11 @@
 .ws2 > .pre { white-space: pre; }
 .ws2 > .pre-line { white-space: pre-line; }
 .ws2 > .pre-wrap { white-space: pre-wrap; }
+
+.to1 > p {
+    width: 150px;
+    border-style: solid;
+    border-width: 1px;
+}
+.to1 > .clip { overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.to1 > .ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
