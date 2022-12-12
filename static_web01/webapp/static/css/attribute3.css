@@ -1,0 +1,43 @@
+.background-color {
+    height: 120px;
+    background-color: lightgray;
+}
+.background-clip > .border-box {
+    background-clip: border-box;
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;               /*투명도*/
+    border-color: rgba(255, 192, 192, 0.5);
+}
+.background-clip > .padding-box {
+    background-clip: padding-box;
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(255, 192, 192, 0.5);
+}
+.background-clip > .content-box {
+    background-clip: content-box;
+    padding: 20px;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(255, 192, 192, 0.5);
+}
+.background-image {
+    height: 180px;
+    background-image: url('/static/img/tree.jpg');
+    background-repeat: no-repeat;
+   /* background-size: auto 180px;  높이 기준으로 맞추고 너비는 자동으로 맞추기*/
+    background-size: contain; /*이미지가 설정한 영역 안에 잘 들어가게 함. 여백은 생길 수 있다*/
+}
+.background-position {
+    height: 500px;
+    background-image: url('/static/img/tree.jpg');
+    background-repeat: no-repeat;
+    background-position: right; /*left,center,top,bottom,left top, left center, left bottom, 100px 50px(직접위치지정가능)...*/
+}
+.background-attachment { /*보통 body에 많이 적용*/
+    background-image: url('/static/img/tree.jpg');
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}
