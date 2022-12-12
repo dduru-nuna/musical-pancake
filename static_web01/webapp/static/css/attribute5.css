@@ -1,0 +1,51 @@
+.position {
+    position: relative;
+}
+.position .relative-move {
+    position: relative;
+    left: 20px; top: 20px;
+}
+.position .absolute-move {
+    position: absolute;    /*기본적으로는 body 를 기준으로 위치한다. 여기선 position: relative로 절대위치 정해줌*/
+    left: 40px; top: 40px;
+}
+.position .fixed-move {
+    position: fixed;   /*브라우저에 고정*/
+    left: 20px; bottom: 20px;
+}
+
+.z-index {
+    position: relative;
+    height: 180px;
+}
+.z-index .index1 {
+    width: 80px; height: 80px;
+    position: absolute;
+    left: 0px; top: 0px;
+    background-color: deepskyblue;
+    z-index: 1;  /*숫자가 낮을수록 뒤에 배치*/
+}
+.z-index .index2 {
+    width: 80px; height: 80px;
+    position: absolute;
+    left: 40px; top: 40px;
+    background-color: dodgerblue;
+    z-index: 2;  
+}
+.z-index .index3 {
+    width: 80px; height: 80px;
+    position: absolute;
+    left: 80px; top: 80px;
+    background-color: lightskyblue;
+    z-index: 3;
+}
+
+.float .left {
+    float: left;
+}
+.float .right {
+    float: right;
+} 
+.float .clear {   /*기존 float 흐름 없애고 원래 흐름대로 배치*/
+    clear: both;
+}
