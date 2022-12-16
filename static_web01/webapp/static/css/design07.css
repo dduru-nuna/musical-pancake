@@ -27,7 +27,7 @@
     box-sizing: border-box;
 }
 .container-center {
-    width: 420px; /*너비가 고정되야 margin을 자동으로 균등하게 줄 수 있음*/
+    width: 670px; /*너비가 고정되야 margin을 자동으로 균등하게 줄 수 있음*/
     margin-left: auto;
     margin-right: auto;
 }
@@ -63,6 +63,9 @@
 }
 .banner {
     padding: 0.8em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(69, 70, 64);
     background-color: rgb(92, 186, 28);
 }
 .banner .id {
@@ -91,6 +94,7 @@
     font-size: .8em;
 }
 .find-id-line span {
+    font-size: 1.2em;
     color: rgb(22, 22, 22);
 }
 .find-id-line span::after {
@@ -102,17 +106,18 @@
     top: -9px;
 }
 .find-id-line p {
-    font-size: .8em;
+    font-size: .9em;
 }
 
 .method1 {
     padding: 30px;
+    margin-top: 1.5em;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(221, 220, 220);
 }
 .method1 label {
-    font-size: .8em;
+    font-size: .9em;
     font-weight: bold;
 }
 [type=radio] ~ .hidden-content {
@@ -122,5 +127,79 @@
     display: block;
 }
 .hidden-content p {
-    font-size: .5em;
+    margin-top: .3em;
+    margin-left: 2em;
+    font-size: .7em;
+    color: rgb(100, 99, 99);
+}
+.input-group {
+    margin-top: 1.5em;
+    margin-left: 1.4em;
+    width: 400px;
+}
+.input-block {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    padding: 3px 6px 3px 6px;
+}
+.input-form label {
+    font-size: 12px;
+    font-weight: bold;
+}
+.input-block input,
+.input-block select {
+    border-style: none;
+    outline-style: none;
+    width: 100%;
+}
+.input-inline input{
+    width: 31.4%;
+    float: left;
+    padding: 8px 12px 8px 12px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    outline-style: none;
+}
+.input-inline input:not(:last-child) {
+    margin-right: 12px;
+}
+.floating-clear {
+    clear: both;
+}
+.input-inline-button input{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(224, 224, 224);
+    outline-style: none;
+    padding: 8px 12px 8px 12px;
+    width: 75.4%;
+}
+.input-inline-button button{
+    border-style: none;
+    padding: 7px;
+    background-color: rgb(0, 200, 80);
+    color: white;
+    font-weight: bold;
+}
+.input-form .disabled {
+    background-color: rgb(245, 246, 247);
+}
+.input-form .disabled input[disabled] {
+    background-color: rgb(245, 246, 247);
+}
+.btn {
+    border-style: none;
+    padding: 8px;
+    background-color: rgb(0, 200, 80);
+    color: white;
+    font-weight: bold;
+}
+.btn-green {
+     background-color: rgb(0, 200, 80);
+}
+.btn-block {
+    width: 100%;
 }
