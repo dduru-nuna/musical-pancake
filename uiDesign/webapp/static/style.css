@@ -1,0 +1,25 @@
+.table-normal {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: 100%;
+
+}
+.table-normal th,
+.table-normal td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.head {
+    color: white;
+}
+.foot {
+    color: white;
+}
+.input-group button {
+    margin-left: 8em;
+}
+.float-right {
+    float: right;
+}
