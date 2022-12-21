@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>네이버 아이디 찾기 모방</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/design07-1.css">
+</head>
+<body>
+    <header>
+        <nav class="top-nav-menu bg-dark align-middle">
+            <div class="floating-menu">
+                <div class="float-left">
+                    <div class="menu-item">
+                        <a class="menu-link" href="#" style="font-size: 12px;">
+                            <img src="https://static.nid.naver.com/images/web/user/tit_logo.png">
+                            내정보
+                        </a>
+                    </div>
+                </div>
+                <div class="float-right">
+                    <div class="menu-item">
+                        <a class="menu-link" href="#">
+                            <button class="btn btn-gray" type="button">로그인</button>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="icon">apps</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="float-clear"></div>
+            </div>
+        </nav>
+        <nav class="top-nav-menu bg-green align-middle pt1 pb1">
+            <div class="container-center">
+                <div class="floating-menu">
+                    <div class="float-left">
+                        <div class="menu-item active mr3">
+                            <a class="menu-link" href="#">
+                                <span class="icon">person</span>
+                                아이디 찾기
+                            </a>      
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="#">
+                                <span class="icon">lock</span>
+                                비밀번호 찾기
+                            </a>
+                        </div>
+                    </div>
+                    <div class="float-clear"></div>
+                </div>
+            </div>    
+        </nav>
+    </header>
+    <div class="container-center mt3">
+        <section>
+            <div class="section">
+                <div class="section-name">
+                    아이디찾기
+                </div>
+                <div class="section-info">
+                    아이디 찾는 방법을 선택해 주세요.
+                </div>
+            </div>  
+            <div class="border-section mt3">
+                <div class="container">
+                    <div class="hide-seek-item">
+                        <input type="radio" name="rdo1" id="id_rdo_a" checked>
+                        <label for="id_rdo_a">회원정보에 등록한 휴대전화로 인증</label>
+                        <div class="hidden-context">
+                            <p class="context">회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 인증번호를 받을 수 있습니다.</p>
+                            <div class="input-form">
+                                <div class="input-group">
+                                    <label class="input-label">이름</label>
+                                    <input type="text">
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label" for="">휴대전화</label>
+                                    <select class="w60">
+                                        <option>+82</option>
+                                    </select>
+                                    <input class="w120" type="text">
+                                    <button>인증번호 받기</button>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label"></label>
+                                    <input type="text">
+                                    <label class="info-label align-middle">인증번호가 오지 않나요.
+                                        <span class="icon">help</span>
+                                    </label>
+                                </div>
+                            </div>    
+                        </div>                   
+                    </div>
+                    <div class="hide-seek-item">
+                        <input type="radio" name="rdo1" id="id_rdo_b">
+                        <label for="id_rdo_b">본인확인 이메일로 인증</label>
+                        <div class="hidden-context">
+                            <p class="context">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
+                            <div class="input-form">
+                                <div class="input-group">
+                                    <label class="input-label">이름</label>
+                                    <input type="text">
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label">이메일 주소</label>
+                                    <input type="text">
+                                    <button>인증번호 받기</button>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label"></label>
+                                    <input type="text">
+                                    <label class="info-label align-middle">인증번호가 오지 않나요.
+                                        <span class="icon">help</span>
+                                    </label>
+                                </div>
+                            </div>    
+                        </div>                   
+                    </div>
+                </div>
+            </div>  
+        </section>
+    </div>
+    <footer></footer>
+</body>
+</html>
