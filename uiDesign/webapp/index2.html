@@ -14,17 +14,18 @@
     </style>
 </head>
 <body>
-    <form>
+    <form class="row container-sm border-bottom border-2">
+        <legend>공지사항 작성하기</legend>
         <div class="row mb-2">
           <label for="title" class="col-sm-2 col-form-label text-center"><b>제목</b></label>
           <div class="col-sm-4">
-            <input type="text" class="form-control is-invalid" id="title" placeholder="제목을 입력하세요">
+            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" required>
           </div>
         </div>
         <div class="row mb-2">
-          <label for="content" class="col-sm-2 col-form-label text-center"><b>내용</b></label>
+          <label for="content" class="col-sm-2 col-form-label d-flex align-items-center justify-content-center"><b>내용</b></label>
           <div class="col-sm-4">
-            <textarea class="form-control is-invalid" id="content" placeholder="내용을 입력하세요"></textarea>
+            <textarea class="form-control" id="content" placeholder="내용을 입력하세요" required style="resize: none;"></textarea>
           </div>
         </div>
         <div class="row mb-4">
@@ -33,13 +34,13 @@
                 <input class="form-control form-control" id="uploadFile" type="file">
             </div>    
         </div>
-        <div class="mb-5">
+        <div class="mb-4 col-sm-5 text-center">
             <button type="submit">작성하기</button>
         </div>
-      </form>
+    </form>
 
 
-    <div class="row container-sm">
+    <div class="row container-sm mt-4">
         <div class="col">
             <table class="table table-sm table-bordered align-middle">
                 <div>
