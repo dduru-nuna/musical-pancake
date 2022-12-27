@@ -7,11 +7,6 @@
 </head>
 <body>
     <form class="container-md w-50 validation-form" novalidate>
-        <header>
-            <div class="logo-title">
-                <h1 class="logo">NAVER</h1>
-            </div>
-        </header>
         <section class="mt-3">
             <div class="mb-3">
                 <label for="username" class="form-label">아이디</label>                 
@@ -46,89 +41,90 @@
             <div class="mb-3">
                 <label for="name" class="form-label">이름</label>
                 <div class="input-group">
-                    <input type="text" id="name" ame="name" class="form-control" required>
+                    <input type="text" id="name" name="name" class="form-control" required>
                     <div class="invalid-feedback">
                         필수 정보입니다.
                     </div>
                 </div>
             </div>    
             <div class="mb-3">
-                    <label for="" class="form-label">생년월일</label>
-                    <div class="row">
-                        <div class="">
-                            <input type="text" class="col-md-3" placeholder="년(4자)" required>
-                            <div class="invalid-feedback">
-                                태어난 년도 4자리를 정확하게 입력하세요.
-                            </div>
-                            <select class="col-md-3 form-select-sm" required>
-                                <option selected>월</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">5</option>
-                                <option value="">6</option>
-                                <option value="">7</option>
-                                <option value="">8</option>
-                                <option value="">9</option>
-                                <option value="">10</option>
-                                <option value="">11</option>
-                                <option value="">12</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                태어난 월을 선택하세요.
-                            </div>   
-                            <input type="text" class="col-md-3" placeholder="일">
-                            <div class="invalid-feedback">
-                                태어난 일(날짜) 2자리를 정확하게 입력하세요.
-                            </div>
+                <label for="" class="form-label">생년월일</label>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="년(4자)" required>
+                        <div class="invalid-feedback">
+                            태어난 년도 4자리를 정확하게 입력하세요.
                         </div>
                     </div>
-                    <div class="floating-clear"></div>
-                </div>
-                <div class="input-form">
-                    <label for="" class="form-label">성별</label>
-                    <div class="input-block">
-                        <select>
-                            <option>성별</option>
-                            <option>남자</option>
-                            <option>여자</option>
-                            <option>선택 안함</option>
+                    <div class="col-md-4">
+                        <select class="form-select form-select-md" required>
+                            <option selected>월</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                            <option value="">6</option>
+                            <option value="">7</option>
+                            <option value="">8</option>
+                            <option value="">9</option>
+                            <option value="">10</option>
+                            <option value="">11</option>
+                            <option value="">12</option>
                         </select>
+                        <div class="invalid-feedback">
+                            태어난 월을 선택하세요.
+                        </div> 
                     </div>
-                </div>
-                <div class="input-form">
-                    <label for="" class="form-label">본인 확인 이메일(선택)</label>
-                    <div class="input-block">
-                        <input type="text">
-                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="일">
+                        <div class="invalid-feedback">
+                            태어난 일(날짜) 2자리를 정확하게 입력하세요.
+                        </div>
+                    </div>     
                 </div>
             </div>
-            <div class="input-group">
-                <div class="input-form">
-                    <label for="" class="form-label">휴대전화</label>
-                    <div class="input-block">
-                        <select>
-                            <option>니카라과 +505</option>
-                            <option selected>대한민국 +82</option>
-                            <option>덴마크 +45</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-form">
-                    <div class="input-inline-button">
-                        <input type="text">
-                        <button>인증번호 받기</button>
-                    </div>
-                </div>
-                <div class="input-form">
-                    <div class="input-block disabled">
-                        <input type="text" disabled>
-                    </div>
+            <div class="mb-3">
+                <label for="" class="form-label">성별</label>
+                <div class="input-group">
+                    <select class="form-select">
+                        <option selected>성별</option>
+                        <option>남자</option>
+                        <option>여자</option>
+                        <option>선택 안함</option>
+                    </select>
                 </div>
             </div>
-            <div class="input-group">
-                <button class="btn btn-green btn-block">가입하기</button>
+            <div class="mb-3">   
+                <label for="" class="form-label">본인 확인 이메일(선택)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">휴대전화</label>
+                <div class="input-group pb-2">
+                    <select class="form-select">
+                        <option>니카라과 +505</option>
+                        <option selected>대한민국 +82</option>
+                        <option>덴마크 +45</option>
+                    </select>
+                </div>
+                <div class="row g-2 pb-2">
+                    <div class="col-8">
+                        <input type="text" class="form-control" placeholder="전화번호를 입력하세요.">
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-success">인증번호 받기</button>
+                    </div>    
+                </div>
+                <div class="mb-4">
+                    <input type="text" class="form-control" disabled placeholder="인증번호를 입력하세요.">
+                </div>
+            </div>
+            </div>    
+            <div class="d-grid mb-4">
+                <button class="btn btn-success">가입하기</button>
             </div>
         </section>
         <footer>
