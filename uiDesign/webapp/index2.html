@@ -4,11 +4,45 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style type="text/css">
+        form {
+            width: 850px;
+        }
+        button[type=submit] {
+            margin-left: 11em;
+        }
+    </style>
 </head>
 <body>
-    <div class="row">
+    <form class="row container-sm border-bottom border-2">
+        <legend>공지사항 작성하기</legend>
+        <div class="row mb-2">
+          <label for="title" class="col-sm-2 col-form-label text-center"><b>제목</b></label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" required>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label for="content" class="col-sm-2 col-form-label d-flex align-items-center justify-content-center"><b>내용</b></label>
+          <div class="col-sm-4">
+            <textarea class="form-control" id="content" placeholder="내용을 입력하세요" required style="resize: none;"></textarea>
+          </div>
+        </div>
+        <div class="row mb-4">
+            <label for="uploadFile" class="col-form-label col-sm-2 text-center"><b>첨부파일</b></label>
+            <div class="col-sm-4">
+                <input class="form-control form-control" id="uploadFile" type="file">
+            </div>    
+        </div>
+        <div class="mb-4 col-sm-5 text-center">
+            <button type="submit">작성하기</button>
+        </div>
+    </form>
+
+
+    <div class="row container-sm mt-4">
         <div class="col">
-            <table class="table table-sm align-middle">
+            <table class="table table-sm table-bordered align-middle">
                 <div>
                     <colgroup>
                         <col class="col-1">
@@ -29,8 +63,8 @@
                     <tbody style="background-color: rgb(255, 254, 226);">
                         <tr>
                             <td class="text-center">9</td>
-                            <td>공지사항 제목9
-                                <a class="btn btn-sm btn-secondary">바로가기</a>
+                            <td class="d-flex">공지사항 제목9
+                                <a class="btn btn-sm btn-secondary ms-auto">바로가기</a>
                             </td>
                             <td>user01</td>
                             <td class="text-center">2021-03-29</td>
@@ -38,8 +72,8 @@
                         </tr>
                         <tr>
                             <td class="text-center">6</td>
-                            <td>공지사항 제목6
-                                <a class="btn btn-sm btn-secondary">바로가기</a>
+                            <td class="d-flex">공지사항 제목6
+                                <a class="btn btn-sm btn-secondary ms-auto">바로가기</a>
                             </td>
                             <td>answ445</td>
                             <td class="text-center">2021-03-12</td>
@@ -47,8 +81,8 @@
                         </tr>
                         <tr>
                             <td class="text-center">3</td>
-                            <td>공지사항 제목3
-                                <a class="btn btn-sm btn-secondary">바로가기</a>
+                            <td class="d-flex">공지사항 제목3
+                                <a class="btn btn-sm btn-secondary ms-auto">바로가기</a>
                             </td>
                             <td>testg12</td>
                             <td class="text-center">2021-03-01</td>
@@ -56,8 +90,8 @@
                         </tr>
                         <tr>
                             <td class="text-center">2</td>
-                            <td>공지사항 제목2
-                                <a class="btn btn-sm btn-secondary">바로가기</a>
+                            <td class="d-flex">공지사항 제목2
+                                <a class="btn btn-sm btn-secondary ms-auto">바로가기</a>
                             </td>
                             <td>palwe3</td>
                             <td class="text-center">2021-01-02</td>
@@ -65,8 +99,8 @@
                         </tr>
                         <tr>
                             <td class="text-center">1</td>
-                            <td>공지사항 제목1
-                                <a class="btn btn-sm btn-secondary">바로가기</a>
+                            <td class="d-flex">공지사항 제목1
+                                <a class="btn btn-sm btn-secondary ms-auto">바로가기</a>
                             </td>
                             <td>xml23</td>
                             <td class="text-center">2020-12-24</td>

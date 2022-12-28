@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/sample07.js"></script>
+    <style>
+        .input-error {
+            border-color: red;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <form action="server.jsp" onsubmit="return validCheck(this);">
+        <div>
+            <input type="text" name="username" placeholder="아이디">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="패스워드">
+        </div>
+        <div>
+            <input type="password" name="passwordCheck" placeholder="패스워드 확인">
+        </div>
+        <div>
+            <button type="submit">전송</button>
+        </div>
+    </form>
+</body>
+</html>

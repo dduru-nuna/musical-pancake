@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/sample06.js"></script>
+</head>
+<body>
+    <ul id="addList">
+        <li>목록 1</li>
+    </ul>
+    <form>
+        <div>
+            <input type="text" name="item">
+            <select name="check">
+                <option value="f">앞</option>
+                <option value="e">뒤</option>
+            </select>   <!-- this.form -> 버튼이 속해 있는 form 가리킴. form 안에 있는 사용자 입력요소들은 모두 .form 으로 자신이 속한 폼을 찾을 수 있다.-->
+            <button type="button" onclick="addItem(this.form, 'addList');">추가</button>
+        </div>
+    </form>
+    <hr>
+    <form action="server.jsp" onsubmit="return validCheck(this);">
+        <div>
+            <input type="text" name="username" placeholder="아이디">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="패스워드">
+        </div>
+        <div>
+            <input type="password" name="passwordCheck" placeholder="패스워드 확인">
+        </div>
+        <div>
+            <select name="gender">
+                <option value="m">남자</option>
+                <option value="w">여자</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">전송</button>
+        </div>
+    </form>
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th><th>제목</th><th>작성자</th>
+                <th>작성일</th><th>조회수</th>
+            </tr>
+        </thead>
+        <tbody id="addTable"></tbody>
+    </table>
+    <form>
+        <div>
+            <input type="text" name="title" placeholder="제목">
+        </div>
+        <div>
+            <input type="text" name="writer" placeholder="작성자">
+        </div>
+        <div>
+            <button type="button" onclick="addRow(this.form, 'addTable');">추가</button>
+        </div>
+    </form>
+</body>
+</html>
