@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="/static/js/sample10.js"></script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td class="title">제목 입니다.</td>
+                <td>tester</td>
+                <td>2022-12-28</td>
+                <td class="until">1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>테스트 중 입니다.</td>
+                <td>admin</td>
+                <td>2022-12-28</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h3>즐겨찾기 목록 만들기</h3>
+    <form>
+        <div>
+            <input type="text" name="url" placeholder="URL 주소 입력">
+            <input type="text" name="name" placeholder="이름 입력">
+            <!--button type="button" onclick="addBookmark(this.form);">저장</button-->            <button type="button" onclick="addBookmark(this.form);">저장</button>
+            <button type="button">저장</button>
+        </div>
+    </form>
+    <ul class="bookmark-list">
+        <li><a href="https://naver.com">네이버</a></li>
+    </ul>
+</body>
+</html>
