@@ -42,12 +42,15 @@
         <div>
             <input type="text" name="url" placeholder="URL 주소 입력">
             <input type="text" name="name" placeholder="이름 입력">
-            <!--button type="button" onclick="addBookmark(this.form);">저장</button-->            <button type="button" onclick="addBookmark(this.form);">저장</button>
+        <!-- <button type="button" onclick="addBookmark(this.form);">저장</button> -->            <button type="button" onclick="addBookmark(this.form);">저장</button>
             <button type="button">저장</button>
         </div>
     </form>
     <ul class="bookmark-list">
-        <li><a href="https://naver.com">네이버</a></li>
+        <li><a href="https://naver.com">네이버</a> <span name="up">▲</span> | <span name="down">▼</span></li>
+        <li><a href="https://google.com">구글</a> <span name="up">▲</span> | <span name="down">▼</span></li>
+        <li><a href="https://daum.net">다음</a> <span name="up">▲</span> | <span name="down">▼</span></li>
+        <li><a href="https://nate.com">네이트</a> <span name="up">▲</span> | <span name="down">▼</span></li>
     </ul>
 </body>
 </html>
