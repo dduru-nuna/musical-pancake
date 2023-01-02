@@ -4,7 +4,7 @@ $(document).ready(function() {
         let e = $(element);
         if(e.text() === "저장") {
             $(element.form).find("input,select").on("change", function(e) { saveButtonEnable(e, element); });
-        }
+        }  //저장 버튼 찾아서 input, select 에 변화가 생기면 함수 발동
     });
 });
 
