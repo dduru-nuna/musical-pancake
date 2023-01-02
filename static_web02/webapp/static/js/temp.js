@@ -10,7 +10,7 @@ function sideMenuActive(event) {
 }
 
 function pagingActive(event) { //currentTarget 은 실제 이벤트가 등록된 엘리먼트. target은 이벤트가 발생된 엘리먼트. 보통은 target과 currentTarget이 일치한다
-     //previous 버튼 눌렀을 때
+     //previous 버튼 눌렀을 때 
     if(event.currentTarget == $(event.currentTarget).parent().children()[0]) {  
         let active = $(event.currentTarget).siblings(".active");
         if(event.currentTarget != active.prev()[0]) { //prev버튼에는 활성화(색상변경) 되지 않도록 if문 써줌
