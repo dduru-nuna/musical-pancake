@@ -3,14 +3,24 @@ package model.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import database.connect.OracleConnection;
+import model.dto.VisitDTO;
 
 public class VisitDAO {
 
-	public int insert(String context) {
-		SqlSession session = OracleConnection.getSqlSession();
-		String res = session.selectOne("visitMapper.connectTest");
-		System.out.println(res);
-		return 0;
+	SqlSession session = OracleConnection.getSqlSession();
+	
+	public int insert(VisitDTO dto) {
+		int count = session.insert("visitMapper.insert", dto);
+		return count;
 	}
 
+	public void commit() {
+		session.commit();
+	}
+	public void rollback() {
+		session.rollback();
+	}
+	public void close() {
+		session.close();
+	}
 }

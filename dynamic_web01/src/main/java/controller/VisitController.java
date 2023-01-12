@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.dto.VisitDTO;
 import model.service.VisitService;
 
 /**
@@ -29,8 +30,14 @@ public class VisitController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String context = req.getParameter("context");
+		String nickname = req.getParameter("nickname");
+		
+		VisitDTO dto = new VisitDTO();
+		dto.setContext(context);
+		dto.setNickname(nickname);
+		
 		VisitService service = new VisitService();
-		boolean result = service.add(context);
+		boolean result = service.add(dto);
 		
 		if(result) {
 			System.out.println("추가 됨");
