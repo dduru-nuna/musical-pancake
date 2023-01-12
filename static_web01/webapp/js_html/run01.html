@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/sample01.js"></script>
+    <style type="text/css">
+        div {margin-bottom: 12px;}
+    </style>
+</head>
+<body>
+    <div id="result1">결과 출력</div>
+
+    <div>                 <!--클릭 이벤트-->
+        <button type="button" onclick="fn1();">fn1() 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn2(10);">fn2(10) 실행</button>
+        <button type="button" onclick="fn2(10, 20);">fn2(10, 20) 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn3(10);">fn3(10) 실행</button>
+        <button type="button" onclick="fn3(10, 20);">fn3(10, 20) 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn4();">fn4() 실행</button>
+        <button type="button" onclick="fn4(10);">fn4(10) 실행</button>
+        <button type="button" onclick="fn4(10, 20);">fn4(10, 20) 실행</button>
+        <button type="button" onclick="fn4(10, 20, 30);">fn4(10, 20, 30) 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn5();">fn5() 실행</button>
+    </div>
+    <div>
+        <button type="button" onclick="fn6();">fn6() 실행</button>
+    </div>
+
+    <script type="text/javascript">
+        console.log("자바스크립트 실행 확인!");
+    </script>
+</body>
+</html>

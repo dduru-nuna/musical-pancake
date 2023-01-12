@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>하이퍼링크 태그</title>
+</head>
+<body>
+    <!--
+        다른 사이트 또는 페이지 및 영역으로 화면을 전환(이동)시키기 위해 사용하는 태그
+        anchor 태그이나 하이퍼링크라고 많이 부른다.
+    -->
+    <h2 id="naver">외부 서버의 페이지로 이동</h2>
+    <a href="https://naver.com" target="_blank">네이버로 이동됩니다.</a> <!--이동 할 페이지의 주소 입력, target설정으로 탭 새로 열리게 됨--> 
+    
+    <h2>내부 서버의 페이지로 이동 - 절대경로</h2>
+    <a href="/tags/paragraph.html" download>글자 관련 태그 페이지</a> <!-- /(슬래시)로 시작. download 는 나중에 이미지나 미디어파일 다운받게 하고 싶을 때 활용가능-->
+    
+    <h2>내부 서버의 페이지로 이동 - 상대경로(현재 폴더)</h2>
+    <a href="./list.html" download="hello.html">목록 관련 태그 페이지</a> <!-- ./ 로 시작. download="다른이름으로저장"-->
+    
+    <h2>내부 서버의 페이지로 이동 - 상대경로(상위 폴더)</h2>
+    <a href="../index.html">index 페이지로 이동</a> <!-- ../ 현재 페이지를 기준으로 상위 폴더 (webapp)-->
+
+    <h2>동일 페이지의 특정 위치로 이동</h2>
+    <a href="#naver">동일 페이지로 이동</a> <!-- id="naver"인 위치로 이동 -->
+</body>
+</html>

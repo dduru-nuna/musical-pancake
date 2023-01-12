@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>테이블 및 페이징 디자인</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/design03.css">
+</head>
+<body>
+    <table class="table-normal table-hover">  <!--table 바로 다음에 tr을 사용해도 브라우저에서 해석할때는 body가 들어가져 있다(F12:개발자모드 에서 확인 가능)-->
+        <thead> <!--따라서 tbody를 사용하는 습관을 들이는게 좋다-->
+           <tr> 
+                <th>제목1</th>
+                <th>제목2</th>
+                <th>제목3</th>
+                <th>제목4</th>
+                <th>제목5</th>
+            </tr>
+        </thead>
+        <tbody>    
+            <tr>
+                <td>셀 데이터1</td>
+                <td>셀 데이터2</td>
+                <td>셀 데이터3</td>
+                <td>셀 데이터4</td>
+                <td>셀 데이터5</td>
+            </tr>
+            <tr>
+                <td>셀 데이터6</td>
+                <td>셀 데이터7</td>
+                <td>셀 데이터8</td>
+                <td>셀 데이터9</td>
+                <td>셀 데이터10</td>
+            </tr>
+            <tr>
+                <td>셀 데이터11</td>
+                <td>셀 데이터12</td>
+                <td>셀 데이터13</td>
+                <td>셀 데이터14</td>
+                <td>셀 데이터15</td>
+            </tr>
+        </tbody>    
+    </table>
+    <hr>
+    <table class="table-horizon"> 
+        <thead>
+           <tr> 
+                <th>제목1</th>
+                <th>제목2</th>
+                <th>제목3</th>
+                <th>제목4</th>
+                <th>제목5</th>
+            </tr>
+        </thead>
+        <tbody>    
+            <tr>
+                <td>셀 데이터1</td>
+                <td>셀 데이터2</td>
+                <td>셀 데이터3</td>
+                <td>셀 데이터4</td>
+                <td>셀 데이터5</td>
+            </tr>
+            <tr>
+                <td>셀 데이터6</td>
+                <td>셀 데이터7</td>
+                <td>셀 데이터8</td>
+                <td>셀 데이터9</td>
+                <td>셀 데이터10</td>
+            </tr>
+            <tr>
+                <td>셀 데이터11</td>
+                <td>셀 데이터12</td>
+                <td>셀 데이터13</td>
+                <td>셀 데이터14</td>
+                <td>셀 데이터15</td>
+            </tr>
+        </tbody>    
+    </table>
+    <hr>
+    <table class="table-striped"> 
+        <thead>
+           <tr> 
+                <th>제목1</th>
+                <th>제목2</th>
+                <th>제목3</th>
+                <th>제목4</th>
+                <th>제목5</th>
+            </tr>
+        </thead>
+        <tbody>    
+            <tr>
+                <td>셀 데이터1</td>
+                <td>셀 데이터2</td>
+                <td>셀 데이터3</td>
+                <td>셀 데이터4</td>
+                <td>셀 데이터5</td>
+            </tr>
+            <tr>
+                <td>셀 데이터6</td>
+                <td>셀 데이터7</td>
+                <td>셀 데이터8</td>
+                <td>셀 데이터9</td>
+                <td>셀 데이터10</td>
+            </tr>
+            <tr>
+                <td>셀 데이터11</td>
+                <td>셀 데이터12</td>
+                <td>셀 데이터13</td>
+                <td>셀 데이터14</td>
+                <td>셀 데이터15</td>
+            </tr>
+            <tr>
+                <td>셀 데이터16</td>
+                <td>셀 데이터17</td>
+                <td>셀 데이터18</td>
+                <td>셀 데이터19</td>
+                <td>셀 데이터20</td>
+            </tr>
+        </tbody>    
+    </table>
+    <hr>
+
+    <h3>페이징</h3>
+    <div class="paging center">  <!--네비게이션 메뉴 간단히 만들 수 있음-->
+        <a class="page-item" href="#">1</a>
+        <a class="page-item" href="#">2</a>
+        <a class="page-item action" href="#">3</a>
+        <a class="page-item" href="#">4</a>
+        <a class="page-item" href="#">5</a>
+    </div>
+    <hr>
+
+    <h3>(생각나서 해보는)탭 메뉴</h3>
+    <div>
+        <div class="tap-menu">
+            <input type="radio" name="rdo_tap" id="tab1" checked>
+            <label for="tab1">탭 메뉴1</label>
+            <div class="tab-content">
+                <p>여기에는 탭 메뉴 1에 대한 내용</p>
+            </div>
+        </div>
+        <div class="tap-menu">
+            <input type="radio" name="rdo_tap" id="tab2">
+            <label for="tab2">탭 메뉴2</label>
+            <div class="tab-content">
+                <p>여기에는 탭 메뉴 2에 대한 내용</p>
+            </div>
+        </div>
+        <div class="tap-menu">
+            <input type="radio" name="rdo_tap" id="tab3">
+            <label for="tab3">탭 메뉴3</label>
+            <div class="tab-content">
+                <p>여기에는 탭 메뉴 3에 대한 내용</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

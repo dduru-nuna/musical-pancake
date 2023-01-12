@@ -1,0 +1,76 @@
+.width-height {
+    width: 120px;
+    height: 120px;
+    background-color: rgb(243, 247, 192);
+}
+.padding-margin {
+    width: 240px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+          /*top right bottom left*/
+    margin: 10px 20px 30px 40px;
+    border-style: solid;
+}
+.display > .block {
+    display: block;
+}
+.display > .inline {
+    display: inline;
+}
+.display > .none {
+    display: none;
+}
+.visibility > .hidden {
+    visibility: hidden;
+}
+.box-sizing > .border-box {
+    width: 120px; height: 120px;
+    background-color: rgb(192, 192, 192);
+    border-style: solid;
+    padding: 20px; margin: 20px;
+    box-sizing: border-box;  
+}
+.box-sizing > .content-box {
+    width: 120px; height: 120px;
+    background-color: rgb(192, 192, 192);
+    border-style: solid;
+    padding: 20px; margin: 20px;
+    box-sizing: content-box;
+}
+.display.border {
+    border-style: solid;
+}
+.display .block.area {
+    border-style: solid;
+    border-color: red;
+    width: 200px; height: 80px;
+    padding: 20px;
+    margin: 20px; 
+}
+.display .inline-block { 
+    display: inline-block;
+}
+.display .inline-block.area {
+    border-style: solid;
+    border-color: red;
+    width: 200px; height: 80px;
+    padding: 20px;
+    margin: 20px; 
+}
+.display .inline.area {
+    border-style: solid;
+    border-color: red;
+  /*width: 180px; height: 80px; 인라인은 너비, 높이 적용이 되지 않는다*/
+    padding: 20px; /*부모영역 침범*/
+    margin: 20px; /*인라인에 대해 margin은 위아래는 적용 안됨*/
+}
+.border > .border-style {
+    margin: 40px; padding: 40px;
+    border-style: solid dashed dotted double;
+    border-width: thin medium thick 10px;
+    border-color: red green black yellow;
+    border-radius: 10px 15px 20px 25px;
+    box-shadow: 10px 10px 5px 10px gray;
+}

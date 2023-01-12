@@ -1,0 +1,130 @@
+.kakao-login-form {
+    border-style: solid;
+    border-color: rgb(228, 228, 228);
+    border-width: 1px;
+    padding: 2em;
+    width: 420px;
+}
+.kakao-login-form .kakao-login-main .kakao-login-input input {
+    width: 100%;
+    border-style: none none solid none;
+    border-color: rgb(228, 228, 228);
+    outline-style: none;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.kakao-login-form .kakao-login-main .kakao-login-input .input-email,
+.kakao-login-form .kakao-login-main .kakao-login-input .input-password {
+    margin-bottom: 1em;
+}
+.kakao-login-form .kakao-login-main .kakao-login-input input:focus {
+    border-color: rgb(64, 64, 64);
+}
+.kakao-login-form .kakao-login-main .kakao-login-input input + label {
+    visibility: hidden;
+    display: inline-block;
+    font-size: 0.4em;
+}
+.kakao-login-form .kakao-login-main .kakao-login-input input + label span {
+    color: red;
+    font-weight: bold;
+}
+.kakao-login-form .kakao-login-main .kakao-login-input input:focus + label {
+    visibility: visible;
+}
+.kakao-login-form .kakao-login-main .kakao-login-check input[type=checkbox] {
+    display: none;
+}
+.kakao-login-form .kakao-login-main .kakao-login-check input[type=checkbox] + label::before {
+    content: "";
+    display: inline-block;
+    width: 1em; height: 1em;
+    border-style: solid;
+    border-color: rgb(64, 64, 64);
+    border-width: 1px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    margin-right: 6px;
+}
+.kakao-login-form .kakao-login-main .kakao-login-check input[type=checkbox]:checked + label::before {
+    background-color: rgb(255, 218, 8);
+    border-color: rgb(255, 218, 8);
+}
+.kakao-login-form .kakao-login-main .kakao-login-check input[type=checkbox]:checked + label::after {
+    content: "";
+    display: inline-block;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color:rgb(64, 64, 64);
+    width: 0.3em; height: 0.56em;
+    position: relative;
+    left: -142px; top: -3px;
+    transform: rotate(45deg);
+}
+.kakao-login-button {
+    margin-top: 1.5em;
+}
+.block-button button {
+    box-sizing: border-box;
+    border-style: none;
+    border-radius: 5px;
+    padding: 1em;
+    width: 100%;
+}
+.block-button button:hover {
+    cursor: pointer;
+}
+.btn-login {
+    background-color: rgb(255, 218, 8);
+}
+.btn-login:hover {
+    background-color: rgb(238, 204, 10);
+}
+.btn-qr-login:hover {
+    background-color: rgb(224, 224, 224);
+}
+.horizon-line {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: .6em;
+}
+.horizon-line span {
+    color: rgb(221, 220, 220);
+}
+.horizon-line span::before {
+    content: "";
+    display: inline-block;
+    width: 195px; height: 1px;
+    background-color: rgb(221, 220, 220);
+    position: relative;
+    top: -2px;
+}
+.horizon-line span::after {
+    content: "";
+    display: inline-block;
+    width: 195px; height: 1px;
+    background-color: rgb(221, 220, 220);
+    position: relative;
+    top: -2px;
+}
+
+.kakao-login-footer {
+    margin-top: 1.5em;
+    margin-bottom: 3em;
+    text-align: center;
+    font-size: 0.6em;
+}
+.floating .left {
+    float: left;
+}
+.floating .right {
+    float: right;
+}
+.kakao-login-footer a {
+    text-decoration: none;
+    color: rgb(112, 112, 112);
+    font-weight: bold;
+}

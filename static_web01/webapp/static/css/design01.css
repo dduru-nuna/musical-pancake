@@ -1,0 +1,113 @@
+.top-nav > .menu {
+    list-style-type: none;
+    background-color: darkseagreen;
+}
+.top-nav .menu-item,
+.top-nav .menu-link {
+    display: inline-block;
+}
+.top-nav .menu-link {
+    text-decoration: none;
+    padding: 8px 16px 8px 16px;
+    color: black;
+    background-color: darkseagreen;
+}
+.top-nav .menu-link:hover {
+    background-color: seagreen;
+    color: white;
+}
+
+.side-menu .menu {
+    list-style-type: none;
+    padding-inline-start: 0px; /*기본적으로 설정되어있는 시작 패딩값을 없애기*/
+    background-color: rgb(166, 245, 218);
+    width: 200px;
+}
+.side-menu .menu-link {
+    text-decoration: none;
+    padding: 0.5em 1em 0.5em 1em;
+    display: inline-block;
+    color: black;
+    width: 100%;  /*메뉴의 크기를 따라가도록 100%로 지정함*/
+    box-sizing: border-box;
+}
+.side-menu .menu-link:hover {
+    background-color: rgb(91, 221, 135);
+}
+.side-menu .action {  /*사용자가 현재 어느 위치에 있는지 알려주기 위한 용도*/
+    background-color: rgb(147, 221, 72);
+}
+
+.dropdown-nav .dropdown-menu {
+    list-style-type: none;
+    padding-inline-start: 0px;
+    background-color: rgb(166, 245, 218);
+}
+.dropdown-nav .dropdown-menu .menu-item,
+.dropdown-nav .dropdown-menu .menu-link{
+    display: inline-block;
+}
+.dropdown-nav .dropdown-menu .menu-link{
+    text-decoration: none;
+    padding: 0.5em 1em 0.5em 1em;
+    color: black;
+}
+.dropdown-nav .dropdown-menu .menu-link:hover {
+    background-color: rgb(91, 221, 135);
+}
+.dropdown-nav .sub-menu {
+    display: none;
+    position: absolute; /* absolute 를 사용해야 영역 안잡히고 나옴*/
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+.dropdown-nav .menu-item:hover .sub-menu{
+    display: block;
+    background-color: white;
+    box-shadow: 3px 3px 6px 0px gray;
+}
+.dropdown-nav .sub-menu .sub-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: .5em 1em .5em 1em;
+    color: black;
+}
+.dropdown-nav .sub-menu .sub-link:hover {
+    background-color: rgb(224, 240, 204);
+}
+
+.side-dropdown-nav .side-dropdown-menu {
+    list-style-type: none;
+    padding-inline-start: 0px;
+    width: 200px;
+    background-color: rgb(166, 245, 218);
+}
+.side-dropdown-nav .side-dropdown-menu .menu-link {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: .5em 1em .5em 1em;
+    text-decoration: none;
+    color: black;
+    width: 100%;  /*마우스 클릭 범위에 블럭전체가 들어오게 설정*/
+}
+.side-dropdown-nav .side-dropdown-menu .menu-link:hover {
+    background-color: rgb(91, 221, 135);
+}
+.side-dropdown-nav .sub-menu {
+    display: none;
+    list-style-type: none;
+}
+.side-dropdown-nav .menu-item:hover .sub-menu {
+    display: block;
+}
+.side-dropdown-menu .sub-menu .sub-link {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: .5em 1em .5em 1em;
+    text-decoration: none;
+    color: black;
+    width: 100%; 
+}
+.side-dropdown-menu .sub-menu .sub-link:hover {
+    color: white;
+}

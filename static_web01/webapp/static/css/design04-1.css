@@ -1,0 +1,77 @@
+.login-form {
+    width: 420px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(218, 217, 217);
+}
+.login-form .login-main {
+    padding: 3em 3em 1.5em 3em;
+}
+.login-form .login-main .login-input-form .input-group {
+    margin-bottom: 0.8em;
+}
+.login-form .login-main .login-input-form .input-group input {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+    outline-style: none;
+    border-style: none none solid none;
+    border-color: rgb(206, 205, 205);
+}
+#tip + label{
+    display: none;
+}
+#tip:focus + label {
+    display: block;
+    font-size: 0.4em;
+}
+span {
+    color: red;
+    font-weight: bold;
+}
+.login-form .login-main .login-input-form .check-group .left {
+    float: left;
+}
+.login-form .login-main .login-input-form .check-group label {
+    font-size: 0.7em;
+}
+.login-form .login-main .login-button-form {
+    clear: both;
+}
+.login-form .login-main .login-button-form .btn-block {
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 0.7em;
+    border-style: none;
+    border-radius: 4px;
+}
+.login-form .login-main .login-button-form .btn-yellow {
+    background-color: rgb(250, 230, 47);
+}
+.login-form .login-main .login-button-form .or {
+    margin-top: 2.5em;
+    text-align: center;
+    font-size: 0.4em;
+    color: gray;
+}.login-form .login-main .login-button-form .btn-gray {
+    background-color: rgb(243, 243, 243);
+}
+.login-form .login-foot {
+    padding: .3em 3em 4em 3em;
+    font-size: 0.6em;
+    color: black;
+}
+.login-form .login-foot a {
+    text-decoration: none;
+    color: black;
+}
+.login-form .login-foot .left {
+    padding-left: 20px;
+    padding-right: 149px;
+}
+.login-form .login-foot .right {
+    padding-left: 5px;
+    padding-right: 5px;
+}
