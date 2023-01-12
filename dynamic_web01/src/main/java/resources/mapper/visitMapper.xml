@@ -6,4 +6,7 @@
   <select id="connectTest" resultType="string">
   	SELECT 'CONNECT SUCCESS' FROM DUAL
   </select>
+  <insert id="insert" parameterType="model.dto.VisitDTO"> <!-- insert 는 몇 개행 반영되었는지 알려주니 resultType이 이미 정해져있음. 신경쓰지 않아도 됨-->
+  	INSERT INTO VISIT_T VALUES(#{context}, #{nickname}) <!-- 디비버에서 VISIT_T 테이블 생성한 후 insert 작업 하기 -->
+  </insert>  <!-- 멤버변수명과 #{}들어가는 명과 같아야 mybatis 가 멤버변수인지 알고 그 데이터를 get 해올 수 있다. -->
 </mapper>
