@@ -1,0 +1,8 @@
+CREATE TABLE VISIT_T(
+	context VARCHAR2(500 CHAR)
+   ,nickname VARCHAR2(25 CHAR)
+);
+
+SELECT * FROM VISIT_T;
+
+INSERT INTO VISIT_T VALUES('context', 'nickname');
