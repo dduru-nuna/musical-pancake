@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import database.connect.OracleConnection;
@@ -22,5 +24,10 @@ public class VisitDAO {
 	}
 	public void close() {
 		session.close();
+	}
+
+	public List<VisitDTO> selectAll() {
+		List<VisitDTO> data = session.selectList("visitMapper.selectAll");
+		return data;
 	}
 }
