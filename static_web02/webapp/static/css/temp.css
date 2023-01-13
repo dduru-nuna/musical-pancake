@@ -1,0 +1,6 @@
+.custom-dropdown > .dropdown-toggle::after {
+    content: none;     /* 드롭다운의 아래 화살표 모양 없애기 */
+}
+.custom-dropdown > a { /* custom-dropdown의 a 태그에 대해 색상 검정색 지정 */
+    color: black;
+}
