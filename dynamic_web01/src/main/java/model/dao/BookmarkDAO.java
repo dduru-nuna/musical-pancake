@@ -1,0 +1,43 @@
+package model.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import database.connect.OracleConnection;
+import model.dto.BookmarkDTO;
+
+public class BookmarkDAO {
+
+	SqlSession session = OracleConnection.getSqlSession();
+	
+	public int insert(BookmarkDTO dto) {
+		int count = session.insert("bookmarkMapper.insert", dto);
+		return count;
+	}
+
+	public void commit() {
+		session.commit();
+	}
+	public void rollback() {
+		session.rollback();
+	}
+	public void close() {
+		session.close();
+	}
+
+	public List<BookmarkDTO> selectAll() {
+		List<BookmarkDTO> data = session.selectList("bookmarkMapper.selectAll");
+		return data;
+	}
+
+	public BookmarkDTO selectId(BookmarkDTO dto) {
+		BookmarkDTO data = session.selectOne("bookmarkMapper.selectId", dto);
+		return data;
+	}
+
+	public int update(BookmarkDTO dto) {
+		int count = session.update("bookmarkMapper.update", dto);
+		return count;
+	}
+}
