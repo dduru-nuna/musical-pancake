@@ -30,4 +30,24 @@ public class VisitDAO {
 		List<VisitDTO> data = session.selectList("visitMapper.selectAll");
 		return data;
 	}
+	
+	public VisitDTO selectId(VisitDTO dto) {
+		VisitDTO data = session.selectOne("visitMapper.selectId", dto);
+		return data;
+	}
+	
+	public int update(VisitDTO dto) {
+		int count = session.update("visitMapper.update", dto);
+		return count;
+	}
+	
+	public int delete(VisitDTO dto) {
+		int count = session.delete("visitMapper.delete", dto);
+		return count;
+	}
+
+	public int getId() {
+		int id = session.selectOne("visitMapper.getId");
+		return id;
+	}
 }

@@ -21,6 +21,24 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>VisitUpdateController</servlet-name>
+  	<servlet-class>controller.VisitUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VisitUpdateController</servlet-name>
+  	<url-pattern>/visit/update</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>VisitDeleteController</servlet-name>
+  	<servlet-class>controller.VisitDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VisitDeleteController</servlet-name>
+  	<url-pattern>/visit/delete</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>BookmarkController</servlet-name>
   	<servlet-class>controller.BookmarkController</servlet-class>
   </servlet>

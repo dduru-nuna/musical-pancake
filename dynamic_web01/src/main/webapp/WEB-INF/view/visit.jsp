@@ -25,7 +25,14 @@
 	</form>
 	<ul>
 		<% for(VisitDTO d: (List<VisitDTO>)request.getAttribute("data")) { %>
-			<li><%=d.getNickname() %> | <%=d.getContext() %></li>
+			<li>
+				<%=d.getNickname() %> | <%=d.getContext() %>
+				<button type="button" onclick="location.href='./visit/update?id=<%=d.getId() %>'">수정</button>
+				<button type="submit" form="deleteForm">삭제</button>
+				<form id="deleteForm<%=d.getId() %>" action="./visit/delete" method="post">
+					<input type="hidden" name="id" value="<%=d.getId() %>">
+				</form>
+			</li>
 		<% } %>
 	</ul>
 </body>

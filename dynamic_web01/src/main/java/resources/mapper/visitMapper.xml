@@ -7,9 +7,24 @@
   	SELECT 'CONNECT SUCCESS' FROM DUAL
   </select>
   <select id="selectAll" resultType="model.dto.VisitDTO">
-  	SELECT nickname, context FROM VISIT_T
+  	SELECT id, nickname, context FROM VISIT_T
+  </select>
+  <select id="selectId" parameterType="model.dto.VisitDTO" resultType="model.dto.VisitDTO">
+  	SELECT id, nickname, context FROM VISIT_T WHERE id = #{id}
+  </select>
+  <select id="getId" resultType="int">
+  	SELECT VISIT_S.NEXTVAL FROM DUAL
   </select>
   <insert id="insert" parameterType="model.dto.VisitDTO"> <!-- insert 는 몇 개행 반영되었는지 알려주니 resultType이 이미 정해져있음. 신경쓰지 않아도 됨-->
-  	INSERT INTO VISIT_T VALUES(#{context}, #{nickname}) <!-- 디비버에서 VISIT_T 테이블 생성한 후 insert 작업 하기 -->
+  	INSERT INTO VISIT_T VALUES(#{id}, #{nickname}, #{context}) <!-- 디비버에서 VISIT_T 테이블 생성한 후 insert 작업 하기 -->
   </insert>  <!-- 멤버변수명과 #{}들어가는 명과 같아야 mybatis 가 멤버변수인지 알고 그 데이터를 get 해올 수 있다. -->
+  <update id="update" parameterType="model.dto.VisitDTO"> 
+  	UPDATE VISIT_T
+  	   SET nickname = #{nickname}
+  	     , context = #{context}
+  	 WHERE id = #{id}
+  </update>
+  <delete id="delete" parameterType="model.dto.VisitDTO">
+  	DELETE FROM VISIT_T WHERE id = #{id}
+  </delete>
 </mapper>
