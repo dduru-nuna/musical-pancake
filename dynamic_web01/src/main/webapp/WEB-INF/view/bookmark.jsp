@@ -28,7 +28,10 @@
 			<li>
 				<a href="<%= d.getUrl() %>"><%=d.getName() %></a>
 				<button type="button" onclick="location.href='./bookmark/update?id=<%=d.getId() %>'">수정</button> <!-- onclick 했을 때 해당 위치로 이동해라. id로 식별가능하게 함 -->
-				<button>삭제</button>
+				<button type="submit" form="deleteForm">삭제</button> <!-- 동일한 id를 가지는 form을 찾아서 submit 버튼으로 사용 -->
+				<form id="deleteForm<%=d.getId() %>" action="./bookmark/delete" method="post">  <!-- id="deleteForm뒤에 d.getId()로 id를 구분할 수 있게 한다. -->
+					<input type="hidden" name="id" value="<%=d.getId() %>">
+				</form>
 			</li>
 		<% } %>
 	</ul>

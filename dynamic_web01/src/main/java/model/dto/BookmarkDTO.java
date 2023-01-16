@@ -29,6 +29,5 @@ public class BookmarkDTO {
 	public String toString() {
 		return "BookmarkDTO [id=" + id + ", url=" + url + ", name=" + name + "]";
 	}
-	
-	
+		
 }

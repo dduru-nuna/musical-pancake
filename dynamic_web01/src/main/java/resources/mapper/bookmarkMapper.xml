@@ -9,13 +9,19 @@
   <select id="selectAll" resultType="model.dto.BookmarkDTO">
   	SELECT id, url, name FROM BOOKMARK_T
   </select>
+  <select id="getId" resultType="int">
+  	SELECT BOOKMARK_S.NEXTVAL FROM DUAL
+  </select>
   <insert id="insert" parameterType="model.dto.BookmarkDTO">
-  	INSERT INTO BOOKMARK_T VALUES(#{url}, #{name}) 
-  </insert> 
+  	INSERT INTO BOOKMARK_T VALUES(#{id}, #{url}, #{name}) 
+  </insert>
   <update id="update" parameterType="model.dto.BookmarkDTO">
   	UPDATE BOOKMARK_T
   	   SET url = #{url}
   	     , name = #{name}
   	 WHERE id = #{id}
   </update>
+  <delete id="delete" parameterType="model.dto.BookmarkDTO">
+	DELETE FROM BOOKMARK_T WHERE id = #{id}  
+  </delete>
 </mapper>
