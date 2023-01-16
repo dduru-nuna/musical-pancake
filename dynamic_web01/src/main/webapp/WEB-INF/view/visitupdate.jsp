@@ -20,7 +20,7 @@
 			<input type="text" name="nickname" value="<%=((VisitDTO)request.getAttribute("data")).getNickname() %>">
 		</div>
 		<div>
-			<input type="text" name="context" value="<%=((VisitDTO)request.getAttribute("data")).getContext() %>">
+			<textarea type="text" name="context"><%=((VisitDTO)request.getAttribute("data")).getContext() %></textarea>
 		</div>
 		<div>
 			<button type="submit">저장</button>
