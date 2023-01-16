@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>Hello JSP/Servlet</h1>
+	<a href="./visit">방명록</a>
+	<a href="./bookmark">즐겨찾기 링크 모음</a>
 </body>
 </html>

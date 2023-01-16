@@ -20,6 +20,51 @@
   	<url-pattern>/visit</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>VisitUpdateController</servlet-name>
+  	<servlet-class>controller.VisitUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VisitUpdateController</servlet-name>
+  	<url-pattern>/visit/update</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>VisitDeleteController</servlet-name>
+  	<servlet-class>controller.VisitDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VisitDeleteController</servlet-name>
+  	<url-pattern>/visit/delete</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BookmarkController</servlet-name>
+  	<servlet-class>controller.BookmarkController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookmarkController</servlet-name>
+  	<url-pattern>/bookmark</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BookmarkUpdateController</servlet-name>
+  	<servlet-class>controller.BookmarkUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookmarkUpdateController</servlet-name>
+  	<url-pattern>/bookmark/update</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BookmarkDeleteController</servlet-name>
+  	<servlet-class>controller.BookmarkDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookmarkDeleteController</servlet-name>
+  	<url-pattern>/bookmark/delete</url-pattern>
+  </servlet-mapping>
+  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
