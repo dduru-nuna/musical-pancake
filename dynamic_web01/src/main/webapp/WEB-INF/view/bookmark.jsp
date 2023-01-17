@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, model.dto.BookmarkDTO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +11,12 @@
 </head>
 <body>
 	<div>
-		<a href="./">메인으로</a> <!-- 현재 페이지는 visit 이고 ./로 현재 폴더(위치=web01)로 갈 수 있다 -->
+		<c:url var="mainUrl" value="/" />
+		<a href="${mainUrl }">메인으로</a>
 	</div>
 	<h2>즐겨찾기</h2>
-	<form action="./bookmark" method="post"> <!-- 주소를 입력한것은 GET요청이고 사용자가 방명록에 데이터를 입력하는 것은 post방식 -->
+	<c:url var="bookmarkUrl" value="/bookmark" />
+	<form action="${bookmarkUrl }" method="post"> <!-- 주소를 입력한것은 GET요청이고 사용자가 방명록에 데이터를 입력하는 것은 post방식 -->
 		<div>
 			<input type="text" name="url">
 		</div>
@@ -23,7 +27,7 @@
 			<button type="submit">저장</button>
 		</div>
 	</form>
-	<ul>
+<%--<ul>
 		<% for(BookmarkDTO d: (List<BookmarkDTO>)request.getAttribute("data")) { %> <!-- setAttribute는 object로 받으니 getAttribute 쓸 때는 다시 (List<BookmarkDTO>)로 다운캐스팅 --> 
 			<li>
 				<a href="<%= d.getUrl() %>"><%=d.getName() %></a>
@@ -34,6 +38,23 @@
 				</form>
 			</li>
 		<% } %>
+	</ul>
+ --%>	
+	<ul>
+		<c:forEach var="d" items="${requestScope.data }">
+			<c:url var="bookmarkUpdateUrl" value="/bookmark/update">
+				<c:param name="id" value="${d.id }" />
+			</c:url>
+			<c:set var="formId" value="deleteForm${d.id }" />
+			<li>
+				<a href="${d.url }">${d.name }</a>
+				<button type="button" onclick="location.href='${bookmarkUpdateUrl}'">수정</button> 
+				<button type="submit" form="${formId }">삭제</button> 
+				<form id="${formId }" action="${bookmarkUrl }/delete" method="post"> 
+					<input type="hidden" name="id" value="${d.id }">
+				</form>
+			</li>
+		</c:forEach>
 	</ul>
 </body>
 </html>
