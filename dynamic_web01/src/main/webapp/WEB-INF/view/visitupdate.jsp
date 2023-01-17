@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, model.dto.VisitDTO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +12,19 @@
 </head>
 <body>
 	<div>
-		<a href="../visit">돌아가기</a>
+		<c:url var="visitUrl" value="/visit" />
+		<a href="${visitUrl }">돌아가기</a>
 	</div>
 	<h2>방명록 수정</h2>
-	<form action="./update" method="post">
+	<form action="${visitUrl }/update" method="post">
 		<div>
-			<input type="hidden" name="id" value="<%=((VisitDTO)request.getAttribute("data")).getId() %>">
+			<input type="hidden" name="id" value="${requestScope.data.id }">
 		</div>
 		<div>
-			<input type="text" name="nickname" value="<%=((VisitDTO)request.getAttribute("data")).getNickname() %>">
+			<input type="text" name="nickname" value="${requestScope.data.nickname }">
 		</div>
 		<div>
-			<textarea rows="3" cols="25" name="context"><%=((VisitDTO)request.getAttribute("data")).getContext() %></textarea>
+			<textarea rows="3" cols="25" name="context">${requestScope.data.context }</textarea>
 		</div>
 		<div>
 			<button type="submit">저장</button>
