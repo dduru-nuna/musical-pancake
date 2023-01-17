@@ -64,6 +64,15 @@
   	<servlet-name>BookmarkDeleteController</servlet-name>
   	<url-pattern>/bookmark/delete</url-pattern>
   </servlet-mapping>
+    
+  <servlet>
+  	<servlet-name>JoinController</servlet-name>
+  	<servlet-class>controller.JoinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>JoinController</servlet-name>
+  	<url-pattern>/join</url-pattern>
+  </servlet-mapping>
   
   
   <welcome-file-list>
