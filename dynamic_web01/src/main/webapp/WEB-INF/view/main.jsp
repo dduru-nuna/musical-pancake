@@ -18,6 +18,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:url var="staticUrl" value="/static" />
+<link type="text/css" rel="stylesheet" href="${staticUrl }/bs5/css/bootstrap.min.css">
+<script type="text/javascript" src="${staticUrl }/bs5/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<h2>JSP 파일이 실행되었습니다.</h2>
