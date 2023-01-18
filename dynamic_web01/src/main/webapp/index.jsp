@@ -17,6 +17,16 @@
 	<h1>Hello JSP/Servlet</h1>
 	<a href="${mainUrl }visit">방명록</a>
 	<a href="${mainUrl }bookmark">즐겨찾기 링크 모음</a>
-	<a href="${mainUrl }join">회원가입</a>
+	
+	<c:choose>
+		<c:when test="${sessionScope.login }">
+			<a href="${mainUrl }logout">로그아웃</a>
+			<a href="${mainUrl }myinfo">개인정보</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${mainUrl }login">로그인</a>
+			<a href="${mainUrl }join">회원가입</a>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
