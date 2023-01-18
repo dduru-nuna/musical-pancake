@@ -74,6 +74,33 @@
   	<url-pattern>/join</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>LoginController</servlet-name>
+  	<servlet-class>controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginController</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>LogoutController</servlet-name>
+  	<servlet-class>controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LogoutController</servlet-name>
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>MyinfoController</servlet-name>
+  	<servlet-class>controller.MyinfoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MyinfoController</servlet-name>
+  	<url-pattern>/myinfo</url-pattern>
+  </servlet-mapping>
+  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
