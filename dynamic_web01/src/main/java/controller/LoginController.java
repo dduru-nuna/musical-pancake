@@ -33,7 +33,8 @@ public class LoginController extends HttpServlet{
 		session.invalidate(); // 세션객체 자체를 삭제
 	*/
 		HttpSession session = req.getSession();
-		if(session.getAttribute("login") != null) { //로그인한 상태면 다시 로그인창 못들어가게하기. 메인페이지 redirect
+	//	if(session.getAttribute("login") != null) { //로그인한 상태면 다시 로그인창 못들어가게하기. 메인페이지 redirect
+		if((boolean)session.getAttribute("login")) {
 			resp.sendRedirect(req.getContextPath());
 			return;
 		}
@@ -66,7 +67,7 @@ public class LoginController extends HttpServlet{
 		
 		if(userData != null) { //id,email,password 정보가 담긴 data 가 반환됐을 때 session 설정
 			HttpSession session = req.getSession();
-			session.setAttribute("login", true);
+		//	session.setAttribute("login", true);   userDTO에 바인딩 설정해놔서 빼놓음
 			session.setAttribute("user", userData); //세션의 user 라는 속성명이 login return 값 data를 가지게 함.
 			
 			if(remember != null) { //로그인 성공하고 아이디기억하기 체크 했을 때 쿠키 생성
