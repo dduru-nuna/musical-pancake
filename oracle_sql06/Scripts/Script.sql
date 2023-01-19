@@ -29,7 +29,7 @@ SELECT * FROM BOOKMARK_T;
 
 CREATE SEQUENCE BOOKMARK_S;
 
-INSERT INTO BOOKMARK_T VALUES(1, 'https://naver.com', '네이버');
+INSERT INTO BOOKMARK_T VALUES(1, 'abcd', 'https://naver.com', '네이버');
 INSERT INTO BOOKMARK_T VALUES(2, 'https://google.com', '구글');
 INSERT INTO BOOKMARK_T VALUES(3, 'https://nate.com', '네이트');
 
