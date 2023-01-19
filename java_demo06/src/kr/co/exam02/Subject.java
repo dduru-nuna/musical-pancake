@@ -10,6 +10,7 @@ public class Subject {
 		this.name = name;     // 자기 자신에 대한 메서드나 변수 사용하면 this 사용
 	}
 	
+	
 	public void setScore(double score) {
 		if(score >= 0 && score <= 100) {
 			this.score = score;
