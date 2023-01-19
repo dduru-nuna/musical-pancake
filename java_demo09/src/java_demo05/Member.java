@@ -21,6 +21,7 @@ public class Member {
 			this.password = password;
 		} else {
 			throw new PasswordException("패스워드에는 대문자/소문자/숫자/특수문자(!@#$%^&*) 가 포함되야함");
+			
 	    }
 	}	
 	
