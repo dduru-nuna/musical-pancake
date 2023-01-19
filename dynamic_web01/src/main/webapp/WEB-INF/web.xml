@@ -101,6 +101,11 @@
   	<url-pattern>/myinfo</url-pattern>
   </servlet-mapping>
   
+  <!--
+  <listener>        패키지명.클래스명
+  	<litener-class>listener.MyServletContextListener</litener-class>
+  </listener>
+  -->
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
