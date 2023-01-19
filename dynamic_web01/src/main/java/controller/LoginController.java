@@ -56,7 +56,7 @@ public class LoginController extends HttpServlet{
 	//	System.out.println(remember); 체크박스 체크 되어 있는 상태에선 on, 안되어 있을 땐 null
 		
 		UserDTO dto = new UserDTO();
-		dto.setUserId(userId);
+		dto.setUserId(userId);  //사용자 입력한 값으로 저장
 		dto.setPassword(password);
 		
 		UserService service = new UserService();
