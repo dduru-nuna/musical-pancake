@@ -22,7 +22,8 @@ public class BookmarkController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("login")  == null) {  //로그인 안되어 있는 상태에서 즐겨찾기 링크 모음에 접근하면 먼저 로그인 부터 하게 로그인창 실행
+	//	if(session.getAttribute("login")  == null) {  //로그인 안되어 있는 상태에서 즐겨찾기 링크 모음에 접근하면 먼저 로그인 부터 하게 로그인창 실행
+		if(!(boolean)session.getAttribute("login")) {
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		}
@@ -43,7 +44,8 @@ public class BookmarkController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("login")  == null) {  //로그인 안되어 있는 상태에서 즐겨찾기 링크 모음에 접근하면 먼저 로그인 부터 하게 로그인창 실행
+	//	if(session.getAttribute("login")  == null) {  //로그인 안되어 있는 상태에서 즐겨찾기 링크 모음에 접근하면 먼저 로그인 부터 하게 로그인창 실행
+		if(!(boolean)session.getAttribute("login")) {	
 			resp.sendRedirect(req.getContextPath() + "/login");
 			return;
 		}
