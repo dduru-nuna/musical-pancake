@@ -22,11 +22,14 @@ public class VisitController extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println(req.getServletContext().getAttribute("hello")); //ServletContext 실행 확인용 프린트구문
 		VisitService service = new VisitService();
 		List<VisitDTO> data = service.getAll(); //조회해서 저장
 		
+		req.setAttribute("data", "Hello"); //리스너 확인용
 		req.setAttribute("data", data); //request 객체에 setAttribute 로 저장하면 나중에 visit.jsp 주소에서 getAttribute("data")로 꺼내서 사용 가능
 		req.getRequestDispatcher("/WEB-INF/view/visit.jsp").forward(req, resp);
+		req.removeAttribute("data"); //리스너 확인용
 	}
 	
 	/**
