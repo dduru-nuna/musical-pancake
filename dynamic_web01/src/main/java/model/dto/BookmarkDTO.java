@@ -3,9 +3,16 @@ package model.dto;
 public class BookmarkDTO { 
 	
 	private int id;
+	private String userId;
 	private String url;
 	private String name;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public int getId() {
 		return id;
 	}
