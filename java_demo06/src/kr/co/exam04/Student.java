@@ -2,8 +2,6 @@ package kr.co.exam04;
 
 import java.util.Arrays;
 
-import kr.co.exam04.Subject;
-
 public class Student {
 
 	public Subject subject[];
@@ -16,7 +14,7 @@ public class Student {
 	
 	public Student() {
 		//this.subject = new Subject[0];
-		Subject sub[] = {new Subject("국어",70), new Subject("수학", 80), new Subject("영어", 95)};
+		Subject sub[] = new Subject[] {new Subject("국어",70.2), new Subject("수학", 80.5), new Subject("영어", 95.6)};
 		this.subject = sub;
 	}
 	
@@ -36,8 +34,9 @@ public class Student {
 		if(!isExists) {
 			this.subject = Arrays.copyOf(this.subject, this.subject.length + 1);
 			this.subject[this.subject.length - 1] = new Subject(subjectName, score);
+		} else {
+			System.out.println("중복된 과목입니다.");
 		}
-		
 	}
 	
 	public boolean update(String subjectName, int score) {
@@ -66,7 +65,7 @@ public class Student {
 	
 	private int findIndex(String subjectName) {
 		for(int i = 0; i < this.subject.length; i++) {
-			if(this.subject[i].subjectName.equals(subjectName)) {
+			if(this.subject[i].getName().equals(subjectName)) {
 				return i;
 			}
 		}
