@@ -11,7 +11,7 @@ public class Exam {
 
 	public static void main(String[] args) {
 		/*
-		 * subject.list 파일에 작성된 과목명을 이용하여 subjects[] 을
+		 * subject2.list 파일에 작성된 과목명을 이용하여 subjects[] 을
 		 * 생성하도록 하는 코드를 작성한다.
 		 * 
 		 * subject2.list 파일에는 다음과 같은 형식으로 과목명이 나열되어 있다.

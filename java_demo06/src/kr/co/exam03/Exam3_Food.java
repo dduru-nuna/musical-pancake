@@ -18,6 +18,10 @@ public class Exam3_Food {
 		menu.add("돈까스", 4000);
 		menu.add("치즈돈까스", 4500);
 		
+		// 가변길이 매개변수 사용법. 가변길이 매개변수는 하나만 존재할 수 있다
+		menu.add("잔치국수","비빔국수");
+		menu.add("잔치국수","비빔국수","냉모밀");
+		
 		Scanner sc = new Scanner(System.in);
 		String name = "";
 		int total = 0;
