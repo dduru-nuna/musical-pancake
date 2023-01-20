@@ -107,6 +107,17 @@
   </listener>
   -->
   
+  <!--
+  <filter>  필터의 순서가 중요할 경우 web.xml에 작성하여 순서 제어. 아니면 어노테이션 하면 됨
+  	<filter-name>loggingFilter</filter-name>
+  	<filter-class>filter.LoggingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loggingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  -->
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
