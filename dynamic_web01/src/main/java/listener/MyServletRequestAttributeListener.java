@@ -5,7 +5,7 @@ import jakarta.servlet.ServletRequestAttributeListener;
 import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebListener
+//@WebListener
 public class MyServletRequestAttributeListener implements ServletRequestAttributeListener {
 	@Override
 	public void attributeAdded(ServletRequestAttributeEvent srae) {

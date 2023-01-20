@@ -5,7 +5,7 @@ import jakarta.servlet.ServletRequestListener;
 import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebListener 
+//@WebListener 
 public class MyServletRequestListener implements ServletRequestListener {
 	
 	@Override  //요청이 되면 실행

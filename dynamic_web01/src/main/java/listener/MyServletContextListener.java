@@ -4,7 +4,7 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 
-@WebListener
+//@WebListener
 public class MyServletContextListener implements ServletContextListener {
 
 	@Override  //어플리케이션(서버) 전역적으로 사용할 데이터가 있으면 여기에서 셋팅하면 된다.

@@ -4,7 +4,7 @@ import jakarta.servlet.ServletContextAttributeEvent;
 import jakarta.servlet.ServletContextAttributeListener;
 import jakarta.servlet.annotation.WebListener;
 
-@WebListener
+//@WebListener
 public class MyServletContextAttributeListener implements ServletContextAttributeListener {
 		//속성이 set, 수정, remove 될 때 실행(추가,삭제,수정)
 	

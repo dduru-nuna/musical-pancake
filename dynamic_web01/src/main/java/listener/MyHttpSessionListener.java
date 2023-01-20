@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
 
-@WebListener
+//@WebListener
 public class MyHttpSessionListener implements HttpSessionListener {
 
 	@Override
