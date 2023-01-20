@@ -47,3 +47,14 @@ CREATE TABLE USER_T(
 );
 
 SELECT * FROM USER_T;
+
+
+SELECT * /*TOP N 분석으로 설정하고 다시 셀렉트해서 번호 찾기(정렬 해주기)*/
+  FROM(SELECT ROWNUM AS NUM  
+		    , id, nickname, context
+		 FROM (SELECT *
+		         FROM VISIT_T
+		        ORDER BY ID)
+  )
+ WHERE NUM BETWEEN 16 AND 20;  /*TOP N 분석 하지않고 중간 번호부터 조회할 순 없음*/
+ 
