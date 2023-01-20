@@ -40,10 +40,12 @@ public class UserDTO implements HttpSessionBindingListener {
 		session.setAttribute("login", true);
 	}
 	
+	/*
 	@Override  //dto데이터 remove, invalidate 할 때
 	public void valueUnbound(HttpSessionBindingEvent event) {
 		HttpSessionBindingListener.super.valueUnbound(event);
 		HttpSession session = event.getSession(); //remove,invalidate 됐을 때 세션에 추가할 것이 있으면 여기서 설정
-		session.setAttribute("login", false);		System.out.println("session unbinding: " + event.getName() + " - " + event.getValue());
+		session.setAttribute("login", false);
 	}
+	*/
 }
