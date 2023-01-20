@@ -22,7 +22,7 @@ public class VisitController extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getServletContext().getAttribute("hello")); //ServletContext 실행 확인용 프린트구문
+	//	System.out.println(req.getServletContext().getAttribute("hello"));  ServletContext 실행 확인용 프린트구문
 		VisitService service = new VisitService();
 		List<VisitDTO> data = service.getAll(); //조회해서 저장
 		
