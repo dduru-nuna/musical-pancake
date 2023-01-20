@@ -32,6 +32,17 @@
 			<button type="submit">저장</button>
 		</div>
 	</form>
+	<div>
+		<form action="${visitUrl }">
+			<select name="c" onchange="submit();"> <%--submit 하면 폼 안의 내용 전달 --%>
+				<option value="5" ${requestScope.cnt eq 5 ? "selected" : "" }>5개</option>
+				<option value="10" ${requestScope.cnt eq 10 ? "selected" : "" }>10개</option>
+				<option value="15" ${requestScope.cnt eq 15 ? "selected" : "" }>15개</option>
+				<option value="20" ${requestScope.cnt eq 20 ? "selected" : "" }>20개</option>
+				<option value="25" ${requestScope.cnt eq 25 ? "selected" : "" }>25개</option>
+			</select>
+		</form>
+	</div>
 <%--<ul>
 		<% for(VisitDTO d: (List<VisitDTO>)request.getAttribute("data")) { %>
 			<li>
@@ -61,5 +72,28 @@
 			</li>
 		</c:forEach>
 	</ul>
+	<div>
+		<c:set var="pageNumber" value="${empty param.p ? 1 : param.p }" />
+		<c:choose>
+			<c:when test="${pageNumber eq 1 }">
+				<a>prev</a>	
+			</c:when>
+			<c:otherwise>
+				<a href="./visit?p=${pageNumber - 1 }">prev</a>
+			</c:otherwise>
+		</c:choose>
+		<%--목록 추가/삭제 할 때마다 페이지 번호 추가/삭제 됨 --%>
+		<c:forEach var="num" items="${requestScope.pageList }">
+			<a href="${visitUrl }?p=${num }">${num }</a>
+		</c:forEach>
+		<c:choose>               
+			<c:when test="${pageNumber eq lastPageNumber }"> 
+				<a>next</a>	
+			</c:when>
+			<c:otherwise>
+				<a href="./visit?p=${pageNumber + 1 }">next</a>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </body>
 </html>

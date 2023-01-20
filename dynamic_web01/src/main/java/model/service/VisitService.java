@@ -1,6 +1,8 @@
 package model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dao.VisitDAO;
 import model.dto.VisitDTO;
@@ -58,5 +60,23 @@ public class VisitService {
 		}
 		dao.rollback(); dao.close();
 		return false;
+	}
+	
+	public List<VisitDTO> getPage(int pageNumber, int cnt) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", (pageNumber - 1) * cnt + 1);
+		map.put("end", (pageNumber * cnt));
+		
+		VisitDAO dao = new VisitDAO();
+		List<VisitDTO> data = dao.selectPage(map);
+		dao.close();
+		return data;
+	}
+	
+	public int totalRow() {
+		VisitDAO dao = new VisitDAO();
+		int count = dao.totalRowCount();
+		dao.close();
+		return count;
 	}
 }
