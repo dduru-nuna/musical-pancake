@@ -10,7 +10,6 @@ public abstract class Person {
 	
 	//메서드 선언만 있고 몸체는 없는(로직 구현x) abstract 메서드
 	public abstract String getFirstName();
-	
 	public abstract String getLastName();
 	
 	public String getName() {

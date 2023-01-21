@@ -16,5 +16,7 @@
   </environments>
   <mappers>
     <mapper resource="resources/mapper/visitMapper.xml"/>
+    <mapper resource="resources/mapper/bookmarkMapper.xml"/>
+    <mapper resource="resources/mapper/userMapper.xml"/>
   </mappers>
 </configuration>

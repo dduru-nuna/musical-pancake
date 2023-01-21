@@ -29,6 +29,13 @@ public class Menu_kh2 {
 		}	
 	}
 	
+	// 가변 길이 매개변수
+	public void add(String ... menuName) {
+		for(int i = 0; i < menuName.length; i++) {
+			this.add(menuName[i],0);
+		}
+	}
+	
 	// 동일한 이름의 메서드 (기존에 만든 메서드의 매개변수와 타입이 달라야한다)
 	// ex.println을 보면 char타입,int타입 등등 여러개의 메서드가 오버로딩 되어있다.
 	/*

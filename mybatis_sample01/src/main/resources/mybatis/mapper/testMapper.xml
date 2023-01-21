@@ -54,6 +54,17 @@
   <insert id="insertAccountLogoutLog" parameterType="kr.co.vo.AccountVO">
    INSERT INTO ACCOUNTS_ACCESS_LOG VALUES(SEQ_ACCOUNTS_ACCESS_LOG.NEXTVAL, #{id}, 'LOGOUT', SYSDATE)
   </insert>
+  <!-- 내 풀이. 수정 필요 -->
+  <select id="selectPassword" parameterType="kr.co.vo.AccountVO" resultType="kr.co.vo.AccountVO">
+   SELECT ID, NICKNAME, PASSWORD
+     FROM ACCOUNTS
+    WHERE PASSWORD = #{password}
+  </select>
+  <update id="updateChangePassword" parameterType="kr.co.vo.AccountVO">
+   UPDATE ACCOUNTS
+      SET PASSWORD = #{password}
+    WHERE ID = #{id}
+  </update>
   <!-- 주석
   <insert></insert> 태그에 맞는 SQL 구문을 작성해 주어야 한다.
   <update></update>

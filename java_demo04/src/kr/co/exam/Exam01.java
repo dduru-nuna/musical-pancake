@@ -11,7 +11,7 @@ public class Exam01 {
 		 */
 
 		Scanner sc = new Scanner(System.in);
-		
+		// 
 		int x = sc.nextInt();
 		
 		if(x > 0 && x < 46) {

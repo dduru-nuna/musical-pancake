@@ -19,8 +19,6 @@ public class Exam07 {
 		for(int i = 0; i < 6; i++) {
 			int num = rand.nextInt(101);
 			
-			int tmp[];
-			
 			arr1 = Arrays.copyOf(arr1, arr1.length+1);
 			
 			/*

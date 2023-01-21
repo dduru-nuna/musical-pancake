@@ -52,11 +52,26 @@ public class AccountManager {
 				}
 				break;
 			case 6:
-				
+				//내 풀이
+				this.changePassword();
+				break;
 			case 9:
 				System.exit(0);
 			}
 		}
+	}
+
+	//내 풀이. 수정 필요
+	private void changePassword() {
+		AccountController ac = new AccountController();
+		
+		System.out.print("현재 암호를 입력하세요 : ");
+		String password = sc.nextLine();
+		
+		System.out.print("변경할 암호를 입력하세요 : ");
+		password = sc.nextLine();
+		
+		ac.changePassword(password);
 	}
 
 	private void logout() {

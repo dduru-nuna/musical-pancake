@@ -85,5 +85,21 @@ public class AccountDAO {
 			sess.rollback();
 		}
 	}
+   
+	//내 풀이. 수정 필요
+	public AccountVO selectPassword(AccountVO data) {
+		AccountVO result = sess.selectOne("test.selectPassword", data);
+		
+		if(result != null) {
+			int cnt = sess.update("test.updateChangePassword", result);
+			if(cnt == 1) {
+				sess.commit();
+			} else {
+				sess.rollback();
+			}
+		}
+		return result;
+	}
+
 
 }
