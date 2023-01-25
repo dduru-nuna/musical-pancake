@@ -66,7 +66,7 @@ public class VisitService {
 	public Paging getPage(int pageNumber, int cnt) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", (pageNumber - 1) * cnt + 1);
-		map.put("end", (pageNumber * cnt));
+		map.put("end", (pageNumber * cnt));		
 		
 		VisitDAO dao = new VisitDAO();
 		List<VisitDTO> data = dao.selectPage(map);
@@ -77,10 +77,10 @@ public class VisitService {
 		return paging;
 	}
 	
-	public int totalRow() {
-		VisitDAO dao = new VisitDAO();
-		int count = dao.totalRowCount();
-		dao.close();
-		return count;
-	}
+//	public int totalRow() {
+//		VisitDAO dao = new VisitDAO();
+//		int count = dao.totalRowCount();
+//		dao.close();
+//		return count;
+//	}
 }
