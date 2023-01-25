@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import model.dto.BookmarkDTO;
 import model.dto.UserDTO;
 import model.service.BookmarkService;
+import paging.Paging;
 
 /**
  * 즐겨찾기 작성할 수 있는 기능을 제공하기 위한 Servlet
@@ -31,13 +33,55 @@ public class BookmarkController extends HttpServlet {
 	*/ 	
 		UserDTO userData = (UserDTO)session.getAttribute("user"); //세션에 저장되어있는 "user" 정보 가져와서 dto 객체로 저장
 		
+		String p = req.getParameter("p");
+		if(p == null) {
+			p = "1";
+		} else {
+			if(p.isEmpty()) {
+				p = "1";
+			}
+		}
+		
+		Cookie cookie = null;
+		Cookie[] cookies = req.getCookies();
+		for(Cookie opt: cookies) {
+			if(opt.getName().equals("cnt")) {
+				cookie = opt;
+			}
+		}
+		
+		int cnt = 10;
+		if(cookie != null) {
+			if(req.getParameter("opt") != null) {
+				if(!req.getParameter("opt").isEmpty()) {
+					cnt = Integer.parseInt(req.getParameter("opt"));
+					cookie = new Cookie("cnt", String.valueOf(cnt));
+					cookie.setMaxAge(60 * 60 * 24 * 5);
+					resp.addCookie(cookie);
+				}
+			} else {
+				cnt = Integer.parseInt(cookie.getValue());
+			}
+		} else {
+			if(req.getParameter("opt") != null) {
+				if(!req.getParameter("opt").isEmpty()) {
+					cnt = Integer.parseInt(req.getParameter("opt"));
+					cookie = new Cookie("cnt", String.valueOf(cnt));
+					cookie.setMaxAge(60 * 60 * 24 * 5);
+					resp.addCookie(cookie);
+				}
+			}
+		}
+		
 		BookmarkService service = new BookmarkService();
 		BookmarkDTO dto = new BookmarkDTO();
 		dto.setUserId(userData.getUserId());
 		
-		List<BookmarkDTO> data = service.getAll(dto); //조회해서 저장
+//		List<BookmarkDTO> data = service.getAll(dto); //조회해서 저장
 		
-		req.setAttribute("data", data); //request 객체에 setAttribute 로 저장하면 나중에 visit.jsp 주소에서 getAttribute("data")로 꺼내서 사용 가능
+		Paging data = service.getPage(dto, Integer.parseInt(p), cnt);
+		
+		req.setAttribute("paging", data);
 		req.getRequestDispatcher("/WEB-INF/view/bookmark.jsp").forward(req, resp);
 	}
 	

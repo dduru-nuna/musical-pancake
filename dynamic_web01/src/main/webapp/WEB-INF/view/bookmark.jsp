@@ -30,6 +30,17 @@
 			<button type="submit">저장</button>
 		</div>
 	</form>
+	<div>
+		<form action="${bookmarkUrl }">
+			<select name="opt" onchange="submit();">
+				<option value="5" ${requestScope.paging.pageLimit eq 5 ? "selected" : "" }>5개</option>
+				<option value="10" ${requestScope.paging.pageLimit eq 10 ? "selected" : "" }>10개</option>
+				<option value="15" ${requestScope.paging.pageLimit eq 15 ? "selected" : "" }>15개</option>
+				<option value="20" ${requestScope.paging.pageLimit eq 20 ? "selected" : "" }>20개</option>
+				<option value="25" ${requestScope.paging.pageLimit eq 25 ? "selected" : "" }>25개</option>
+			</select>
+		</form>
+	</div>
 <%--<ul>
 		<% for(BookmarkDTO d: (List<BookmarkDTO>)request.getAttribute("data")) { %> <!-- setAttribute는 object로 받으니 getAttribute 쓸 때는 다시 (List<BookmarkDTO>)로 다운캐스팅 --> 
 			<li>
@@ -44,7 +55,7 @@
 	</ul>
  --%>	
 	<ul>
-		<c:forEach var="d" items="${requestScope.data }">
+		<c:forEach var="d" items="${requestScope.paging.data }">
 			<c:url var="bookmarkUpdateUrl" value="/bookmark/update">
 				<c:param name="id" value="${d.id }" />
 			</c:url>
@@ -58,6 +69,28 @@
 				</form>
 			</li>
 		</c:forEach>
+	</ul>
+	<ul class="pagination">
+		<c:set var="pageNumber" value="${empty param.p ? 1 : param.p }" />
+		<c:choose>
+			<c:when test="${requestScope.paging.prevPageNumber eq -1 }">
+				<li class="page-item disabled"><a class="page-link">prev</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link" href="./bookmark?p=${requestScope.paging.prevPageNumber }">prev</a></li>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach var="num" items="${requestScope.paging.pageList }">
+			<li class="page-item ${requestScope.paging.currentPageNumber eq num ? 'active' : '' }"><a class="page-link" href="${bookmarkUrl }?p=${num }">${num }</a></li>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${requestScope.paging.nextPageNumber eq -1 }">
+				<li class="page-item disabled"><a class="page-link">next</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link" href="./bookmark?p=${requestScope.paging.nextPageNumber }">next</a></li>
+			</c:otherwise>
+		</c:choose>
 	</ul>
 </body>
 </html>

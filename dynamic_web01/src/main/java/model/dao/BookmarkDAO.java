@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -49,6 +50,16 @@ public class BookmarkDAO {
 	public int getId() {
 		int id = session.selectOne("bookmarkMapper.getId");
 		return id;
+	}
+
+	public List<BookmarkDTO> selectPage(Map<String, Object> map) {
+		List<BookmarkDTO> data = session.selectList("bookmarkMapper.selectPage", map);
+		return data;
+	}
+
+	public int totalRowCount(BookmarkDTO dto) {
+		int count = session.selectOne("bookmarkMapper.totalRowCount", dto);
+		return count;
 	}
 }
 

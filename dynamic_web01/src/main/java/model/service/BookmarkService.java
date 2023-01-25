@@ -1,9 +1,12 @@
 package model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.dao.BookmarkDAO;
 import model.dto.BookmarkDTO;
+import paging.Paging;
 
 public class BookmarkService {
 
@@ -63,6 +66,22 @@ public class BookmarkService {
 		dao.rollback();
 		dao.close();
 		return false;
+	}
+                  //사용자별 정보를 얻기위해 dto 객체 필요
+	public Paging getPage(BookmarkDTO dto, int pageNumber, int cnt) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", (pageNumber -1) * cnt + 1);
+		map.put("end", (pageNumber * cnt));
+		map.put("userId", dto.getUserId());
+		
+		BookmarkDAO dao = new BookmarkDAO();
+		List<BookmarkDTO> data = dao.selectPage(map);
+		int count = dao.totalRowCount(dto); //사용자별 rowcount 다르기 때문에 dto 넘겨줌
+		int lastPageNumber = (count / cnt) + (count % cnt == 0 ? 0 : 1);
+		
+		Paging paging = new Paging(data, pageNumber, lastPageNumber, cnt, 5);
+		dao.close();
+		return paging;
 	}
 
 }
