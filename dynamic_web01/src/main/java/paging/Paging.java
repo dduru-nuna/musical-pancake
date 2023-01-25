@@ -15,14 +15,14 @@ public class Paging {
 	public Paging(Object data, int lastPageNumber) { //여기서는 기본 현재 페이지번호 1
 		this.data = data;
 		this.lastPageNumber = lastPageNumber;
-		setPageList();
+		setPageList();  //페이지 데이터와 마지막 페이지 번호만 알면 pageList 설정 가능
 	}
 	//실제 현재 페이지 설정 필요
 	public Paging(Object data, int currentPageNumber, int lastPageNumber) {
 		this(data, lastPageNumber);
 		this.currentPageNumber = currentPageNumber;
 	}
-	//실제 현제 페이지 설정 필요
+	//실제 현재 페이지 설정 필요
 	public Paging(Object data, int currentPageNumber, int lastPageNumber, int pageLimit, int listLimit) {
 		this(data, currentPageNumber, lastPageNumber);
 		this.pageLimit = pageLimit;
