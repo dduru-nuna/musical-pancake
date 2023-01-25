@@ -6,6 +6,7 @@ import java.util.Map;
 
 import model.dao.VisitDAO;
 import model.dto.VisitDTO;
+import paging.Paging;
 
 public class VisitService {
 
@@ -61,16 +62,19 @@ public class VisitService {
 		dao.rollback(); dao.close();
 		return false;
 	}
-	
-	public List<VisitDTO> getPage(int pageNumber, int cnt) {
+	                                       //목록 수
+	public Paging getPage(int pageNumber, int cnt) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", (pageNumber - 1) * cnt + 1);
 		map.put("end", (pageNumber * cnt));
 		
 		VisitDAO dao = new VisitDAO();
 		List<VisitDTO> data = dao.selectPage(map);
+		int count = dao.totalRowCount();
+		int lastPageNumber = (count / cnt) + (count % cnt == 0 ? 0 : 1);
+		Paging paging = new Paging(data, pageNumber, lastPageNumber, cnt, 5); //페이지 번호 제한 수 5로 지정했지만 변경하고 싶으면 변경하면됨
 		dao.close();
-		return data;
+		return paging;
 	}
 	
 	public int totalRow() {

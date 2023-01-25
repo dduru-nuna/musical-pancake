@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.dto.VisitDTO;
 import model.service.VisitService;
+import paging.Paging;
 
 /**
  * 방명록을 작성할 수 있는 기능을 제공하기 위한 Servlet
@@ -71,19 +72,10 @@ public class VisitController extends HttpServlet {
 		
 		VisitService service = new VisitService();
 	//	List<VisitDTO> data = service.getAll(); //조회해서 저장
-		List<VisitDTO> data = service.getPage(Integer.parseInt(p), cnt); //페이지,옵션 가져오기
-		int totalRow = service.totalRow();
-		int lastPageNumber = (totalRow / cnt) + (totalRow % cnt == 0 ? 0 : 1);
-		List<Integer> pageList = new ArrayList<Integer>();
-		for(int i = 1; i <= lastPageNumber; i++) {
-			pageList.add(i);
-		}
-			
+		Paging data = service.getPage(Integer.parseInt(p), cnt); //페이지번호, 목록수 가져오기
+					
 	//	req.setAttribute("data", "Hello"); //리스너 확인용
-		req.setAttribute("data", data); //request 객체에 setAttribute 로 저장하면 나중에 visit.jsp 주소에서 getAttribute("data")로 꺼내서 사용 가능
-		req.setAttribute("lastPageNumber", (totalRow / 10) + (totalRow % 10 == 0 ? 0 : 1)); // 전체행수/목록수 의 몫과 나머지 이용하여 마지막 페이지 번호 구하기//
-		req.setAttribute("pageList", pageList);
-		req.setAttribute("cnt", cnt);
+		req.setAttribute("paging", data);
 		req.getRequestDispatcher("/WEB-INF/view/visit.jsp").forward(req, resp);
 	//	req.removeAttribute("data"); //리스너 확인용
 	}

@@ -12,21 +12,23 @@ public class Paging {
 	private int pageLimit = 10;  //화면에 출력할 목록 제한 수 (초기값 10)
 	private int listLimit = 5;  //화면에 출력할 페이지 번호 제한 수 (초기값 5)
 	
-	public Paging(Object data, int lastPageNumber) { //여기서는 기본 현재 페이지번호 1
-		this.data = data;
-		this.lastPageNumber = lastPageNumber;
-		setPageList();  //페이지 데이터와 마지막 페이지 번호만 알면 pageList 설정 가능
+	public Paging(Object data, int lastPageNumber) { 
+		this(data, 1, lastPageNumber);
+		setPageList();
 	}
 	//실제 현재 페이지 설정 필요
 	public Paging(Object data, int currentPageNumber, int lastPageNumber) {
-		this(data, lastPageNumber);
+		this.data = data;
+		this.lastPageNumber = lastPageNumber;
 		this.currentPageNumber = currentPageNumber;
+		
 	}
 	//실제 현재 페이지 설정 필요
 	public Paging(Object data, int currentPageNumber, int lastPageNumber, int pageLimit, int listLimit) {
-		this(data, currentPageNumber, lastPageNumber);
+		this(data, currentPageNumber, lastPageNumber); //위에 있는 생성자 호출됨. 거기서 설정 후 pageLimit설정, listLimit설정 마지막에 setPageList 실행
 		this.pageLimit = pageLimit;
 		this.listLimit = listLimit;
+		setPageList();
 	}
 	
 	private void setPageList() {  //생성자 통해 생성할 때만 만들어지게 private
@@ -65,5 +67,13 @@ public class Paging {
 		int nextPage = currentPageNumber + 1;
 		//현재 페이지가 마지막 페이지라 다음 페이지가 없는 경우를 '-1' 로 반환(잘못된 요청임을 구분)
 		return nextPage > lastPageNumber ? -1 : nextPage;
+	}
+	
+	public int getLastPageNumber() {
+		return lastPageNumber;
+	}
+	
+	public int getPageLimit() {
+		return pageLimit;
 	}
 }	
