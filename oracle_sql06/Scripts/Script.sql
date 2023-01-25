@@ -58,3 +58,15 @@ SELECT * /*TOP N 분석으로 설정하고 다시 셀렉트해서 번호 찾기(
   )
  WHERE NUM BETWEEN 16 AND 20;  /*TOP N 분석 하지않고 중간 번호부터 조회할 순 없음*/
  
+ /*북마크용 TOPN 분석 */
+SELECT *
+  FROM(SELECT ROWNUM AS NUM
+            , id, userid, url, name
+         FROM (SELECT *
+                 FROM BOOKMARK_T
+                WHERE userId = 'aaaa'
+                ORDER BY ID)
+  )
+ WHERE NUM BETWEEN 4 AND 6;
+ 
+SELECT COUNT(*) FROM BOOKMARK_T WHERE USERID = 'aaaa';
