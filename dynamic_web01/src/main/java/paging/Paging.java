@@ -35,6 +35,8 @@ public class Paging {
 		// 현재 페이지 번호, 마지막 페이지 번호, 페이지 번호 제한 수 를 이용하여 페이지 번호 목록 생성
 		// 현재 페이지 번호 : 1, 마지막 페이지 번호 : 10, 페이지 번호 제한 : 5 => [1,2,3,4,5]
 		// 현재 페이지 번호 : 7, 마지막 페이지 번호 : 10, 페이지 번호 제한 : 5 => [7,8,9,10]
+		
+		/*
 		this.pageList = new ArrayList<Integer>();
 		int max = this.currentPageNumber + this.listLimit - 1;
 		if(max > this.lastPageNumber) {
@@ -43,6 +45,24 @@ public class Paging {
 		for(int i = this.currentPageNumber; i <= max; i++) {
 			pageList.add(i);
 		}
+		*/
+		//활성화 페이지 가운데 배치
+		int start = 1;
+		int end = listLimit;
+		if(currentPageNumber > (listLimit / 2)) {
+			start = currentPageNumber - (listLimit / 2);
+		}
+		end = start + listLimit - 1;
+		
+		if(end > lastPageNumber) {
+			end = lastPageNumber;
+		}
+		
+		this.pageList = new ArrayList<Integer>();
+		for(int i = start; i <= end; i++) {
+			pageList.add(i);
+		}
+		
 	}
 	
 	public List<Integer> getPageList() {
