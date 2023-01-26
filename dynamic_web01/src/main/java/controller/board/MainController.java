@@ -26,7 +26,7 @@ public class MainController extends HttpServlet {
 		
 		BoardService service = new BoardService();
 		Paging data = service.getPage(pageNumber, pageLimit);
-		System.out.println(data.getData());
+
 		req.setAttribute("paging", data);
 		req.getRequestDispatcher("/WEB-INF/view/board/main.jsp").forward(req, resp);
 	}
