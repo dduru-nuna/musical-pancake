@@ -16,14 +16,14 @@ public class Paging {
 		this(data, 1, lastPageNumber);
 		setPageList();
 	}
-	//실제 현재 페이지 설정 필요
+	
 	public Paging(Object data, int currentPageNumber, int lastPageNumber) {
 		this.data = data;
 		this.lastPageNumber = lastPageNumber;
 		this.currentPageNumber = currentPageNumber;
 		
 	}
-	//실제 현재 페이지 설정 필요
+	
 	public Paging(Object data, int currentPageNumber, int lastPageNumber, int pageLimit, int listLimit) {
 		this(data, currentPageNumber, lastPageNumber); //위에 있는 생성자 호출됨. 거기서 설정 후 pageLimit설정, listLimit설정 마지막에 setPageList 실행
 		this.pageLimit = pageLimit;
