@@ -18,6 +18,15 @@
 		<h1>게시글 목록 페이지</h1>
 	</div>
 	<div>
+		<form action="${boardUrl }">
+			<select name="c" onchange="submit();">
+				<c:forEach var="size" begin="5" end="30" step="5">
+					<option value="${size }" ${requestScope.paging.pageLimit eq size ? "selected" : "" }>${size }개</option>
+				</c:forEach>
+			</select>
+		</form>
+	</div>
+	<div>
 		<table>
 			<thead>
 				<tr>
@@ -32,7 +41,7 @@
 				<c:forEach var="data" items="${requestScope.paging.data }">
 					<tr>
 						<td>${data.btype eq "N" ? "공지" : data.id }</td>
-						<td>${data.title }</td>
+						<td><a href="${boardUrl }/detail?id=${data.id }">${data.title }</a></td>
 						<td>${data.writer }</td>
 						<td>${data.createDate }</td>
 						<td>${data.viewCnt }</td>
