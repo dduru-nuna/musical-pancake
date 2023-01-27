@@ -22,6 +22,36 @@ public class BoardDAO {
 		return count;
 	}
 	
+	public BoardDTO selectData(BoardDTO dto) {
+		BoardDTO data = session.selectOne("boardMapper.selectData", dto);
+		return data;
+	}
+	
+	public int updateViewCnt(BoardDTO dto) {
+		int count = session.update("boardMapper.updateViewCnt", dto);
+		return count;
+	}
+	
+	public int selectNextSeq() {
+		int seq = session.selectOne("boardMapper.selectNextSeq");
+		return seq;
+	}
+	
+	public int insert(BoardDTO dto) {
+		int count = session.insert("boardMapper.insert", dto);
+		return count;
+	}
+	
+	public int update(BoardDTO dto) {
+		int count = session.update("boardMapper.update", dto);
+		return count;
+	}
+	
+	public int delete(BoardDTO dto) {
+		int count = session.delete("boardMapper.delete", dto);
+		return count;
+	}
+	
 	public void commit() {
 		session.commit();
 	}
@@ -33,4 +63,5 @@ public class BoardDAO {
 	public void close() {
 		session.close();
 	}
+
 }
