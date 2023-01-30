@@ -15,4 +15,8 @@
 		     , email = #{email}
 		 WHERE userId = #{userId}
 	</update>
+	<select id="selectRole" parameterType="model.dto.UserDTO" resultType="model.dto.Role">
+		SELECT rtype AS type FROM ROLE_T WHERE userid = #{userId}
+		<!-- 별칭 부여하여 Role 객체의 변수명과 일치시킴 -->
+	</select>
 </mapper>

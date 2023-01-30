@@ -31,6 +31,11 @@ public class AddController extends HttpServlet {
 		dto.setContext(context);
 		dto.setWriter(((UserDTO)session.getAttribute("user")).getUserId());
 		dto.setBtype("B");
+		if(req.getParameter("notice") != null) {  //공지사항 체크박스가 체크되어 있으면 글 타입을 N(공지) 으로 설정 
+			if(req.getParameter("notice").equals("yes")) {
+				dto.setBtype("N");			
+			}
+		}
 		
 		BoardService service = new BoardService();
 		boolean result = service.add(dto);

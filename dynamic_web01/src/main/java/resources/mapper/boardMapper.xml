@@ -42,4 +42,10 @@
   	<delete id="delete" parameterType="model.dto.BoardDTO">
   		DELETE FROM BOARD_T WHERE id = #{id}
   	</delete>
+  	<delete id="checkedDelete" parameterType="list">
+  		DELETE FROM BOARD_T WHERE id IN 
+  		<foreach item="id" open="(" close=")" separator="," collection="">
+  			#{id}
+  		</foreach>
+  	</delete>
 </mapper>

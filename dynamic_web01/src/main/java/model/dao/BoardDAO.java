@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +50,12 @@ public class BoardDAO {
 	
 	public int delete(BoardDTO dto) {
 		int count = session.delete("boardMapper.delete", dto);
+		return count;
+	}
+	
+	public int delete(int[] arrId) {
+		List<Integer> list = Arrays.
+		int count = session.delete("boardMapper.checkedDelete", arrId);
 		return count;
 	}
 	

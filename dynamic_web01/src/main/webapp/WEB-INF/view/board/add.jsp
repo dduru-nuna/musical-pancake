@@ -28,6 +28,12 @@
 				<label>내용</label>
 				<textarea name="context"></textarea>
 			</div>
+			<c:if test="${sessionScope.role.type eq 'ADMIN' }">
+				<div>
+					<label>공지사항</label>
+					<input type="checkbox" name="notice" value="yes">
+				</div>
+			</c:if>
 			<div>
 				<button type="submit">저장</button>
 				<button type="button" onclick="history.back();">취소</button> <%--back() : 뒤로가기 (자바스크립트기능) --%>

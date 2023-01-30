@@ -1,6 +1,7 @@
 package model.service;
 
 import model.dao.UserDAO;
+import model.dto.Role;
 import model.dto.UserDTO;
 
 public class UserService {
@@ -61,6 +62,13 @@ public class UserService {
 		dao.rollback();
 		dao.close();
 		return false;
+	}
+
+	public Role getRole(UserDTO dto) {
+		UserDAO dao = new UserDAO();
+		Role role = dao.selectRole(dto);
+		dao.close();
+		return role;
 	}
 
 }

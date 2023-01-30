@@ -16,5 +16,6 @@
 		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
 	</div>
 	<h1>Hello JSP/Servlet</h1>
+	<p>${sessionScope.role.type }</p>
 </body>
 </html>

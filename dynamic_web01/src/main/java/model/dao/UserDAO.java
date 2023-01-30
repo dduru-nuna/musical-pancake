@@ -3,6 +3,7 @@ package model.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import database.connect.OracleConnection;
+import model.dto.Role;
 import model.dto.UserDTO;
 
 public class UserDAO {
@@ -34,5 +35,10 @@ public class UserDAO {
 	public int update(UserDTO dto) {
 		int count = session.update("userMapper.update", dto);
 		return count;
+	}
+
+	public Role selectRole(UserDTO dto) {
+		Role data = session.selectOne("userMapper.selectRole", dto);
+		return data;
 	}
 }

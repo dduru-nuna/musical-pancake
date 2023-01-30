@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.dto.Role;
 import model.dto.UserDTO;
 import model.service.UserService;
 
@@ -69,6 +70,8 @@ public class LoginController extends HttpServlet{
 			HttpSession session = req.getSession();
 		//	session.setAttribute("login", true);   userDTO에 바인딩 설정해놔서 빼놓음
 			session.setAttribute("user", userData); //세션의 user 라는 속성명이 login return 값 data를 가지게 함.
+			Role role = service.getRole(userData);
+			session.setAttribute("role", role); 
 			
 			if(remember != null) { //로그인 성공하고 아이디기억하기 체크 했을 때 쿠키 생성
 				cookie.setMaxAge(60 * 60 * 24 * 5); //5일간 저장
