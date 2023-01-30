@@ -8,11 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록 페이지</title>
-<c:url var="staticUrl" value="/static" />
-<link type="text/css" rel="stylesheet" href="${staticUrl }/bs5/css/bootstrap.min.css">
-<script type="text/javascript" src="${staticUrl }/bs5/js/bootstrap.bundle.min.js"></script>
+<%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
 </head>
 <body>
+	<div>
+		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
+	</div>
 	<c:url var="boardUrl" value="/board" />
 	<div>
 		<h1>게시글 목록 페이지</h1>
@@ -56,27 +57,8 @@
 		</table>
 	</div>
 	<div>
-		<ul class="pagination">
-			<c:choose>
-				<c:when test="${requestScope.paging.prevPageNumber eq -1 }">
-					<li class="page-item disabled"><a class="page-link">prev</a></li>	
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="${boardUrl }?p=${requestScope.paging.prevPageNumber }">prev</a></li>
-				</c:otherwise>
-			</c:choose>
-			<c:forEach var="num" items="${requestScope.paging.pageList }">
-				<li class="page-item ${requestScope.paging.currentPageNumber eq num ? 'active' : '' }"><a class="page-link" href="${boardUrl }?p=${num }">${num }</a></li>
-			</c:forEach>
-			<c:choose>
-				<c:when test="${requestScope.paging.nextPageNumber eq -1 }"> 
-					<li class="page-item disabled"><a class="page-link">next</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="${boardUrl }?p=${requestScope.paging.nextPageNumber }">next</a></li>
-				</c:otherwise>
-			</c:choose>
-		</ul>
+		<c:set var="pagingUrl" value="${boardUrl }" />
+		<%@ include file="/WEB-INF/view/module/paging.jsp" %>
 	</div>	
 </body>
 </html>
