@@ -67,10 +67,21 @@ public class BoardService {
 		return false;
 	}
 
-	public int delete(int[] arrId) {
+	public boolean delete(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.delete(dto);
+		if(count == 1) {
+			dao.commit(); dao.close();
+			return true;
+		}
+		dao.rollback(); dao.close();
+		return false;
+	}
+	
+	public int delete(List<Integer> arrId) {
 		BoardDAO dao = new BoardDAO();
 		int count = dao.delete(arrId);
-		if(count <= arrId.length) {
+		if(count <= arrId.size()) {
 			dao.commit(); dao.close();
 			return count;
 		}

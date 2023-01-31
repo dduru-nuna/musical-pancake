@@ -1,7 +1,9 @@
 package controller.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -55,9 +57,9 @@ public class DeleteController extends HttpServlet {
 		String[] ids = req.getParameterValues("chk_id");
 		if(((Role)session.getAttribute("role")).isAdmin()) {
 			BoardService service = new BoardService();
-			int[] arrId = new int[ids.length];
+			List<Integer> arrId = new ArrayList<>();
 			for(int i = 0; i < ids.length; i++) {
-				arrId[i] = Integer.parseInt(ids[i]);
+				arrId.add(Integer.parseInt(ids[i]));
 			}
 			service.delete(arrId);
 		}

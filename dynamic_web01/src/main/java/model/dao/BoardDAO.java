@@ -53,8 +53,7 @@ public class BoardDAO {
 		return count;
 	}
 	
-	public int delete(int[] arrId) {
-		List<Integer> list = Arrays.
+	public int delete(List<Integer> arrId) {
 		int count = session.delete("boardMapper.checkedDelete", arrId);
 		return count;
 	}

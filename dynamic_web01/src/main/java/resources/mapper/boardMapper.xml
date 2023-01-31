@@ -44,7 +44,7 @@
   	</delete>
   	<delete id="checkedDelete" parameterType="list">
   		DELETE FROM BOARD_T WHERE id IN 
-  		<foreach item="id" open="(" close=")" separator="," collection="">
+  		<foreach item="id" open="(" close=")" separator="," collection="list">
   			#{id}
   		</foreach>
   	</delete>
