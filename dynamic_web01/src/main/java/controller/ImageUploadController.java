@@ -13,8 +13,8 @@ import jakarta.servlet.http.Part;
 @WebServlet("/myinfo/uploadImage")
 @MultipartConfig(
 		location = "D:/imageTemp",
-		maxFileSize = 1024 * 1024 * 5,
-		maxRequestSize = 1024 * 1024 * 5,
+		maxFileSize = 1024 * 1024 * 10,
+		maxRequestSize = 1024 * 1024 * 50,
 		fileSizeThreshold = 1024
 )
 public class ImageUploadController extends HttpServlet {
@@ -23,5 +23,6 @@ public class ImageUploadController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Part imageFile = req.getPart("imageFile");
 		System.out.println(imageFile.getSubmittedFileName());
+		imageFile.write("D:\\imageTemp\\"+imageFile.getSubmittedFileName());
 	}
 }
