@@ -11,7 +11,7 @@
   	<url-pattern>/main</url-pattern>
   </servlet-mapping -->
   
-   <servlet>
+  <servlet>
   	<servlet-name>visitController</servlet-name>
   	<servlet-class>controller.VisitController</servlet-class>
   </servlet>
@@ -100,6 +100,23 @@
   	<servlet-name>MyinfoController</servlet-name>
   	<url-pattern>/myinfo</url-pattern>
   </servlet-mapping>
+  
+  <!--  파일 업로드 web.xml 작성법
+  <servlet>
+  	<servlet-name>imageUploadController</servlet-name>
+  	<servlet-class>controller.ImageUploadController</servlet-class>
+  	<multipart-config>
+  		<location>D:/imageTemp</location>  이미지가 업로드될 임시 저장 경로 
+   		<max-file-size>1048576</max-file-size>  단일 파일 이미지 제한 크기(바이트단위크기)
+  		<max-request-size>1048576</max-request-size>  요청에 대한 전체 크기. 제한 두고 싶지 않으면 -1 작성 
+  		<file-size-threshold>1024</file-size-threshold>  파일은 메모리에 먼저 저장되는데 여기서 설정한 크기를 넘어가면 location(임시저장경로)에 저장된다. 작성하지 않으면 메모리상에 남아지게됨 
+  	</multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>imageUploadController</servlet-name>
+  	<url-pattern>/myinfo/uploadImage</url-pattern>
+  </servlet-mapping>
+  -->
   
   <!--
   <listener>        패키지명.클래스명
