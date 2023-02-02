@@ -4,10 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userMapper">
 	<insert id="insert" parameterType="model.dto.UserDTO">
-		INSERT INTO USER_T VALUES(#{userId}, #{password}, #{email})
+		INSERT INTO USER_T VALUES(#{userId}, #{password}, #{email}, DEFAULT)
 	</insert>
 	<select id="selectUser" parameterType="model.dto.UserDTO" resultType="model.dto.UserDTO">
-		SELECT userId, password, email FROM USER_T WHERE userId = #{userId}
+		SELECT userId, password, email, pImg FROM USER_T WHERE userId = #{userId}
 	</select>
 	<update id="update" parameterType="model.dto.UserDTO">
 		UPDATE USER_T
@@ -19,4 +19,9 @@
 		SELECT rtype AS type FROM ROLE_T WHERE userid = #{userId}
 		<!-- 별칭 부여하여 Role 객체의 변수명과 일치시킴 -->
 	</select>
+	<update id="updateImage" parameterType="model.dto.UserDTO">
+		UPDATE USER_T
+		   SET pImg = #{pImg}
+		 WHERE userId = #{userId}
+	</update>
 </mapper>
