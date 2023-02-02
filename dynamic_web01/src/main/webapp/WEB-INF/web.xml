@@ -135,6 +135,16 @@
   </filter-mapping>
   -->
   
+  <!--error-page> 프로젝트 완료 후 배포할 때 필요한 에러페이지 만들기
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/view/error/404.jsp</location>
+  </error-page-->
+  
+  <!--error-page>
+  	<exception-type>java.io.IOException</exception-type>
+  	<location>/WEB-INF/view/error/IOException.jsp</location>
+  </error-page-->
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
