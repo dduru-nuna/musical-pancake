@@ -45,9 +45,14 @@ CREATE TABLE USER_T(
   , PASSWORD VARCHAR2(20) NOT NULL
   , EMAIL VARCHAR2(100)
 );
+                       /*이미지 경로를 받는거니 varchar2 가 맞음*/
+ALTER TABLE USER_T ADD pImg VARCHAR2(250) DEFAULT '/static/img/profile/default.png';
 
 SELECT * FROM USER_T;
 
+UPDATE USER_T
+   SET pImg = '/static/img/profile/dduru.jpg'
+ WHERE userId = 'aaaa';
 
 SELECT * /*TOP N 분석으로 설정하고 다시 셀렉트해서 번호 찾기(정렬 해주기)*/
   FROM(SELECT ROWNUM AS NUM  
