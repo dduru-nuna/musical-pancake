@@ -140,7 +140,7 @@
   	<location>/WEB-INF/view/error/404.jsp</location>
   </error-page-->
   
-  <!--error-page>
+  <!--error-page> 오류 화면의 '예외' 바로 밑에 있는 exception-type을 설정
   	<exception-type>java.io.IOException</exception-type>
   	<location>/WEB-INF/view/error/IOException.jsp</location>
   </error-page-->
