@@ -41,4 +41,9 @@ public class UserDAO {
 		Role data = session.selectOne("userMapper.selectRole", dto);
 		return data;
 	}
+
+	public int updateImage(UserDTO user) {
+		int count = session.update("userMapper.updateImage", user);
+		return count;
+	}
 }

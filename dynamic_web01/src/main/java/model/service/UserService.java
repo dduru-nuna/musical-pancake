@@ -71,4 +71,14 @@ public class UserService {
 		return role;
 	}
 
+	public boolean uploadImage(UserDTO user) {
+		UserDAO dao = new UserDAO();
+		int count = dao.updateImage(user);
+		if(count == 1) {
+			dao.commit(); dao.close();
+			return true;
+		}
+		dao.rollback(); dao.close();
+		return false;
+	}
 }

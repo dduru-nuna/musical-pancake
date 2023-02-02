@@ -9,7 +9,14 @@ public class UserDTO implements HttpSessionBindingListener {
 	private String userId;
 	private String password;
 	private String email;
+	private String pImg;
 	
+	public String getpImg() {
+		return pImg;
+	}
+	public void setpImg(String pImg) {
+		this.pImg = pImg;
+	}
 	public String getUserId() {
 		return userId;
 	}
