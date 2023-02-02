@@ -14,7 +14,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		function previewImage(element) {
+		function previewImage(element) {  <!--사용자가 선택한 이미지 보여주는 메서드-->
 			console.log(element);
 			console.log(element.files);
 			var preview = document.getElementById("preview");
@@ -26,13 +26,14 @@
 		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
 	</div>
 	<h1>개인 정보 수정</h1>
-	<c:url var="myinfoUrl" value="/myinfo" />             <!-- 파일 업로드를 위해선 반드시 작성. type=file 인 경우도 무조건 작성 -->
+	<c:url var="myinfoUrl" value="/myinfo" />             <!-- 파일 업로드를 위해선 반드시 작성.-->
 	<form action="${myinfoUrl }/uploadImage" method="post" enctype="multipart/form-data">
-		<div style="border-style: solid; board-color: black; width: 150px; height: 150px;">
-			<img id="preview" alt="여기에 이미지가 표시됩니다." width="150px" height="150px">
+		<div>
+			<c:url var="imgUrl" value="${sessionScope.user.pImg }" />
+			<img id="preview" src="${imgUrl }" alt="여기에 이미지가 표시됩니다." width="150px" height="150px">
 		</div>
-		<label>이미지 선택</label>             <!-- accept 에 파일종류.확장자 설정하여 파일선택 제한 걸 수 있음 (절대적인 제한은 아님) -->
-		<input type="file" name="imageFile" onchange="previewImage(this);" accept="image/*"> 
+		<label>이미지 선택</label>             <!-- accept 에 파일종류.확장자 설정하여 파일선택 제한 걸 수 있음 (절대적인 제한은 아님), multiple 속성 적용하면 여러 파일 업로드 가능 -->
+		<input type="file" name="imageFile" onchange="previewImage(this);" accept="image/*" multiple> <!-- input 타입 file 로 지정 -->
 		<div>
 			<button type="submit">전송</button>
 		</div>
