@@ -130,7 +130,10 @@ INSERT INTO BOARD_T VALUES(BOARD_S.NEXTVAL, 'B', '일반 게시글 테스트 12'
                            , DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO BOARD_T VALUES(BOARD_S.NEXTVAL, 'B', '일반 게시글 테스트 13', 'aaaa', '게시글 테스트 중입니다. 13'
                            , DEFAULT, DEFAULT, DEFAULT);
-                           
+
+ALTER TABLE BOARD_T ADD good NUMBER DEFAULT(0);
+ALTER TABLE BOARD_T ADD bad NUMBER DEFAULT(0);
+                          
 SELECT * FROM BOARD_T;  
 
 SELECT id, btype, title, writer, createDate, viewCnt
