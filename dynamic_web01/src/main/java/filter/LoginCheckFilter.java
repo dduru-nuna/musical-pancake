@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter({"/bookmark", "/myinfo", "/bookmark/*", "/board/add", "/board/update", "/board/delete"})
+@WebFilter({"/bookmark", "/myinfo", "/bookmark/*", "/board/add", "/board/update", "/board/delete", "/board/clickGood", "/board/clickBad"})
 public class LoginCheckFilter implements Filter {
 
 	@Override

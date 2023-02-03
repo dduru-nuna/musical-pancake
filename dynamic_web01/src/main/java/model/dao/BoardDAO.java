@@ -70,4 +70,24 @@ public class BoardDAO {
 		session.close();
 	}
 
+	public int upGoodCnt(BoardDTO dto) {
+		int count = session.update("boardMapper.upGoodCnt", dto);
+		return count;
+	}
+
+	public int upBadCnt(BoardDTO dto) {
+		int count = session.update("boardMapper.upBadCnt", dto);
+		return count;
+	}
+
+	public int downGoodCnt(BoardDTO dto) {
+		int count = session.update("boardMapper.downGoodCnt", dto);
+		return count;
+	}
+
+	public int downBadCnt(BoardDTO dto) {
+		int count = session.update("boardMapper.downBadCnt", dto);
+		return count;
+	}
+
 }

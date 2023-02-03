@@ -89,4 +89,44 @@ public class BoardService {
 		return -1;
 	}
 
+	public boolean upGood(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.upGoodCnt(dto);
+		if(count == 1) {
+			dao.commit(); dao.close();
+			return true;
+		}
+		dao.rollback(); dao.close();
+		return false;
+	}
+
+	public boolean upBad(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.upBadCnt(dto);
+		if(count == 1) {
+			dao.commit(); dao.close();
+			return true;
+		}
+		dao.rollback(); dao.close();
+		return false;
+	}
+
+	public void downGood(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.downGoodCnt(dto);
+		if(count == 1) {
+			dao.commit(); dao.close();
+		}
+		dao.rollback(); dao.close();
+	}
+
+	public void downBad(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		int count = dao.downBadCnt(dto);
+		if(count == 1) {
+			dao.commit(); dao.close();
+		}
+		dao.rollback(); dao.close();
+	}
+
 }

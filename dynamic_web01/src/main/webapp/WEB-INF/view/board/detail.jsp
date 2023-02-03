@@ -11,6 +11,7 @@
 <%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
 </head>
 <body>
+	<c:url var="boardUrl" value="/board" />
 	<div>
 		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
 	</div>
@@ -29,7 +30,12 @@
 		<p>${requestScope.data.context }</p>
 	</div>
 	<div>
-		<c:url var="boardUrl" value="/board" />
+		<button class="btn btn-primary" onclick="location.href='${boardUrl }/clickGood?id=${requestScope.data.id }'">
+		추천 ${requestScope.data.good }</button>		
+		<button class="btn btn-danger" onclick="location.href='${boardUrl }/clickBad?id=${requestScope.data.id }'">
+		비추천 ${requestScope.data.bad }</button>
+	</div>
+	<div>
 		<button onclick="location.href='${boardUrl}'">목록</button>
 		<c:if test="${sessionScope.login }">
 			<c:if test="${sessionScope.user.userId eq requestScope.data.writer }">
