@@ -30,6 +30,14 @@
 		<p>${requestScope.data.context }</p>
 	</div>
 	<div>
+		<ul>
+			<c:forEach var="image" items="${requestScope.images }">
+				<c:url var="imagePath" value="${image.path }/${image.name }" />
+				<li><a href="${imagePath }" download>${image.name }</a></li>
+			</c:forEach>
+		</ul>
+	</div>
+	<div>
 		<button class="btn btn-primary" onclick="location.href='${boardUrl }/clickGood?id=${requestScope.data.id }'">
 		추천 ${requestScope.data.good }</button>		
 		<button class="btn btn-danger" onclick="location.href='${boardUrl }/clickBad?id=${requestScope.data.id }'">
