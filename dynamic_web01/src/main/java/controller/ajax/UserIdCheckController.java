@@ -26,7 +26,7 @@ public class UserIdCheckController extends HttpServlet{
 		//사용자가 입력한 아이디가 기존에 있는 아이디인지 아닌지 확인
 		String json = "{";
 		if(data == null) {
-			json += "\"msg\": \"OK\""; //json에서 문자열은 "" 안에 넣어야하니 escape 필요			
+			json += "\"msg\": \"OK\""; //json에서 (키: 문자열) 형식 "" 을 사용해야 하니 escape 필요			
 		} else {
 			json += "\"msg\": \"Fail\"";
 		}

@@ -18,6 +18,7 @@
 	<c:url var="userIdCheck" value="/ajax/userIdCheck" />
 	<script type="text/javascript">
 		valid = false;
+		//element(input태그) 옆이 비어있으면 span 을 추가하고 있으면 그대로 사용
 		function usernameCheck(element) {
 			if(element.nextElementSibling === null) {
 				var s = document.createElement("span");
@@ -25,16 +26,17 @@
 			} else {
 				var s = element.nextElementSibling;
 			}
+			//Ajax 사용
 			$.ajax({
 				type: "get",  //get 또는 post 로 서버에 요청을 구분하여 보내기 위해 사용
-				url: "${userIdCheck }",   //서버 url 주소. controller에 맵팽된 주소
+				url: "${userIdCheck }",   //서버 url 주소. controller에 맵핑된 주소
 				data: {   //서버에 전송할 데이터
 					userId: element.value  //사용자가 입력한 아이디값
 				},  
 				dataType: "json",  //서버에서 응답하는 데이터 종류(json, xml, html, text) (예상되는 형식)
 				success: function(data) {  //성공적으로 응답이 왔을 때 동작하는 함수
 					console.log("응답이 성공적으로 왔습니다.");
-					if(data.msg === "OK") {
+					if(data.msg === "OK") {  //응답되는 data 객체에 json으로 설정한 키msg
 						s.style = "color: green;";
 						s.innerText = "사용 가능한 아이디 입니다."
 					} else if(data.msg === "Fail") {
@@ -51,6 +53,7 @@
 				complete: function(data) {  //응답이 success,error 상관없이 동작이 필요할 때 사용하는 함수
 					console.log("서버로부터 응답이 왔습니다. 성공/실패를 구분하지 않음");
 				}
+				//success는 거의 필수적으로 사용되나 error,complete는 반드시 필요한 것은 아님
 			});
 		}
 		
