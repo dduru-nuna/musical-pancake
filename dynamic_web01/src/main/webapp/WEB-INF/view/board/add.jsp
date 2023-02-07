@@ -11,6 +11,14 @@
 <%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
 </head>
 <body>
+	<script type="text/javascript">
+		function imageValid(element) {
+			if(element.files.length > 3) {
+				alert('이미지는 3개 까지만 선택할 수 있습니다.');
+				element.value = "";
+			}
+		}
+	</script>
 	<div>
 		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
 	</div>
@@ -19,7 +27,7 @@
 	</div>
 	<div>
 		<c:url var="boardAddUrl" value="/board/add" />
-		<form action="${boardAddUrl }" method="post">
+		<form action="${boardAddUrl }" method="post" enctype="multipart/form-data">
 			<div>
 				<label>제목</label>
 				<input type="text" name="title">
@@ -27,6 +35,10 @@
 			<div>
 				<label>내용</label>
 				<textarea name="context"></textarea>
+			</div>
+			<div>
+				<label>이미지 업로드</label>
+				<input type="file" onchange="imageValid(this);" name="imageUpload" accept="image/*" multiple>
 			</div>
 			<c:if test="${sessionScope.role.type eq 'ADMIN' }">
 				<div>
@@ -36,7 +48,7 @@
 			</c:if>
 			<div>
 				<button type="submit">저장</button>
-				<button type="button" onclick="history.back();">취소</button> <%--back() : 뒤로가기 (자바스크립트기능) --%>
+				<button type="button" onclick="history.back();">취소</button> <%--history.back() : 뒤로가기 (자바스크립트기능) --%>
 			</div>
 		</form>
 	</div>

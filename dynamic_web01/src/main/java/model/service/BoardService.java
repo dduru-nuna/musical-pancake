@@ -6,6 +6,7 @@ import java.util.Map;
 
 import model.dao.BoardDAO;
 import model.dto.BoardDTO;
+import model.dto.BoardImageDTO;
 import paging.Paging;
 
 public class BoardService {
@@ -43,12 +44,16 @@ public class BoardService {
 		return false;
 	}
 
-	public boolean add(BoardDTO dto) {
+	public boolean add(BoardDTO dto, List<BoardImageDTO> boardImageList) {
 		BoardDAO dao = new BoardDAO();
 		int id = dao.selectNextSeq();
 		dto.setId(id);
 		int count = dao.insert(dto);
 		if(count == 1) {
+			for(BoardImageDTO image: boardImageList) {
+				image.setBoardId(id);
+				dao.insertImage(image);
+			}
 			dao.commit(); dao.close();
 			return true;
 		}
@@ -129,4 +134,10 @@ public class BoardService {
 		dao.rollback(); dao.close();
 	}
 
+	public List<BoardImageDTO> getImages(BoardDTO dto) {
+		BoardDAO dao = new BoardDAO();
+		List<BoardImageDTO> data = dao.selectImages(dto);
+		dao.close();
+		return data;
+	}
 }

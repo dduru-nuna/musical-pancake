@@ -68,4 +68,10 @@
   		   SET bad = bad - 1
   		 WHERE id = #{id}
   	</update>
+  	<insert id="insertImage" parameterType="model.dto.BoardImageDTO">
+  		INSERT INTO BOARD_IMG_T VALUES(BOARD_IMG_S.NEXTVAL, #{boardId}, #{path}, #{name})
+  	</insert>
+  	<select id="selectImage" parameterType="model.dto.BoardDTO" resultType="model.dto.BoardImageDTO">
+  		SELECT id, boardId, path, name FROM BOARD_IMG_T WHERE boardId = #{id}
+  	</select>
 </mapper>
