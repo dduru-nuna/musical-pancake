@@ -1,10 +1,12 @@
 package controller.board;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.dto.BoardDTO;
+import model.dto.BoardImageDTO;
 import model.dto.Role;
 import model.dto.UserDTO;
 import model.service.BoardService;
@@ -21,6 +24,7 @@ public class DeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServletContext sc = req.getServletContext();
 		HttpSession session = req.getSession();
 		UserDTO user = (UserDTO)session.getAttribute("user");
 		
@@ -32,12 +36,29 @@ public class DeleteController extends HttpServlet {
 		BoardService service = new BoardService();
 		BoardDTO data = service.getData(dto);
 		
+				
+		List<BoardImageDTO> imageList = service.getImages(dto);		
+		
 		if(((Role)session.getAttribute("role")).isAdmin()) {
 			boolean result = service.delete(data);
+			
+			for(BoardImageDTO image: imageList) {
+				String realPath = sc.getRealPath(image.getPath());
+				//file에 절대경로 적어서 delete 하면 삭제 가능 
+				File f = new File(realPath + image.getName());
+				f.delete();
+			}
 			resp.sendRedirect(req.getContextPath() + "/board");
 		} else {
 			if(data.getWriter().equals(user.getUserId())) {
 				boolean result = service.delete(data);
+				
+				for(BoardImageDTO image: imageList) {
+					String realPath = sc.getRealPath(image.getPath());
+					File f = new File(realPath + image.getName());
+					f.delete();
+				}
+				
 				if(result) {
 					resp.sendRedirect(req.getContextPath() + "/board");
 				} else {
@@ -46,7 +67,6 @@ public class DeleteController extends HttpServlet {
 			} else {
 				resp.sendRedirect(req.getContextPath() + "/error");
 			}
-		
 		}
 	}
 	
