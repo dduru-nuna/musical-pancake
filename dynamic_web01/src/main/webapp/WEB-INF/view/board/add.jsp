@@ -19,7 +19,7 @@
 	</div>
 	<div>
 		<c:url var="boardAddUrl" value="/board/add" />
-		<form action="${boardAddUrl }" method="post">
+		<form action="${boardAddUrl }" method="post" enctype="multipart/form-data">
 			<div>
 				<label>제목</label>
 				<input type="text" name="title">
@@ -27,6 +27,10 @@
 			<div>
 				<label>내용</label>
 				<textarea name="context"></textarea>
+			</div>
+			<div>
+				<label>첨부파일</label>
+				<input type="file" name="imgFile" accept="image/*" multiple>
 			</div>
 			<c:if test="${sessionScope.role.type eq 'ADMIN' }">
 				<div>

@@ -22,7 +22,7 @@
 		<fmt:formatDate var="createDate" type="both" pattern="yyyy년 MM월 dd일 EEEE a KK시 mm분 ss초" value="${requestScope.data.createDate }" />
 		<fmt:formatDate var="updateDate" type="both" pattern="yyyy년 MM월 dd일 EEEE a KK시 mm분 ss초" value="${requestScope.data.updateDate }" />
 		작성자: ${requestScope.data.writer }<br>
-		작성일: ${createDate } |
+		작성일: ${createDate } <br>
 		수정일: ${updateDate } <br>
 		조회수: ${requestScope.data.viewCnt }
 	</div>
