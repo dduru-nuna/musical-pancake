@@ -164,7 +164,7 @@ SELECT * FROM ROLE_T;
 CREATE TABLE BOARD_IMG_T(
     id NUMBER PRIMARY KEY
   , boardId NUMBER REFERENCES BOARD_T(id)
-  , pathImg VARCHAR2(500)  /*업로드한 이미지의 경로만 저장*/
+  , path VARCHAR2(500)  /*업로드한 이미지의 경로만 저장*/
   , name VARCHAR2(250)     /*업로드한 이미지의 파일명,확장자만 저장*/
   , uuid VARCHAR2(50)
 );
