@@ -6,7 +6,14 @@ public class BoardImageDTO {
 	private int boardId;
 	private String path;
 	private String name;
+	private String uuid;
 	
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	public int getId() {
 		return id;
 	}
@@ -34,7 +41,8 @@ public class BoardImageDTO {
 	
 	@Override
 	public String toString() {
-		return "BoardImageDTO [id=" + id + ", boardId=" + boardId + ", path=" + path + ", name=" + name + "]";
+		return "BoardImageDTO [id=" + id + ", boardId=" + boardId + ", path=" + path + ", name=" + name + ", uuid="
+				+ uuid + "]";
 	}	
 	
 }

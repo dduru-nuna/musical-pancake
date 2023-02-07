@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +24,10 @@ import model.dto.UserDTO;
 import model.service.BoardService;
 
 @WebServlet("/board/add")
+@MultipartConfig(
+		location = "D:/imageTemp",
+		fileSizeThreshold = 1024
+)
 public class AddController extends HttpServlet {
 
 	@Override
@@ -60,6 +66,7 @@ public class AddController extends HttpServlet {
 			f.mkdirs();
 		}
 		
+		
 		Collection<Part> parts = req.getParts();
 		List<BoardImageDTO> boardImageList = new ArrayList<BoardImageDTO>();
 		for(Part part: parts) {
@@ -68,10 +75,13 @@ public class AddController extends HttpServlet {
 					if(part.getContentType().startsWith(permitFileType)) {
 						if(part.getContentType().endsWith(permitFileExt[0]) ||
 								part.getContentType().endsWith(permitFileExt[1])) {
-							part.write(String.join("/", realPath, part.getSubmittedFileName()));
+							//uuid : 범용 고유 식별자 (같은 이미지 이름을 업로드하면 덮어써지는 문제가 해결된다)
+							String uuid = UUID.randomUUID().toString();
+							part.write(String.join("/", realPath, uuid));
 							BoardImageDTO boardImageDTO = new BoardImageDTO();
 							boardImageDTO.setPath(path);
 							boardImageDTO.setName(part.getSubmittedFileName());
+							boardImageDTO.setUuid(uuid);
 							boardImageList.add(boardImageDTO);
 						}
 					}

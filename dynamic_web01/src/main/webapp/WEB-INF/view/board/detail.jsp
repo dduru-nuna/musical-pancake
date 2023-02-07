@@ -32,8 +32,8 @@
 	<div>
 		<ul>
 			<c:forEach var="image" items="${requestScope.images }">
-				<c:url var="imagePath" value="${image.path }/${image.name }" />
-				<li><a href="${imagePath }" download>${image.name }</a></li>
+				<c:url var="imagePath" value="${image.path }${image.uuid }" /> <!-- 실제 저장 파일은 uuid 로 저장 -->
+				<li><a href="${imagePath }" download="${image.name }">${image.name }</a></li> <!-- 사용자가 다운로드 받을 때는 실제 사용자가 저장한 이름으로 다운 -->
 			</c:forEach>
 		</ul>
 	</div>

@@ -55,7 +55,7 @@ public class DeleteController extends HttpServlet {
 				
 				for(BoardImageDTO image: imageList) {
 					String realPath = sc.getRealPath(image.getPath());
-					File f = new File(realPath + image.getName());
+					File f = new File(realPath + image.getUuid());
 					f.delete();
 				}
 				

@@ -102,7 +102,7 @@ public class BoardDAO {
 	}
 
 	public int deleteImages(BoardDTO dto) {
-		int count = session.delete("boardMapper.deleteImage", dto);
+		int count = session.delete("boardMapper.deleteImages", dto);
 		return count;
 	}
 }

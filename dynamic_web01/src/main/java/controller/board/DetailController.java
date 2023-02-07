@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.dto.BoardDTO;
+import model.dto.BoardImageDTO;
 import model.service.BoardService;
 
 @WebServlet("/board/detail")
@@ -33,8 +34,15 @@ public class DetailController extends HttpServlet {
 			session.setAttribute("boardViewHistory", history);
 		}
 		BoardDTO data = service.getData(dto);
+		List<BoardImageDTO> images = service.getImages(data);
 		
-		req.setAttribute("data", data);		
-		req.getRequestDispatcher("/WEB-INF/view/board/detail.jsp").forward(req, resp);
+		if(data != null) {
+			req.setAttribute("data", data);
+			req.setAttribute("images", images);
+			req.getRequestDispatcher("/WEB-INF/view/board/detail.jsp").forward(req, resp);
+		} else {
+			resp.sendRedirect(req.getContextPath() + "/error");
+		}
+
 	}
 }

@@ -69,10 +69,10 @@
   		 WHERE id = #{id}
   	</update>
   	<insert id="insertImage" parameterType="model.dto.BoardImageDTO">
-  		INSERT INTO BOARD_IMG_T VALUES(BOARD_IMG_S.NEXTVAL, #{boardId}, #{path}, #{name})
+  		INSERT INTO BOARD_IMG_T VALUES(BOARD_IMG_S.NEXTVAL, #{boardId}, #{path}, #{name}, #{uuid})
   	</insert>
-  	<select id="selectImage" parameterType="model.dto.BoardDTO" resultType="model.dto.BoardImageDTO">
-  		SELECT id, boardId, path, name FROM BOARD_IMG_T WHERE boardId = #{id}
+  	<select id="selectImages" parameterType="model.dto.BoardDTO" resultType="model.dto.BoardImageDTO">
+  		SELECT id, boardId, path, name, uuid FROM BOARD_IMG_T WHERE boardId = #{id}
   	</select>
   	<delete id="deleteImages" parameterType="model.dto.BoardDTO">
   		DELETE FROM BOARD_IMG_T WHERE boardId = #{id}
