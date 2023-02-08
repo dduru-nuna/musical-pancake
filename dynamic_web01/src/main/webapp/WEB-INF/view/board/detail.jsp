@@ -8,9 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세 페이지</title>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
 </head>
 <body>
+	<c:url var="recommendUrl" value="/ajax/recommend" />
+	<script type="text/javascript">
+		function recommend(element, id, type) {
+			$.ajax({
+				type: "get",
+				url: "${recommendUrl }",
+				data: {
+					id: id,
+					type: type
+				},
+				dataType: "json",
+				success: function(data) {
+					if(data.type === "success") {
+						if(type === "good") {
+							element.innerText = "추천 " + data.count
+						} else if(type === "bad") {
+							element.innerText = "비추천" + data.count
+						}
+					} else if(data.type === "error") {
+						console.log(msg);
+					}
+				}
+			});
+		}
+	</script>
 	<c:url var="boardUrl" value="/board" />
 	<div>
 		<%@ include file="/WEB-INF/view/module/topnav.jsp" %>
@@ -38,9 +64,9 @@
 		</ul>
 	</div>
 	<div>
-		<button class="btn btn-primary" onclick="location.href='${boardUrl }/clickGood?id=${requestScope.data.id }'">
+		<button class="btn btn-primary" onclick="recommend(this, ${requestScope.data.id }, 'good');">
 		추천 ${requestScope.data.good }</button>		
-		<button class="btn btn-danger" onclick="location.href='${boardUrl }/clickBad?id=${requestScope.data.id }'">
+		<button class="btn btn-danger" onclick="recommend(this, ${requestScope.data.id }, 'bad');">
 		비추천 ${requestScope.data.bad }</button>
 	</div>
 	<div>
