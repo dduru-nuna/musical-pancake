@@ -1,7 +1,11 @@
 package controller.ajax;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
+
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,7 +32,12 @@ public class RecommendController extends HttpServlet {
 		dto.setId(id.intValue());
 		
 		BoardService service = new BoardService();
-		String json = "{";
+		
+		JsonFactory jf = new JsonFactory();
+		StringWriter sw = new StringWriter();
+		JsonGenerator jg = jf.createGenerator(sw);
+		
+		jg.writeStartObject();
 		if(type.equals("good")) {
 			if(!goodHistory.contains(id) && !badHistory.contains(id)) {
 				service.upGood(dto);
@@ -39,8 +48,11 @@ public class RecommendController extends HttpServlet {
 			}
 			session.setAttribute("boardRecCntHistory", goodHistory);
 			BoardDTO data = service.getData(dto);
-			json += "\"type\": \"success\",";
-			json += "\"count\": " + data.getGood();
+//			json += "\"type\": \"success\",";
+//			json += "\"count\": " + data.getGood();
+			jg.writeStringField("type", "success");
+			jg.writeNumberField("count", data.getGood());
+			
 		} else if(type.equals("bad")) {
 			if(!goodHistory.contains(id) && !badHistory.contains(id)) {
 				service.upBad(dto);
@@ -51,15 +63,20 @@ public class RecommendController extends HttpServlet {
 			}
 			session.setAttribute("boardNRecCntHistory", badHistory);
 			BoardDTO data = service.getData(dto);
-			json += "\"type\": \"success\",";
-			json += "\"count\": " + data.getBad();
+//			json += "\"type\": \"success\",";
+//			json += "\"count\": " + data.getBad();
+			jg.writeStringField("type", "success");
+			jg.writeNumberField("count", data.getBad());
 		} else {
-			json += "\"type\": \"error\",";
-			json += "\"msg\": \"잘못된 타입 입니다.\",";
+//			json += "\"type\": \"error\",";
+//			json += "\"msg\": \"잘못된 타입 입니다.\",";
+			jg.writeStringField("type", "error");
+			jg.writeStringField("msg", "잘못된 타입 입니다.");
 		}
-		json += "}";
+		jg.writeEndObject();
+		jg.close();
 		
-		resp.getWriter().print(json);
+		resp.getWriter().print(sw.toString());
 		resp.getWriter().flush();
 	}
 }

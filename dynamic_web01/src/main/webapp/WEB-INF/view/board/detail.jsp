@@ -24,14 +24,22 @@
 				},
 				dataType: "json",
 				success: function(data) {
-					if(data.type === "success") {
-						if(type === "good") {
-							element.innerText = "추천 " + data.count
-						} else if(type === "bad") {
-							element.innerText = "비추천" + data.count
+					if(data.redirect !== undefined) { //로그인체크필터에서 설정한 redirect 키
+						let message = "추천/비추천은 회원만 할 수 있습니다. 로그인 페이지로 이동하시겠습니까?";
+						if(confirm(message)) { //confirm : 확인 누르면 true, 취소 누르면 false 반환
+							location.href = data.redirect;
 						}
-					} else if(data.type === "error") {
-						console.log(msg);
+					} else {
+						if(data.type === "success") {
+							//추천,비추천을 눌렀을 때 비동기로 데이터 전송됨
+							if(type === "good") {
+								element.innerText = "추천 " + data.count
+							} else if(type === "bad") {
+								element.innerText = "비추천" + data.count
+							}
+						} else if(data.type === "error") {
+							console.log(msg);
+						}					
 					}
 				}
 			});
@@ -63,9 +71,9 @@
 			</c:forEach>
 		</ul>
 	</div>
-	<div>
+	<div>                                           <!-- recommend(element, id, type) 함수 실행 -->
 		<button class="btn btn-primary" onclick="recommend(this, ${requestScope.data.id }, 'good');">
-		추천 ${requestScope.data.good }</button>		
+		추천 ${requestScope.data.good }</button>		<!-- 기존 db에 기록되어 있던 추천수 보여줌 -->
 		<button class="btn btn-danger" onclick="recommend(this, ${requestScope.data.id }, 'bad');">
 		비추천 ${requestScope.data.bad }</button>
 	</div>
