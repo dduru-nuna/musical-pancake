@@ -17,6 +17,7 @@
 <body>
 	<c:url var="userIdCheck" value="/ajax/userIdCheck" />
 	<script type="text/javascript">
+		//유효 아이디인지 확인 안하고 가입 버튼 누르는 경우 방지
 		valid = false;
 		//element(input태그) 옆이 비어있으면 span 을 추가하고 있으면 그대로 사용
 		function usernameCheck(element) {
@@ -39,11 +40,14 @@
 					if(data.msg === "OK") {  //응답되는 data 객체에 json으로 설정한 키msg
 						s.style = "color: green;";
 						s.innerText = "사용 가능한 아이디 입니다."
+						valid = true;
 					} else if(data.msg === "Fail") {
 						s.style = "color: red;";
 						s.innerText = "사용할 수 없는 아이디 입니다."
+						valid = false;
 					} else {
 						console.log("알 수 없는 값 입니다.");
+						valid = false;
 					}
 				},
 				error: function(data) {  //응답이 왔지만 데이터 처리에 대한 문제가 발생했을 때 동작하는 함수
