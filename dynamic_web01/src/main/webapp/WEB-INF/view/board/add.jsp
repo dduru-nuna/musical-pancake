@@ -65,7 +65,30 @@
 	<script type="text/javascript">
 		const editor = new toastui.Editor({
 			el: document.querySelector('#editor'), //위의 내용에 id='editor'
-			height: "250px"
+			height: "250px",
+			hooks: {
+				"addImageBlobHook": function(blob, callback) {
+					//blob : 사용자가 선택한 이미지 파일
+					//callback : 파일이 업로드 된 후 에디터에 표시할 이미지 주소를 전달하기 위한 콜백함수
+					let formData = new FormData();
+					formData.append("imageUpload", blob); //formData 객체의 append. 키: 값
+					formData.append("location", "board");
+					
+					<c:url var="imageUploadUrl" value="/ajax/imageUpload" />
+					$.ajax({
+						url: "${imageUploadUrl }",
+						type: "post",
+						data: formData,
+						dataType: "json",
+						enctype: "multipart/form-data",
+						processData: false,
+						contentType: false,
+						success: function(data) {
+							callback(data.imageUrl);
+						}
+					})
+				}
+			}
 		})
 	</script>
 </body>
