@@ -38,7 +38,7 @@ public class ImageUploadController extends HttpServlet {
 		String[] permitFileExt = sc.getInitParameter("permitFileExt").split(",");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String path = "/static/img/"+ location + df.format(new Date()) + "/";
+		String path = "/static/img/"+ location + "/" + df.format(new Date()) + "/";
 		String realPath = sc.getRealPath(path);
 		String uuid = UUID.randomUUID().toString();
 		
