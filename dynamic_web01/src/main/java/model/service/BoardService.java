@@ -50,9 +50,11 @@ public class BoardService {
 		dto.setId(id);
 		int count = dao.insert(dto);
 		if(count == 1) {
-			for(BoardImageDTO image: boardImageList) {
-				image.setBoardId(id);
-				dao.insertImage(image);
+			if(boardImageList != null) {
+				for(BoardImageDTO image: boardImageList) {
+					image.setBoardId(id);
+					dao.insertImage(image);
+				}				
 			}
 			dao.commit(); dao.close();
 			return true;
