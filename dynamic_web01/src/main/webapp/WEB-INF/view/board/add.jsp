@@ -83,10 +83,10 @@
 						data: formData,
 						dataType: "json",
 						enctype: "multipart/form-data",
-						processData: false,
-						contentType: false,
+						processData: false,  //multipart/form-data 사용하려면 필요한 속성
+						contentType: false,  //multipart/form-data 사용하려면 필요한 속성
 						success: function(data) {
-							callback(data.imageUrl);
+							callback(data.imageUrl);  //json 형식으로 응답 받은걸 imageUrl 키 찾아서 전달
 						}
 					})
 				}

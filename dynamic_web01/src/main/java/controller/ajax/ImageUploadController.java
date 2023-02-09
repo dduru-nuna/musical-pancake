@@ -10,7 +10,6 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -20,7 +19,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import model.dto.BoardImageDTO;
 
 @WebServlet("/ajax/imageUpload")
 @MultipartConfig
@@ -51,7 +49,7 @@ public class ImageUploadController extends HttpServlet {
 			if(image.getContentType().startsWith(permitFileType)) {
 				if(image.getContentType().endsWith(permitFileExt[0]) ||
 						image.getContentType().endsWith(permitFileExt[1])) {
-					image.write(String.join("/", realPath, uuid));					
+					image.write(String.join("/", realPath, uuid)); //서버에 저장		
 				}
 			}
 		}
@@ -65,7 +63,7 @@ public class ImageUploadController extends HttpServlet {
 		jg.writeEndObject();
 		jg.close();
 		
-		resp.getWriter().print(sw.toString());
+		resp.getWriter().print(sw.toString());  //사용자에게 응답 메시지 전달
 		resp.getWriter().flush();
 
 	}
