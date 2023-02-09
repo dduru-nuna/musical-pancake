@@ -10,6 +10,8 @@
 <title>게시글 상세 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 </head>
 <body>
 	<c:url var="recommendUrl" value="/ajax/recommend" />
@@ -60,9 +62,7 @@
 		수정일: ${updateDate } <br>
 		조회수: ${requestScope.data.viewCnt }
 	</div>
-	<div>
-		<p>${requestScope.data.context }</p>
-	</div>
+	<div id="viewer"></div>
 	<div>
 		<ul>
 			<c:forEach var="image" items="${requestScope.images }">
@@ -78,7 +78,7 @@
 		비추천 ${requestScope.data.bad }</button>
 	</div>
 	<div>
-		<button onclick="location.href='${boardUrl}'">목록</button>
+		<button onclick="location.href='${boardUrl }'">목록</button>
 		<c:if test="${sessionScope.login }">
 			<c:if test="${sessionScope.user.userId eq requestScope.data.writer }">
 				<button onclick="location.href='${boardUrl }/update?id=${requestScope.data.id }'">수정</button>
@@ -86,5 +86,26 @@
 			</c:if>
 		</c:if>
 	</div>
+	<script type="text/javascript"> 
+		var viewer;
+		window.onload = function() {
+			<c:url var="boardDetailUrl" value="/board/detail" />
+			$.ajax({
+				url: "${boardDetailUrl }",
+				data: {
+					id: ${requestScope.data.id }					
+				},
+				type: "post",
+				dataType: "json",
+				success: function(data) {  //editor는 editor까지만, viewer는 editor.factory 까지 써줘야함
+					viewer = new toastui.Editor.factory({
+						el: document.querySelector("#viewer"),
+						viewer: true, //뷰어로 사용
+						initialValue: data.context //초기값
+				    });
+			    }
+		   });
+		}
+	</script>
 </body>
 </html>

@@ -45,4 +45,18 @@ public class DetailController extends HttpServlet {
 		}
 
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		
+		BoardDTO dto = new BoardDTO();
+		dto.setId(Integer.parseInt(id));
+		
+		BoardService service = new BoardService();
+		BoardDTO data = service.getData(dto);
+		//이미지 업로드하면 ""가 들어가서 json 형식으로 제대로 보내지지 않음. 따라서 replace 로 '' 로 변경해줌
+		resp.getWriter().print("{\"context\": \"" + data.getContext().replace("\"", "'") + "\"}");
+		resp.getWriter().flush();
+	}
 }
