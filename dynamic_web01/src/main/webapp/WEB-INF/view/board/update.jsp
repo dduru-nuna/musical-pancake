@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <title>게시글 수정 페이지</title>
 <%@ include file="/WEB-INF/view/module/bootstrap.jsp" %>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 </head>
 <body>
 	<div>
@@ -27,7 +30,8 @@
 			</div>
 			<div>
 				<label>내용</label>
-				<textarea name="context">${requestScope.data.context }</textarea>
+				<div id="editor"></div>
+				<textarea style="display: none;" name="context"></textarea>
 			</div>
 			<div>
 				<button type="submit">수정</button>
@@ -35,5 +39,26 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+		var editor;
+		window.onload = function() {
+			<c:url var="boardDetailUrl" value="/board/detail" />
+			$.ajax({
+				url: "${boardDetailUrl }",
+				data: {
+					id: ${requestScope.data.id }
+				},
+				type: "post",
+				dataType: "json",
+				success: function(data) {
+					editor = new toastui.Editor({
+						el: document.querySelector("#editor"),
+						initialValue: data.context,
+						initialEditType: 'wysiwyg' //위지윅스 타입으로 지정 (마크다운 타입에서는 태그 정보가 그대로 나오기 때문에 변경함)
+					});
+				}
+			});
+		} //div태그 값 textarea 로 전달하는 과정 만들기
+	</script>
 </body>
 </html>
