@@ -62,6 +62,8 @@
 			</div>
 		</form>
 	</div>
+<!--  비동기 이용하여 이미지 업로드 먼저 요청하고 서버에서는 받은 이미지를 저장처리하고 저장된 경로를 알려줌(응답, json형식)
+	toastUI 에 콜백함수로 경로를 알려주면 에디터가 알아서 에디터 ui에 작성해줌 -->	
 	<script type="text/javascript">
 		const editor = new toastui.Editor({
 			el: document.querySelector('#editor'), //위의 내용에 id='editor'
