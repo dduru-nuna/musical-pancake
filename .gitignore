@@ -29,3 +29,5 @@ hs_err_pid*
 
 # DBeaver Files Ignore
 .dbeaver/
+
+oracle_db.conf
