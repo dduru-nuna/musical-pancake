@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="account">
+  <select id="test" resultType="string">
+  	SELECT 'Oracle DB Connect Success' FROM DUAL
+  </select>
+  <select id="selectAll" resultType="accountDTO"> <!-- mybatis-config.xml에 aliases 로 타입에 별칭 부여해서 사용 -->
+    SELECT * FROM ACCOUNT
+  </select>
+</mapper>

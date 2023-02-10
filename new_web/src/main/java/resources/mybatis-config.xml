@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 태그 순서 : properties -> typeAliases -> environments -> mappers (정해진 순서이다.)-->
+  
+  <properties resource="resources/oracle_db.conf" >
+  	<!--property name="driver" value="oracle.jdbc.driver.OracleDriver" -->
+  	<!-- 위에 속성명으로 resource 설정해서 따로 파일 생성해도 되고 주석처리 한 것처럼 속성명 속성값 설정해도 됨 -->
+  </properties>
+
+  <typeAliases> <!-- 별칭 부여 -->
+  	<typeAlias type="account.dto.AccountDTO" alias="accountDTO" />
+  	<typeAlias type="board.dto.BoardDTO" alias="boardDTO"/>
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>  <!-- 위의 properties로 변수 값 설정 -->
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="resources/mapper/account.xml"/>
+    <mapper resource="resources/mapper/board.xml"/>
+  </mappers>
+</configuration>
