@@ -5,6 +5,15 @@ import java.util.List;
 
 public class Paging {
 
+	/**
+	 * 페이징 : 사용자에게 DB에 저장된 데이터 목록을 제공할 때 너무 많은 데이터를 제공하면 웹 서버나
+	 *        DB서버에 부하가 발생할 수 있기 때문에 이를 페이지 단위로 나누어 제공하기 위해 사용한다.
+	 *        
+	 * 페이징 기능을 위해 Oracle 을 사용하는 경우 Top N 분석을 활용하여 원하는 수량만 조회하게 한다.
+	 * Mybatis 의 기능 중 Cursor 기능을 활용하여 페이징 기능을 구현할 수도 있다.
+	 * ( selectCursor("네임스페이스명.아이디", 전달할파라메터, RowBounds객체) )
+	 */
+	
 	private Object data;  //화면에 출력할 페이지 데이터(TopN 조회 쿼리로 조회한 데이터), 모든 객체를 담을 수 있게 object 로 설정
 	private List<Integer> pageList; //전체 페이지 번호가 있는 리스트
 	private int currentPageNumber = 1;  //현재 페이지 번호 (초기값 1)
@@ -17,7 +26,7 @@ public class Paging {
 		setPageList();
 	}
 	
-	public Paging(Object data, int currentPageNumber, int lastPageNumber) {
+	private Paging(Object data, int currentPageNumber, int lastPageNumber) {
 		this.data = data;
 		this.lastPageNumber = lastPageNumber;
 		this.currentPageNumber = currentPageNumber;
