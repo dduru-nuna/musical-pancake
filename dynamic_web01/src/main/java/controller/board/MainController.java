@@ -31,6 +31,8 @@ public class MainController extends HttpServlet {
 		//파라메터 추출(사용자가 옵션 선택했을 때 c 있음)
 		String c = req.getParameter("c");
 
+		//쿠키가 있는지 먼저 확인하고 없으면 쿠키 생성하는 순서로 가야함~
+		
 		//쿠키에서 데이터 추출(boardListLimit 이란 쿠키가 있을 때)
 		Cookie boardCookie = null;
 		Cookie[] cookies = req.getCookies();
